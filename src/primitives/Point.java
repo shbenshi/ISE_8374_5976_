@@ -1,7 +1,7 @@
 package primitives;
 
 import java.util.Objects;
-
+/** ************************
 /** This class will represent a point which is a basic argument im geometry
  * @author Tzofiya david 209918374
  *  * and Shira ben shimol 326065976 */
