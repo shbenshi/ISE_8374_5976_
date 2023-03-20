@@ -5,9 +5,9 @@ import primitives.Vector;
 
 import static java.lang.System.out;
 import static primitives.Util.isZero;
-
+/*add shtut*/
 /** Test program for the 1st stage
- * @author Dann Zilberstein */
+ * @author Dan Zilberstein */
 public final class Main {
 
     /** Main program to tests initial functionality of the 1st stage
