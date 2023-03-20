@@ -45,12 +45,13 @@ public class Ray
     /**
      * this is a constructor that get vec and point and analyzing them
      * @param p0 this is a point to analyzing
-     * @param v1 this is a vector that we analyzing
+     * @param v1 this is a vector that we're analyzing
      */
     public Ray(Point p0, Vector v1)
     {
         this.p0 = p0;
         this.dir = v1;
+        v1.normalize();
     }
 
     /**
