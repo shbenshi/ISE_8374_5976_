@@ -1,11 +1,14 @@
 package test;
-
 import primitives.Point;
 import primitives.Vector;
-
 import static java.lang.System.out;
 import static primitives.Util.isZero;
-/*add shtut*/
+
+/*
+* Tzofiya david, 209918374, Tzofiya132@gmail.com
+* Shira ben shimol 326065976, shiraben2004@gmail.com
+* */
+
 /** Test program for the 1st stage
  * @author Dan Zilberstein */
 public final class Main {
