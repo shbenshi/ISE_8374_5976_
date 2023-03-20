@@ -6,7 +6,7 @@ import static primitives.Util.isZero;
 
 /*
 * Tzofiya david, 209918374, Tzofiya132@gmail.com
-* Shira ben shimol 326065976, shiraben2004@gmail.com
+* shira ben shimol 326065976, shiraben2004@gmail.com
 * */
 
 /** Test program for the 1st stage
