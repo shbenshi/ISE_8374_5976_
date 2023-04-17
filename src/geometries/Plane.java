@@ -3,6 +3,9 @@ package geometries;
 import primitives.Point;
 import primitives.Vector;
 
+import static primitives.Util.isZero; //????/
+
+
 
 /** Polygon class represents a plane essentially a point in space and a vertical vector and based on a point and vector normalized to the plane
  * system
@@ -34,7 +37,13 @@ public class Plane implements Geometry
     public Plane(Point q0, Point q1, Point q2 )
     {
         this.q0 = q0;
-        this.normal = null;
+
+
+        Vector v1 = q1.subtract(q0);
+        Vector v2= q2.subtract(q0);
+        if(!isZero(v1.dotProduct(v2))) // check if the points are on the same line 31:14
+            throw new IllegalArgumentException("The point are on the same line");
+        this.normal = v1.crossProduct(v2).normalize();
     }
 
     /**
@@ -53,7 +62,7 @@ public class Plane implements Geometry
     @Override
     public Vector getNormal(Point p1)
     {
-        return null;
+        return normal;
     }
 
     /**

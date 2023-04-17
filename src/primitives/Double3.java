@@ -40,7 +40,6 @@ public class Double3 {
    }
 
    /**
-    *
     * @param obj
     * @return
     */
