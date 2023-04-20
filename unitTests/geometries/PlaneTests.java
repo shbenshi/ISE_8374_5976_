@@ -9,7 +9,7 @@ class PlaneTests {
 
     @Test
     void testGetNormal() {
-        /**
+        /*
          * Test method for {@link geometries.Polygon#Polygon(primitives.Point...)}.
          */
         @Test

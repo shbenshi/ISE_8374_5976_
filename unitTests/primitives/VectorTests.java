@@ -5,9 +5,8 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class VectorTests {
-    // is it oopdat??
-      /* Test method for {@link primitives.Vector#Vector(double, double, double)}.
-            */
+    /* Test method for {@link primitives.Vector#Vector(double, double, double)}.
+     */
     @Test
     void testVector() {
         // ============ Equivalence Partitions Tests ==============
@@ -15,7 +14,7 @@ class VectorTests {
 
         // =============== Boundary Values Tests ==================
         // TC11: Zero vector
-        assertThrows(IllegalArgumentException.class, () -> new Vector(0, 0, 0));
+        assertThrows(IllegalArgumentException.class, () -> new Vector(0, 0, 0),"ERROR: zero vector should have thrown an exception");
     }
 
     /* Test method for {@link primitives.Vector#add(primitives.Vector)}.
@@ -96,8 +95,10 @@ class VectorTests {
     // for simplicity)
     assertEquals(v1.length() * v2.length(), vr.length(), 0.00001, //
             "crossProduct() wrong result length");}
-    /*@Test
+    @Test
     void testScale() {
+        assertEquals(new Vector(2, 4, 6),new Vector(2, 4, 6).scale(2),"scale() results with wrong vector");
+        assertThrows(IllegalArgumentException.class,()-> new Vector(2, 4, 6).scale(0),"scaling vector by zero are not alowd");
     }
 
     @Test
@@ -110,5 +111,5 @@ class VectorTests {
 
     @Test
     void testDotProduct() {
-    }*/
+    }
 }
