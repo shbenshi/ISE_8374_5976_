@@ -20,7 +20,7 @@ class VectorTests {
     /* Test method for {@link primitives.Vector#add(primitives.Vector)}.
             */
     @Test
-    void testAddVector() {
+    void testAddVector()  {
         // ============ Equivalence Partitions Tests ==============
         // TC01: Simple test
         assertEquals(new Vector(1, 1, 1), new Vector(2, 3, 4).add(new Vector(-1, -2, -3)), //
