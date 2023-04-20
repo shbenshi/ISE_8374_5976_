@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class VectorTests {
+    // is it oopdat??
       /* Test method for {@link primitives.Vector#Vector(double, double, double)}.
             */
     @Test
