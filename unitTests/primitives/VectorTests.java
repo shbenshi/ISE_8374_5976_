@@ -5,8 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class VectorTests {
-      /
-              * Test method for {@link primitives.Vector#Vector(double, double, double)}.
+      /* Test method for {@link primitives.Vector#Vector(double, double, double)}.
             */
     @Test
     void testVector() {
@@ -18,8 +17,7 @@ class VectorTests {
         assertThrows(IllegalArgumentException.class, () -> new Vector(0, 0, 0));
     }
 
-    /
-            * Test method for {@link primitives.Vector#add(primitives.Vector)}.
+    /* Test method for {@link primitives.Vector#add(primitives.Vector)}.
             */
     @Test
     void testAddVector() {
@@ -34,8 +32,7 @@ class VectorTests {
                 "Add v plus -v must throw exception");
     }
 
-    /
-            * Test method for {@link primitives.Vector#subtract(Point)} (primitives.Vector)}.
+    /* Test method for {@link primitives.Vector#subtract(Point)} (primitives.Vector)}.
         */
 @Test
     void testSubtractVector() {
@@ -50,8 +47,7 @@ class VectorTests {
         "Subtract v from v must throw exception");
         }
 
-        /
-        * Test method for {@link primitives.Vector#scale(double)}.
+        /* Test method for {@link primitives.Vector#scale(double)}.
         */
 @Test
     void testScale() {
@@ -66,8 +62,7 @@ class VectorTests {
         "Scale by 0 must throw exception");
         }
 
-        /
-        * Test method for {@link primitives.Vector#dotProduct(primitives.Vector)}.
+        /* Test method for {@link primitives.Vector#dotProduct(primitives.Vector)}.
         */
 @Test
     void testDotProduct() {
@@ -86,21 +81,20 @@ class VectorTests {
             "dotProduct() for orthogonal vectors is not zero");
             }
 
-            /
-            * Test method for {@link primitives.Vector#crossProduct(primitives.Vector)}.
+            /* Test method for {@link primitives.Vector#crossProduct(primitives.Vector)}.
         */
 @Test
     void testCrossProduct() {
-            Vector v1 = new Vector(1, 2, 3);
+    Vector v1 = new Vector(1, 2, 3);
 
-            // ============ Equivalence Partitions Tests ==============
-            Vector v2 = new Vector(0, 3, -2);
-            Vector vr = v1.crossProduct(v2);
+    // ============ Equivalence Partitions Tests ==============
+    Vector v2 = new Vector(0, 3, -2);
+    Vector vr = v1.crossProduct(v2);
 
-            // TC01: Test that length of cross-product is proper (orthogonal vectors taken
-            // for simplicity)
-            assertEquals(v1.length() * v2.length(), vr.length(), 0.00001, //
-            "crossProduct() wrong result length");
+    // TC01: Test that length of cross-product is proper (orthogonal vectors taken
+    // for simplicity)
+    assertEquals(v1.length() * v2.length(), vr.length(), 0.00001, //
+            "crossProduct() wrong result length");}
     /*@Test
     void testScale() {
     }
