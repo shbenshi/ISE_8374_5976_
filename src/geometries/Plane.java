@@ -71,7 +71,6 @@ public class Plane implements Geometry {
 
     /**
      * A getter operation
-     *
      * @return q0 the point in the plane
      */
     public Point getQ0() {
