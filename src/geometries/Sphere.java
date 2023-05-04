@@ -19,7 +19,7 @@ public class Sphere extends RadialGeometry
      * A constructor that receives the radius value and initializes it with the help of the father
      * @param radius The radius value
      */
-    public Sphere(double radius) {
+    public Sphere(Point p1, double radius) {
         super(radius);
     }
 
@@ -28,8 +28,9 @@ public class Sphere extends RadialGeometry
      * @param p1 A point in a cylinder
      * @return  at this point returns null
      */
-    public Vector getNormal(Point p1){
-        return null;
+    public Vector getNormal(Point p1)
+    {
+        return p1.subtract(center).normalize();
     }
 
     /**

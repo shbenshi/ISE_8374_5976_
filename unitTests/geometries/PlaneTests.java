@@ -12,29 +12,31 @@ class PlaneTests {
         /**
          * Test method for {@link geometries.Polygon#Polygon(primitives.Point...)}.
          */
-        Plane P1 = new Plane(new Point(0, 0, 0), new Point(0, 5, 0), new Point(5,0,0));
-        Vector normal = new Vector(0, 0, 1);
+        Plane P1 = new Plane(new Point(0, 0, 1),
+                            new Point(1, 0, 0),
+                            new Point(0,1,0));
+        double p = Math.sqrt(1d / 3);
 
-        assertTrue(normal.equals(P1.getNormal(new Point(1, 1, 0))) ||
-                normal.equals(P1.getNormal(new Point(-1, -1, 0))),"The plane does not work as needed");
+        assertTrue(P1.getNormal().equals(new Vector(p, p, p)) ||
+                P1.getNormal().scale(-1).equals(new Vector(p, p, p)) ||
+                P1.getNormal().length() !=1, "");
+
+        //assertEquals(new Vector(p, p, p), P1.getNormal(), "GetNormal() wrong result");
+        //assertTrue(P1.equa.ls(P1.getNormal(new Point(1, 1, 0))) ||
+                //normal.equals(P1.getNormal(new Point(-1, -1, 0))),"The plane does not work as needed");
     }
     @Test
-    public void testConstructor() {
+    public void testConstructor()
     {
-        // ============ Equivalence Partitions Tests ==============
-
-        // TC01: Correct concave quadrangular with vertices in correct order
-        try
-        {
-            new Polygon(new Point(0, 0, 1), new Point(1, 0, 0), new Point(0, 1, 0), new Point(-1, 1, 1));
-        } catch (IllegalArgumentException e)
-        {
-            fail("Failed constructing a correct polygon" + e.getMessage());
-        }
+        // =============== Boundary Values Tests ==================
+        // checks weather the Plane constructor works correctly
+        assertThrows(IllegalArgumentException.class, () -> new Plane(new Point(1,2,4),new Point(1,2,4), new Point(2,3,4) ), "two same points");
+        // =============== Boundary Values Tests ==================
+        // checks weather the Plane constructor works correctly
+        assertThrows(IllegalArgumentException.class, () -> new Plane(new Point(1,2,4),new Point(2,4,8), new Point(-1,-2,-4) ), "the points on the same line");
     }
     @Test
     void testGetQ0()
-    {
-
-    }
+    {}
 }
+

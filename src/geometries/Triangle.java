@@ -6,6 +6,7 @@ import primitives.Point;
  * system
  * @author Tzofiya david 209918374
  * and Shira ben shimol 326065976 */
+
 public class Triangle extends Polygon
 {
     /**
@@ -20,7 +21,9 @@ public class Triangle extends Polygon
      * @param q1 second point
      * @param q2 third point
      */
-    public Triangle(Point q0, Point q1, Point q2) {
+
+    public Triangle(Point q0, Point q1, Point q2)
+    {
         super(q0,q1,q2);
     }
 }

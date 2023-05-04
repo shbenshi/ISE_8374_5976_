@@ -11,15 +11,16 @@ import primitives.Vector;
 public class Tube extends RadialGeometry{
 
     /*a ray*/
-    Ray axisRay;
+    protected Ray axisRay;
 
     /**
      * constructor thatt call to the father func
-     * @param radius get radius and analyzing him
+     * @param _radius get radius and analyzing him
      */
-    public Tube(double radius)
+    public Tube(Ray _axisRay, double _radius)
     {
-        super(radius);
+        super(_radius);
+        axisRay = _axisRay;
     }
 
     /**
@@ -27,9 +28,15 @@ public class Tube extends RadialGeometry{
      * @param p1 a point
      * @return null
      */
-    public Vector getNormal(Point p1) {
-        return null;
-    }
+    public Vector getNormal(Point p1)
+    {
+        if ((p1.subtract(axisRay.getP0())).dotProduct(axisRay.getDir()) == 0)
+        {
+            return p1.subtract(axisRay.getP0());
+        }
+        double t = ((p1.subtract(axisRay.getP0())).dotProduct(axisRay.getDir()));
+        Point o = (axisRay.getP0()).add((axisRay.getDir()).scale(t));
+        return ((p1.subtract(o).normalize()));   }
     /**
      * a get func that return the ray
      * @return ray
