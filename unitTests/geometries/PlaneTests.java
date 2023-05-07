@@ -12,31 +12,21 @@ class PlaneTests {
         /**
          * Test method for {@link geometries.Polygon#Polygon(primitives.Point...)}.
          */
-        Plane P1 = new Plane(new Point(0, 0, 1),
-                            new Point(1, 0, 0),
-                            new Point(0,1,0));
-        double p = Math.sqrt(1d / 3);
-
-        assertTrue(P1.getNormal().equals(new Vector(p, p, p)) ||
-                P1.getNormal().scale(-1).equals(new Vector(p, p, p)) ||
-                P1.getNormal().length() !=1, "");
-
-        //assertEquals(new Vector(p, p, p), P1.getNormal(), "GetNormal() wrong result");
-        //assertTrue(P1.equa.ls(P1.getNormal(new Point(1, 1, 0))) ||
-                //normal.equals(P1.getNormal(new Point(-1, -1, 0))),"The plane does not work as needed");
+        Plane P1 = new Plane(new Point(0, 0, 1), new Point(1, 0, 0), new Point(0,1,0));
+        double d = Math.sqrt(1d / 3);
+        assertEquals(new Vector(d, d, d), P1.getNormal(), "GetNormal(Point) wrong result ");
     }
     @Test
-    public void testConstructor()
-    {
-        // =============== Boundary Values Tests ==================
-        // checks weather the Plane constructor works correctly
-        assertThrows(IllegalArgumentException.class, () -> new Plane(new Point(1,2,4),new Point(1,2,4), new Point(2,3,4) ), "two same points");
-        // =============== Boundary Values Tests ==================
-        // checks weather the Plane constructor works correctly
-        assertThrows(IllegalArgumentException.class, () -> new Plane(new Point(1,2,4),new Point(2,4,8), new Point(-1,-2,-4) ), "the points on the same line");
+    public void testConstructor() {
+        {
+            // ============ Equivalence Partitions Tests ==============
+
+            // TC01: Correct concave quadrangular with vertices in correct order
+            try {
+                new Polygon(new Point(0, 0, 1), new Point(1, 0, 0), new Point(0, 1, 0), new Point(-1, 1, 1));
+            } catch (IllegalArgumentException e) {
+                fail("Failed constructing a correct polygon" + e.getMessage());
+            }
+        }
     }
-    @Test
-    void testGetQ0()
-    {}
 }
-

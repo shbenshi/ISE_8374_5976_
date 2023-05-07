@@ -47,7 +47,7 @@ public class Plane implements Geometry {
         Vector v1 = q1.subtract(q0);
         Vector v2 = q2.subtract(q0);
 
-        this.normal = normal.normalize(); //v1.crossProduct(v2).normalize();
+        this.normal =  v1.crossProduct(v2).normalize();//normal.normalize();
     }
 
     /**
@@ -68,7 +68,7 @@ public class Plane implements Geometry {
     @Override
     public Vector getNormal(Point p1)
     {
-        return getNormal();
+        return normal;
     }
 
     /**
