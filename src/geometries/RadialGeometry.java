@@ -1,16 +1,20 @@
 package geometries;
 
-/** RadialGeometry abstract class that implements th geometry interface. and is based on radius
- * system
- * @author Tzofiya and Shira*/
+/**
+ * The RadialGeometry class is an abstract class that implements the Geometry interface and is based on radius.
+ * It represents a three-dimensional geometric object with a radial component.
+ * This class is meant to be extended by other geometry classes that have a radius field.
+ * @author Tzofiya
+ * @author Shira
+ */
 public abstract class RadialGeometry implements Geometry
 {
-    /**  radius field with permission protected */
+    /** The radius field with protected access */
     protected double radius;
 
     /**
-     * A constructor that accepts a value for the radius as a parameter and initializes the field
-     * @param radius The radius value
+     * Constructs a new RadialGeometry object with the specified radius.
+     * @param radius The radius value of the RadialGeometry object.
      */
     public RadialGeometry(double radius)
     {
@@ -18,8 +22,8 @@ public abstract class RadialGeometry implements Geometry
     }
 
     /**
-     *getter operationn
-     * @return radius The radius value
+     * Returns the radius value of the RadialGeometry object.
+     * @return The radius value of the RadialGeometry object.
      */
     public double getRadius()
     {

@@ -4,10 +4,21 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
 
+ Unit tests for primitives.Point class.
+ Tests the methods for adding, subtracting, and calculating distances between points.
+ @author Tzofiya David and Shira Ben Shimol
+ */
 class PointTests {
- /* Test method for {@link primitives.Point#add(primitives.Vector)}.*/
-    @Test
+    /**
+     * Test method for {@link primitives.Point#add(primitives.Vector)}.
+     * Tests adding a vector to a point.
+     * Equivalence partitions:
+     * TC01: Simple test - adds a vector to a point.
+     * Boundary values:
+     * There are no boundary tests.
+     */    @Test
     void testAdd() {
         // ============ Equivalence Partitions Tests ==============
         // TC01: Simple test
@@ -19,8 +30,15 @@ class PointTests {
         // there are no boundary tests
     }
 
-    /* Test method for {@link primitives.Point#subtract(primitives.Point)}.*/
-    @Test
+    /**
+     * Test method for {@link primitives.Point#subtract(primitives.Point)}.
+     * Tests subtracting a point from another point.
+     * Equivalence partitions:
+     * TC01: Simple test - subtracts one point from another point.
+     *
+     * Boundary values:
+     * TC11: Tests subtracting the same point from itself, which should throw an IllegalArgumentException.
+     */    @Test
     void testSubtract() {
         // ============ Equivalence Partitions Tests ==============
         // TC01: Simple test
@@ -35,8 +53,14 @@ class PointTests {
                 "Subtract P from P must throw exception");
     }
 
-    /* Test method for {@link primitives.Point#distanceSquared(primitives.Point)}.*/
-    @Test
+    /**
+     * Test method for {@link primitives.Point#distanceSquared(primitives.Point)}.
+     * Tests calculating the squared distance between two points.
+     * Equivalence partitions:
+     * TC01: Simple test - calculates the squared distance between two points.
+     * Boundary values:
+     * TC11: Tests calculating the squared distance between a point and itself.
+     */    @Test
     void testDistanceSquared() {
         // ============ Equivalence Partitions Tests ==============
         // TC01: Simple test
@@ -51,6 +75,11 @@ class PointTests {
 
     /**
      * Test method for {@link primitives.Point#distance(primitives.Point)}.
+     * Tests calculating the distance between two points.
+     * Equivalence partitions:
+     * TC01: Simple test - calculates the distance between two points.
+     * Boundary values:
+     * TC11: Tests calculating the distance between a point and itself.
      */
     @Test
     void testDistance() {

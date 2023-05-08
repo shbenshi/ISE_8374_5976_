@@ -3,8 +3,8 @@ package geometries;
 import primitives.Point;
 import primitives.Vector;
 
-/** A sphere class that inherits from RadialGeometry and represents a three-dimensional body and is based on a point and radius
- * system
+/**
+ * A sphere class that inherits from RadialGeometry and represents a three-dimensional body and is based on a point and radius.
  * @author Tzofiya david 209918374
  * and Shira ben shimol 326065976 */
 
@@ -12,21 +12,26 @@ public class Sphere extends RadialGeometry
 {
     /** Center point of the Sphere */
     private  Point center;
-    /**  the radius off the sphere */
+    /** the radius of the sphere */
     private double radius;
 
     /**
-     * A constructor that receives the radius value and initializes it with the help of the father
-     * @param radius The radius value
+     * A constructor that receives the center point and radius value and initializes them with the help of the father.
+     *
+     * @param center The center point of the sphere.
+     * @param radius The radius value of the sphere.
      */
-    public Sphere(Point p1, double radius) {
+    public Sphere(Point _center, double radius)
+    {
         super(radius);
+        this.center = _center;
+
     }
 
     /**
-     *Implementing the getNormal action of the Geometry interface
-     * @param p1 A point in a cylinder
-     * @return  at this point returns null
+     * Implementation of the getNormal action of the Geometry interface.
+     * @param p1 A point on the surface of the sphere.
+     * @return A normalized vector that is perpendicular to the surface of the sphere at the given point.
      */
     public Vector getNormal(Point p1)
     {
