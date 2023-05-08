@@ -9,15 +9,15 @@ public class Point
 {
 
     /* this is an object that implement 3 coordinate*/
-    Double3 xyz;
+     final Double3 xyz;
 
     /**
      * this a constructor that get a points
      * @param xyz the points
      */
-     Point(Double3 xyz)
+     Point(Double3 _xyz)
     {
-        this.xyz = xyz;
+        this.xyz = _xyz;
     }
 
     /**
@@ -87,8 +87,8 @@ public class Point
      * @param p1 it is the point that we make subtract on her
      * @return the result of subtract
      */
-    public Vector subtract(Point p1) {
-        return new Vector((xyz.subtract(p1.xyz)));
+    public Vector subtract(Point p0) {
+        return new Vector((this.xyz.subtract(p0.xyz)));
 
     }
 

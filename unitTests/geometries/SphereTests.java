@@ -13,13 +13,12 @@ class SphereTests {
         // EP01 get normal of point on sphere
         Point center = new Point(0, 0, 0);
         Sphere sp = new Sphere(center, 2d);
-        Point point = new Point(0, 0, 2);
-        Vector n1 = new Vector(0, 0, 1); // normal
-        Vector n2 = new Vector(0, 0, -1); // normal
-        Vector sNormal = sp.getNormal(point);
-        assertTrue(
-                sNormal.equals(n1) || sNormal.equals(n2),
-        "Bad normal for sphere");
+        Point point = new Point(2, 0, 0);
+        Vector n = new Vector(1, 0, 0); // normal
+        Vector n2 = new Vector(-1, 0, 0); // normal
+        //Vector sNormal = sp.getNormal(point);
+        assertTrue(n.equals(sp.getNormal(point)),"Bad normal for sphere"); //|| sNormal.equals(n2),
+
     }
 
     @Test

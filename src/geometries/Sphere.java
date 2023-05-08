@@ -11,7 +11,7 @@ import primitives.Vector;
 public class Sphere extends RadialGeometry
 {
     /** Center point of the Sphere */
-    private Point center;
+    private final Point center;
     /**  the radius off the sphere */
     private double radius;
 
@@ -28,9 +28,9 @@ public class Sphere extends RadialGeometry
      * @param p1 A point in a cylinder
      * @return  at this point returns null
      */
-    public Vector fgetNormal(Point p1)
+    public Vector getNormal(Point p0)
     {
-        return p1.subtract(center).normalize();
+        return (p0.subtract(center)).normalize();
     }
 
     /**
