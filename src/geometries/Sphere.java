@@ -7,7 +7,7 @@ import primitives.Vector;
  * system
  * @author Tzofiya david 209918374
  * and Shira ben shimol 326065976 */
-
+// any hakovaat
 public class Sphere extends RadialGeometry
 {
     /** Center point of the Sphere */
