@@ -26,7 +26,7 @@ public class Cylinder extends Tube {
     }
 
     /**
-     * Returns the normal vector at a given point on the cylinder.
+     * Returnss the normal vector at a given point on the cylinder.
      * @param p1 A point on the cylinder
      * @return The normal vector at the given point
      */

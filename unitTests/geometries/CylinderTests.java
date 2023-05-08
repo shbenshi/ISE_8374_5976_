@@ -25,7 +25,7 @@ class CylinderTests {
         Point p2 = new Point(1, 0, 10);
         Cylinder C1 = new Cylinder(new Ray(new Point(0, 0, 0), new Vector(0, 0, 1)), 1, 10);
 
-        // TC01: Test that the normal of a point on the side of the cylinder is correct
+        // TC01: Testt that the normal of a point on the side of the cylinder is correct
         assertTrue(normal1.equals(C1.getNormal(p0)), "TC01: Failed to get the correct normal of a point on the side of the cylinder.");
 
         // ============ Equivalence Partitions Tests ==============
