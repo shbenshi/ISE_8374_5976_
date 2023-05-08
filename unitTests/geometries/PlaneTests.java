@@ -22,6 +22,7 @@ class PlaneTests {
     void testGetNormal() {
         Plane P1 = new Plane(new Point(0, 0, 1), new Point(1, 0, 0), new Point(0,1,0));
         double d = Math.sqrt(1d / 3);
+        // TC01: Test that the result of getNormal() is correct
         assertEquals(new Vector(d, d, d), P1.getNormal(), "GetNormal(Point) wrong result ");
     }
 
