@@ -18,7 +18,7 @@ class CylinderTests {
     @Test
     void testGetNormal() {
 
-        Vector dir = new Vector(0, 0, 7);
+        Vector dir = new Vector(0, 0, 1);
         Vector normal1 = new Vector(0, 1, 0);
         Point p0 = new Point(0, 1, 2);
         Point p1 = new Point(1, 0, 0);
