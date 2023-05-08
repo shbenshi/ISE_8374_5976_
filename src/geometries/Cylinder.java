@@ -16,7 +16,7 @@ public class Cylinder extends Tube {
     /**
      * represents the height of the cylinder
      */
-    private double height;
+      double height;
 
     /**
      * A constructor that receives the radius value and initializes it with the help of the father
@@ -36,28 +36,28 @@ public class Cylinder extends Tube {
      * @return at this point returns null
      */
     public Vector getNormal(Point p1) {
-        Point p0 = axisRay.getP0();
-        Vector v = axisRay.getDir();
+        //Point p0 = axisRay.getP0();
+        //Vector v = axisRay.getDir();
 
         //if the point and p0 are the same
-        if (p1.equals(p0))
-            return v;
+        if ((p1.equals(axisRay.getP0())))
+            return ((axisRay.getDir()).scale(-1)); //v.scale(-1)
 
-        // projection of P-p0 on the ray:
-        Vector u = p1.subtract(p0);
 
-        // distance from p0 to the o who is in from of point
-        double t = alignZero(u.dotProduct(v));
+        if (p1.equals(((axisRay.getP0()).add((axisRay.getDir()).scale(height))))) {
+            return axisRay.getDir();
+        }
 
-        // if the point is at a base
-        if (t == 0 || isZero(height - t))
-            return v;
+        if ((p1.subtract(axisRay.getP0())).dotProduct(axisRay.getDir()) == 0) {
+            return ((axisRay.getDir()).scale(-1));
+        }
+        if ((p1.subtract((axisRay.getP0()).add((axisRay.getDir()).scale(height)))).dotProduct(axisRay.getDir()) == 0)
+            return axisRay.getDir();
 
-        //the other point on the axis facing the given point
-        Point o = p0.add(v.scale(t));
+        double H = ((p1.subtract(axisRay.getP0())).dotProduct(axisRay.getDir()));
+        Point p2 = (axisRay.getP0()).add((axisRay.getDir()).scale(H));
+        return ((p1.subtract(p2)).normalize());
 
-        //create the normal vector
-        return p1.subtract(o).normalize();
     }
 
 

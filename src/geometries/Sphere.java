@@ -28,7 +28,7 @@ public class Sphere extends RadialGeometry
      * @param p1 A point in a cylinder
      * @return  at this point returns null
      */
-    public Vector fgetNormal(Point p1)
+    public Vector getNormal(Point p1)
     {
         return p1.subtract(center).normalize();
     }
