@@ -3,11 +3,12 @@ package primitives;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+/**
+ * Test method for the constructor {@link primitives.Vector#Vector(double, double, double)}.
+ * This method tests boundary values for a zero vector.
+ @author Tzofiya David and Shira Ben Shimol
+ */
 class VectorTests {
-    // is it oopdat??
-      /* Test method for {@link primitives.Vector#Vector(double, double, double)}.
-            */
     @Test
     void testVector() {
         // ============ Equivalence Partitions Tests ==============
@@ -18,8 +19,10 @@ class VectorTests {
         assertThrows(IllegalArgumentException.class, () -> new Vector(0, 0, 0));
     }
 
-    /* Test method for {@link primitives.Vector#add(primitives.Vector)}.
-            */
+    /**
+     * Test method for {@link primitives.Vector#add(primitives.Vector)}.
+     * This method tests equivalence partitions and boundary values.
+     */
     @Test
     void testAddVector()  {
         // ============ Equivalence Partitions Tests ==============
@@ -33,8 +36,11 @@ class VectorTests {
                 "Add v plus -v must throw exception");
     }
 
-    /* Test method for {@link primitives.Vector#subtract(Point)} (primitives.Vector)}.
-        */
+
+    /**
+     * Test method for {@link primitives.Vector#subtract(Point)} (primitives.Vector)}.
+     * This method tests equivalence partitions and boundary values.
+     */
 @Test
     void testSubtractVector() {
             // ============ Equivalence Partitions Tests ==============
@@ -48,8 +54,11 @@ class VectorTests {
         "Subtract v from v must throw exception");
         }
 
-        /* Test method for {@link primitives.Vector#scale(double)}.
-        */
+
+    /**
+     * Test method for {@link primitives.Vector#scale(double)}.
+     * This method tests equivalence partitions and boundary values.
+     */
 @Test
     void testScale() {
             // ============ Equivalence Partitions Tests ==============
@@ -62,9 +71,10 @@ class VectorTests {
             assertThrows(IllegalArgumentException.class, () -> new Vector(1, 2, 3).scale(0d), //
         "Scale by 0 must throw exception");
         }
-
-        /* Test method for {@link primitives.Vector#dotProduct(primitives.Vector)}.
-        */
+    /**
+     * Test method for {@link primitives.Vector#dotProduct(primitives.Vector)}.
+     * This method tests equivalence partitions and boundary values.
+     */
 @Test
     void testDotProduct() {
             Vector v1 = new Vector(1, 2, 3);
@@ -82,8 +92,8 @@ class VectorTests {
             "dotProduct() for orthogonal vectors is not zero");
             }
 
-            /* Test method for {@link primitives.Vector#crossProduct(primitives.Vector)}.
-        */
+    /* Test method for {@link primitives.Vector#crossProduct(primitives.Vector)}.
+    */
 @Test
     void testCrossProduct() {
     Vector v1 = new Vector(1, 2, 3);
@@ -96,7 +106,8 @@ class VectorTests {
     // for simplicity)
     assertEquals(v1.length() * v2.length(), vr.length(), 0.00001, //
             "crossProduct() wrong result length");}
-    /*@Test
+    /*
+    @Test
     void testScale() {
     }
 

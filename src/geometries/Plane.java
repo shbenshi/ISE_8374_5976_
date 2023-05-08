@@ -7,27 +7,22 @@ import static primitives.Util.isZero; //????/
 
 
 /**
- * Polygon class represents a plane essentially a point in space and a vertical vector and based on a point and vector normalized to the plane
- * system
- *
+ * The Plane class represents a plane in 3D space, defined by a point and a normal vector.
+ * It implements the Geometry interface.
+ * The plane is essentially a point in space and a vertical vector, normalized to the plane.
  * @author Tzofiya david 209918374
  * and Shira ben shimol 326065976
  */
 public class Plane implements Geometry {
-    /**
-     * A point in the plane
-     */
+    /** A point in the plane. */
     private Point q0;
-    /**
-     * The vector perpendicular to the plane
-     */
+    /** The normal vector to the plane. */
     private Vector normal;
 
     /**
-     * A planne constructor is based on a point in the plane and a vector that is perpendicular to the plane
-     *
+     * Constructs a plane based on a point in the plane and a vector that is perpendicular to the plane.
      * @param q0     A point in the plane
-     * @param normal The vector perpendicular to the plan
+     * @param normal The vector perpendicular to the plane
      */
     public Plane(Point q0, Vector normal) {
         this.q0 = q0;
@@ -35,9 +30,9 @@ public class Plane implements Geometry {
     }
 
     /**
-     * A plane builder is based on 3 points in the plane. At this stage we will put in normal null. The constructor keeps one of the points as the reference point of the plane.
-     *
-     * @param q0 A point in the plane will be the reference point of the plane
+     * Constructs a plane based on three points in the plane.
+     * The constructor takes one of the points as the reference point of the plane.
+     * @param q0 A point in the plane that will be the reference point of the plane
      * @param q1 A point in the plane
      * @param q2 A point in the plane
      */
@@ -51,9 +46,8 @@ public class Plane implements Geometry {
     }
 
     /**
-     * Function getNormal returns its normalized vector
-     *
-     * @return normal
+     * Returns the normalized normal vector to the plane.
+     * @return The normalized normal vector to the plane
      */
     public Vector getNormal()
     {
@@ -61,9 +55,10 @@ public class Plane implements Geometry {
     }
 
     /**
-     * A getter operation
+     * Returns the normal vector to the plane at a given point, which is always the same for a plane.
      *
-     * @return p1 the point in the plane
+     * @param p1 A point in the plane
+     * @return The normal vector to the plane
      */
     @Override
     public Vector getNormal(Point p1)
@@ -72,8 +67,8 @@ public class Plane implements Geometry {
     }
 
     /**
-     * A getter operation
-     * @return q0 the point in the plane
+     * Returnss a point in the plane.
+     * @return A point in the plane
      */
     public Point getQ0() {
         return q0;

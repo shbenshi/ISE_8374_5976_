@@ -1,15 +1,20 @@
 package primitives;
 
-/** This class represent a vector that is a point with direction
- * @author Tzofiya david 209918374
- *  * and Shira ben shimol 326065976 */
+/**
+ This class represents a vector, which is a point with direction.
+ It extends the Point class and includes methods for vector addition,
+ scalar multiplication, cross product, and normalization, as well as
+ methods for calculating the length and dot product of the vector.
+ @author Tzofiya David (209918374) and Shira Ben Shimol (326065976)
+ */
 public class Vector extends Point
 {
     /**
-     * this is a constructor that get 3 points and analyzing
-     * @param d1 first point
-     * @param d2 second point
-     * @param d3 third point
+     * Constructs a new Vector object using three double values as the x, y, and z coordinates.
+     * @param d1 The x coordinate of the point.
+     * @param d2 The y coordinate of the point.
+     * @param d3 The z coordinate of the point.
+     * @throws IllegalArgumentException if the vector equals to zero.
      */
     public Vector(double d1, double d2, double d3)
     {
@@ -20,8 +25,9 @@ public class Vector extends Point
     }
 
     /**
-     * this constructor get point of double xyz and analyzing him
-     * @param xyz a point of three
+     * Constructs a new Vector object using a Double3 object as the point.
+     * @param xyz The Double3 object representing the point.
+     * @throws IllegalArgumentException if the vector equals to zero.
      */
     Vector(Double3 xyz)
     {
@@ -29,6 +35,10 @@ public class Vector extends Point
         if (xyz.equals(Double3.ZERO))
             throw new IllegalArgumentException("ERROR: the vector equals to zero");
     }
+    /**
+     * Returns a string representation of the Vector object.
+     * @return A string representation of the Vector object.
+     */
     @Override
     public String toString()
     {
@@ -36,9 +46,9 @@ public class Vector extends Point
     }
 
     /**
-     * this func add two vectors
-     * @param v1 a vector that we add
-     * @return the results of the sum
+     * Adds two Vector objects together.
+     * @param v1 The Vector object to be added.
+     * @return A new Vector object representing the sum of the two vectors.
      */
     public Vector add(Vector v1)
     {
@@ -46,9 +56,9 @@ public class Vector extends Point
     }
 
     /**
-     * this func Multiplier a vec by scalar
-     * @param num the scalar
-     * @return the result of the Multiplier
+     * Multiplies the Vector object by a scalar.
+     * @param num The scalar to multiply the vector by.
+     * @return A new Vector object representing the result of the scalar multiplication.
      */
     public Vector scale(double num)
     {
@@ -56,9 +66,9 @@ public class Vector extends Point
     }
 
     /**
-     * create a new vec that cross
-     * @param v1 a vec that we went to cross to
-     * @return new vwc that cross to two vectors
+     * Calculates the cross product of two Vector objects.
+     * @param v1 The Vector object to cross with.
+     * @return A new Vector object representing the cross product of the two vectors.
      */
     public Vector crossProduct(Vector v1)
     {
@@ -66,8 +76,8 @@ public class Vector extends Point
     }
 
     /**
-     * calculate the length of vec while squared
-     * @return the squared vec
+     * Calculates the length of the Vector object squared.
+     * @return The length of the Vector object squared.
      */
     public double lengthSquared()
     {
@@ -75,8 +85,8 @@ public class Vector extends Point
     }
 
     /**
-     * return the length of vec after sqrt by calling another func
-     * @return the length of vec after sqrt
+     * Calculates the length of the Vector object.
+     * @return The length of the Vector object.
      */
     public double length()
     {
@@ -84,8 +94,8 @@ public class Vector extends Point
     }
 
     /**
-     *  normal the vec
-     * @return new normal vec
+     * Normalizes the Vector object.
+     * @return A new Vector object representing the normalized vector.
      */
     public Vector normalize()
     {
@@ -95,9 +105,9 @@ public class Vector extends Point
     }
 
     /**
-     * multiply scalar
-     * @param v1 vec to make on him multiply
-     * @return  result after multiply
+     Calculates the dot product of this vector with the given vector.
+     @param v1 the vector to calculate the dot product with.
+     @return the dot product of this vector with the given vector.
      */
     public double dotProduct(Vector v1)
     {

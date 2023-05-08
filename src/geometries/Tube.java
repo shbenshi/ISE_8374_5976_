@@ -4,18 +4,25 @@ import primitives.Point;
 import primitives.Ray;
 import primitives.Vector;
 
-/** The Tube class inherits from RadialGeometry and represents a three-dimensional body and is based on radius and ray
- * system
- * @author Tzofiya david 209918374
- * and Shira ben shimol 326065976 */
+
+/**
+
+ The Tube class inherits from RadialGeometry and represents a three-dimensional body based on radius and ray system.
+ It is defined by a radius and a ray that defines its central axis.
+ @author Tzofiya David and Shira Ben Shimol
+ */
 public class Tube extends RadialGeometry{
 
-    /*a ray*/
+    /**
+     * The central axis of the tube
+     */
     protected Ray axisRay;
 
     /**
-     * constructor thatt call to the father func
-     * @param _radius get radius and analyzing him
+     * Constructs a new Tube object with a given radius and a central axis Ray object.
+     *
+     * @param _axisRay The central axis Ray object of the tube
+     * @param _radius  The radius of the tube
      */
     public Tube(Ray _axisRay, double _radius)
     {
@@ -24,9 +31,10 @@ public class Tube extends RadialGeometry{
     }
 
     /**
-     * a get func for point
-     * @param p1 a point
-     * @return null
+     * Returns the normal vector at a given point on the tube.
+     *
+     * @param p1 A point on the tube
+     * @return A normalized Vector object perpendicular to the tube at the given point
      */
     public Vector getNormal(Point p1)
     {
@@ -38,8 +46,8 @@ public class Tube extends RadialGeometry{
         Point o = (axisRay.getP0()).add((axisRay.getDir()).scale(t));
         return ((p1.subtract(o).normalize()));   }
     /**
-     * a get func that return the ray
-     * @return ray
+     * Returns the central axis Ray object of the tube.
+     * @return The central axis Ray object of the tube
      */
     public Ray getAxisRay()
     {

@@ -1,19 +1,22 @@
 package primitives;
 
 import java.util.Objects;
-/** ************************
-/** This class will represent a point which is a basic argument im geometry
- * @author Tzofiya david 209918374
- *  * and Shira ben shimol 326065976 */
+/**
+ The Point class represents a point in three-dimensional space.
+ It provides methods to perform basic operations on points, such as addition, subtraction, and distance calculation.
+ @author Tzofiya David and Shira Ben Shimol
+ */
 public class Point
 {
 
-    /* this is an object that implement 3 coordinate*/
-     final Double3 xyz;
+    /**
+     * A Double3 object representing the point's three coordinates.
+     */
+    final Double3 xyz;
 
     /**
-     * this a constructor that get a points
-     * @param xyz the points
+     * Constructs a new Point object with the specified coordinates.
+     * @param _xyz The coordinates of the point as a Double3 object.
      */
      Point(Double3 _xyz)
     {
@@ -21,10 +24,10 @@ public class Point
     }
 
     /**
-     * a constractor that get 3 points and analyze the double3 object
-     * @param _d1 a coordinate
-     * @param _d2 a coordinate
-     * @param _d3 a coordinate
+     * Constructs a new Point object with the specified coordinates.
+     * @param _d1 The X coordinate of the point.
+     * @param _d2 The Y coordinate of the point.
+     * @param _d3 The Z coordinate of the point.
      */
     public Point (double _d1,double _d2, double _d3)
     {
@@ -32,8 +35,8 @@ public class Point
     }
 
     /**
-     * convert points to sring
-     * @return string of points
+     * Returns a string representation of the Point object.
+     * @return A string representation of the Point object.
      */
     @Override
     public String toString()
@@ -42,11 +45,10 @@ public class Point
                 "xyz=" + xyz +
                 '}';
     }
-
     /**
-     * this func check if two objects are equals
-     * @param o an object that we went to check is quality
-     * @return if o and this equals
+     * Checks whether this Point object is equal to the specified object.
+     * @param o The object to compare to this Point.
+     * @return true if the objects are equal, false otherwise.
      */
     @Override
     public boolean equals(Object o)
@@ -56,6 +58,10 @@ public class Point
         Point point = (Point) o;
         return Objects.equals(xyz, point.xyz);
     }
+    /**
+     * Returns a hash code value for the Point object.
+     * @return A hash code value for the Point object.
+     */
     @Override
     public int hashCode()
     {
@@ -63,19 +69,20 @@ public class Point
     }
 
     /**
-     * this func calculate distance by calling to other func
-     * @param p1 a point that we check distance from
-     * @return the distance between two points
+     * Calculates the distance between this Point object and the specified Point object.
+     * @param p1 The Point to calculate the distance to.
+     * @return The distance between this Point and the specified Point.
      */
     public double distance(Point p1)
     {
 
         return Math.sqrt(distanceSquared(p1));
     }
+
     /**
-     * this func calculate distance without sqrt
-     * @param p1 a point that we check distance from
-     * @return the distance without sqrt between two points
+     * Calculates the square of the distance between this Point object and the specified Point object.
+     * @param p1 The Point to calculate the distance to.
+     * @return The square of the distance between this Point and the specified Point.
      */
     public double distanceSquared(Point p1)
     {
@@ -83,9 +90,9 @@ public class Point
     }
 
     /**
-     * this func does subtract by calling other func
-     * @param p1 it is the point that we make subtract on her
-     * @return the result of subtract
+     * Subtracts the specified Point object from this Point object and returns the result as a Vector.
+     * @param p0 The Point to subtract from this Point.
+     * @return A Vector representing the result of the subtraction.
      */
     public Vector subtract(Point p0) {
         return new Vector((this.xyz.subtract(p0.xyz)));
@@ -93,9 +100,9 @@ public class Point
     }
 
     /**
-     * this func add point to vec
-     * @param v1 a vector that we add point to him
-     * @return the result of adding
+     * Adds the specified Vector to this Point object and returns the result as a new Point object.
+     * @param v1 The Vector to add to this Point.
+     * @return A new Point object representing the result of the addition.
      */
     public Point add(Vector v1)
     {
