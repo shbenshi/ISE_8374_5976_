@@ -1,6 +1,9 @@
 package geometries;
 
 import primitives.Point;
+import primitives.Ray;
+
+import java.util.List;
 
 /**
  * The Triangle class represents a flat body and inherits from the Polygon class.
@@ -17,9 +20,17 @@ public class Triangle extends Polygon
      * @param q1 The second vertex of the triangle.
      * @param q2 The third vertex of the triangle.
      */
-
     public Triangle(Point q0, Point q1, Point q2)
     {
         super(q0,q1,q2);
     }
+
+
+    @Override
+    public List<Point> findIntsersections(Ray ray) {
+
+    List<Point> intersections = plane.findIntsersections(ray);
+        return super.findIntsersections(ray);
+    }
+
 }

@@ -4,6 +4,8 @@ import primitives.Point;
 import primitives.Ray;
 import primitives.Vector;
 
+import java.util.List;
+
 /** The cylinder class represents a three-dimensional body and based on height
  * system
  *   @author Tzofiya david 209918374 and Shira ben shimol 326065976 */
@@ -65,5 +67,10 @@ public class Cylinder extends Tube {
     public double getHeight()
     {
         return height;
+    }
+
+    @Override
+    public List<Point> findIntsersections(Ray ray) {
+        return null;
     }
 }

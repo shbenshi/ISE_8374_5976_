@@ -8,7 +8,7 @@ import primitives.Vector;
  *   @author Tzofiya david 209918374
  *   and Shira ben shimol 326065976 */
 
-public interface Geometry {
+public interface Geometry extends Intersectable {
 
     /**
      * gett func

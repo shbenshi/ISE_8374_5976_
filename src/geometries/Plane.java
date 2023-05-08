@@ -1,7 +1,11 @@
 package geometries;
 
 import primitives.Point;
+import primitives.Ray;
 import primitives.Vector;
+import static primitives.Util.alignZero;
+import static primitives.Util.isZero;
+import java.util.List;
 
 import static primitives.Util.isZero; //????/
 
@@ -66,11 +70,25 @@ public class Plane implements Geometry {
         return normal;
     }
 
+
+
     /**
      * Returns a point in the plane.
      * @return A point in the plane
      */
     public Point getQ0() {
         return q0;
+    }
+
+    @Override
+    public List<Point> findIntsersections(Ray ray) {
+        if (q0.equals(ray.getP0()))// both start from same place
+            return null;
+        if (isZero(normal.dotProduct(ray.getDir()))) // if the dot product ret zero they are vertical
+            return null;
+        double res = normal.dotProduct(q0.subtract(ray.getP0())) / normal.dotProduct(ray.getDir()); // res represent the dis from the ray
+        if (res <= 0 || isZero(res))// if it is equal or small then zero it means that there is no intersection
+            return null;
+        return List.of(ray.getP0().add(ray.getDir().scale(res)));
     }
 }
