@@ -22,9 +22,13 @@ class TriangleTests
     @Test
     void GetNormal()
     {
-        Triangle T1 = new Triangle(new Point(0, 0, 1), new Point(1, 0, 0), new Point(0, 1, 0));
-        double  p =  Math.sqrt(1d / 3);
-        assertEquals(new Vector(p, p, p), T1.getNormal(new Point(1, 0, 0)),
-                "GetNormal() of triangle wrong result - bad normal");
+        // ============ Equivalence Partitions Tests ==============
+        // TC01: Test that the normal to a triangle is properly calculated
+        Triangle t = new Triangle(new Point(0, 0, 1), new Point(1, 0, 0), new Point(0, 1, 0));
+        Vector expectedNormal = new Vector(Math.sqrt(1d / 3), Math.sqrt(1d / 3), Math.sqrt(1d / 3));
+        assertEquals(expectedNormal, t.getNormal(new Point(1, 0, 0)), "Triangle's normal is wrong");
+        // ensure the result is a unit vector
+        assertEquals(1, t.getNormal(new Point(1, 0, 0)).length(), 0.00000001, "Triangle's normal is not a unit vector");
+
     }
 }
