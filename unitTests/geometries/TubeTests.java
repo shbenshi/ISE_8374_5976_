@@ -5,24 +5,31 @@ import primitives.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * Testing Tubes
+ *
+ * @author shira and tzofiya
+ */
 class TubeTests {
-
+    /**
+     * Test method for {@link geometries.Tube#getNormal(primitives.Point)}.
+     */
     @Test
-    void testGetNormal()
-    {
+    void testGetNormal() {
+
         // ============ Equivalence Partitions Tests ==============
+
+        // EP01: Test get normal to point on the tube's surface
         Tube t = new Tube(new Ray(new Point(0, 0, 0), new Vector(0, 0, 1)), 1);
         Point p0 = new Point(0, 1, 2);
-        //Vector n1 = new Vector(1, 0, 0);
-        //Vector n2 = new Vector(-1, 0, 0);
-        Vector t_nrl = new Vector(0,1,0);//t.getNormal(p0);
-        assertTrue(t_nrl.equals(t.getNormal(p0)),"calculate tube does not work");
+        Vector t_nrl = new Vector(0,1,0); // The expected normal vector at p0 on the tube's surface
+        assertTrue(t_nrl.equals(t.getNormal(p0)), "Bad normal to tube surface point");
 
-        assertTrue(t_nrl.equals(t.getNormal(new Point(0,1,0))),"calculate tube does not work"); //|| t.equals(n2), "calculate tube does not work"
+        // EP02: Test get normal to point on the tube's surface
+        Point p1 = new Point(0, 1, 0);
+        assertTrue(t_nrl.equals(t.getNormal(p1)), "Bad normal to tube surface point");
     }
 }
 
-        // =============== Boundary Values Tests ==================
-        // When vector resulting from subtraction of point and p0 is orthogonal to axisRay vector
 
 

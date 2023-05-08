@@ -11,7 +11,7 @@ import primitives.Vector;
 public class Sphere extends RadialGeometry
 {
     /** Center point of the Sphere */
-    private  Point center;
+    final Point center;
     /**  the radius off the sphere */
     private double radius;
 
@@ -19,8 +19,9 @@ public class Sphere extends RadialGeometry
      * A constructor that receives the radius value and initializes it with the help of the father
      * @param radius The radius value
      */
-    public Sphere(Point p1, double radius) {
+    public Sphere(Point _center, double radius) {
         super(radius);
+        center = _center;
     }
 
     /**
