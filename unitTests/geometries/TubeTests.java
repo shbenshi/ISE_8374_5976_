@@ -29,7 +29,16 @@ class TubeTests {
         Point p1 = new Point(0, 1, 0);
         assertTrue(t_nrl.equals(t.getNormal(p1)), "Bad normal to tube surface point");
     }
-}
+
+
+    @Test
+    void testFindIntersections() {
+    Tube t = new Tube(new Ray(new Point(0,0,1), new Vector(0,0,1)),1);
+
+
+    }
+
+    }
 
 
 

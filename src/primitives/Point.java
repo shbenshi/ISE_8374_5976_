@@ -99,6 +99,32 @@ public class Point
 
     }
 
+
+    /**
+     * get of x
+     * @return d1
+     */
+    public double getX(){
+        return this.xyz.d1;
+    }
+
+
+    /**
+     * get of y
+     * @return d2
+     */
+    public double getY(){
+        return this.xyz.d2;
+    }
+
+    /**
+     * get of z
+     * @return d3
+     */
+    public double getZ(){
+        return this.xyz.d3;
+    }
+
     /**
      * Adds the specified Vector to this Point object and returns the result as a new Point object.
      * @param v1 The Vector to add to this Point.
