@@ -62,7 +62,7 @@ public class Sphere extends RadialGeometry {
 
     @Override
     public List<Point> findIntsersections(Ray ray) {
-        /*
+        /*/*
          * @param ray the ray to compute the intersections with the sphere
          * @return a list with a single intersection point if the ray starts from the center of the sphere, or null otherwise.
          */
@@ -95,5 +95,6 @@ public class Sphere extends RadialGeometry {
         } else if (normal - Sq > 0)
             return List.of(ray.getP0().add(ray.getDir().scale(normal - Sq)));//    // Only the second intersection point is in front of the ray's starting point.
         return null; // Both intersection points are behind the ray's starting point, so they don't count as intersections.
+
     }
 }
