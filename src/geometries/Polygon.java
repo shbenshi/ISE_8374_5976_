@@ -83,6 +83,42 @@ public class Polygon implements Geometry {
 
    @Override
    public List<Point> findIntsersections(Ray ray) {
-      return null;
+      List<Point> intersections = this.plane.findIntsersections(ray);
+
+      // if there is no Intersections
+      if (intersections == null)
+         return null;
+
+      int verSize = vertices.size();
+
+      Vector v1 = vertices.get(verSize - 1).subtract(ray.getP0());
+      Vector v2 = vertices.get(0).subtract(ray.getP0());
+
+      Vector n = v1.crossProduct(v2).normalize();
+      double dirN = ray.getDir().dotProduct(n);
+      boolean positive = dirN > 0;
+
+      if (isZero(dirN))
+         return null;
+
+      for (int i = 1; i < verSize; ++i)
+      {
+         v1 = v2;
+         v2 = vertices.get(i).subtract(ray.getP0());
+         n = v1.crossProduct(v2).normalize();
+         dirN = ray.getDir().dotProduct(n);
+
+         //no intersection
+         if (isZero(dirN))
+            return null;
+
+         //not the same sign
+         if (dirN > 0 != positive)
+            return null;
+      }
+
+      return List.of(intersections.get(0));
+
    }
+
 }
