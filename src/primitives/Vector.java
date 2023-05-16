@@ -58,9 +58,9 @@ public class Vector extends Point
      */
     public Vector add(Vector v1)
     {
-        Point p=super.add(v1);
-        return new Vector(p.xyz);
-        //return new Vector(xyz.add(v1.xyz));
+        //Point p=super.add(v1);
+        //return new Vector(p.xyz);
+        return new Vector(xyz.add(v1.xyz));
     }
 
     /**
@@ -107,13 +107,13 @@ public class Vector extends Point
      */
     public Vector normalize()
     {
-        //double lengthVec = Math.sqrt(dotProduct(this));
-        //return this.scale(1/lengthVec);
-        double len=length();
+        double lengthVec = Math.sqrt(dotProduct(this));
+        return this.scale(1/lengthVec);
+        /*double len=length();
         double x=  xyz.d1/len;
         double y = xyz.d2/len;
         double z = xyz.d3/len;
-        return new Vector(x,y,z);
+        return new Vector(x,y,z);*/
     }
 
     /**
