@@ -101,10 +101,7 @@ class SphereTests {
         assertEquals(2, result.size(), "Wrong number of points");
         p1 = new Point(1, 1, 0);
         p2 = new Point(1, -1, 0);
-        //if (result.get(0).getX() > result.get(1).getX())
-        //  result = List.of(result.get(1), result.get(0));
         assertEquals(List.of(p1, p2), result, "Ray crosses sphere");
-
         // TC14: Ray starts at sphere and goes inside (1 points)
         result = sphere.findIntsersections(new Ray(new Point(1, -1, 0),
                 new Vector(0, 1, 0)));

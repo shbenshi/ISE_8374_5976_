@@ -7,7 +7,6 @@ import static primitives.Util.alignZero;
 import static primitives.Util.isZero;
 import java.util.List;
 
-import static primitives.Util.isZero; //????/
 
 
 /**
@@ -19,18 +18,22 @@ import static primitives.Util.isZero; //????/
  */
 public class Plane implements Geometry {
     /** A point in the plane. */
-    private Point q0;
+    private final Point q0;
     /** The normal vector to the plane. */
-    private Vector normal;
+    private final Vector normal;
 
     /**
      * Constructs a plane based on a point in the plane and a vector that is perpendicular to the plane.
      * @param q0     A point in the plane
      * @param normal The vector perpendicular to the plane
      */
-    public Plane(Point q0, Vector normal) {
+    public Plane(Point q0, Vector normal)
+    {
         this.q0 = q0;
-        this.normal = normal;
+        if(!(isZero(normal.length()-1d))){
+            this.normal = normal.normalize();
+        }
+        else {this.normal = normal;}
     }
 
     /**
@@ -42,9 +45,13 @@ public class Plane implements Geometry {
      */
     public Plane(Point q0, Point q1, Point q2) {
         this.q0 = q0;
+        if(q0.equals(q1)||q0.equals(q2)||q1.equals(q2))
+            throw new IllegalArgumentException("two of the points are identical");
 
         Vector v1 = q1.subtract(q0);
         Vector v2 = q2.subtract(q0);
+        if(v1.normalize().equals(v2.normalize()))
+            throw new IllegalArgumentException("there is a linear dependents between the vectors");
 
         this.normal =  v1.crossProduct(v2).normalize();//normal.normalize();
     }
@@ -67,7 +74,7 @@ public class Plane implements Geometry {
     @Override
     public Vector getNormal(Point p1)
     {
-        return normal;
+        return getNormal();
     }
 
 

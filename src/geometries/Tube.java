@@ -3,8 +3,11 @@ package geometries;
 import primitives.Point;
 import primitives.Ray;
 import primitives.Vector;
-
 import java.util.List;
+
+import static primitives.Util.alignZero;
+import static primitives.Util.isZero;
+
 
 
 /**
@@ -18,7 +21,7 @@ public class Tube extends RadialGeometry{
     /**
      * The central axis of the tube
      */
-    protected Ray axisRay;
+    protected final Ray axisRay;
 
     /**
      * Constructs a new Tube object with a given radius and a central axis Ray object.
@@ -29,7 +32,7 @@ public class Tube extends RadialGeometry{
     public Tube(Ray _axisRay, double _radius)
     {
         super(_radius);
-        axisRay = _axisRay;
+        this.axisRay = _axisRay;
     }
 
     /**
@@ -57,7 +60,8 @@ public class Tube extends RadialGeometry{
     }
 
     @Override
-    public List<Point> findIntsersections(Ray ray) {
+    public List<Point> findIntsersections(Ray ray)
+    {
         return null;
     }
 }

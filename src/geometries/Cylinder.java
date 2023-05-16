@@ -13,7 +13,7 @@ public class Cylinder extends Tube {
     /**
      * The height of the cylinder.
      */
-      double height;
+      private final double height;
 
     /**
      * Constructs a cylinder with a given axis ray, radius, and height.
