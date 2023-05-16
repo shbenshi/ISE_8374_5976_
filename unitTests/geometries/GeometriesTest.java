@@ -4,7 +4,8 @@ import org.junit.jupiter.api.Test;
 import primitives.Point;
 import primitives.Ray;
 import java.util.List;
-import geometries.*;
+import primitives.Vector;
+
 
 
 
