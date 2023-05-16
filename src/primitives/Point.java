@@ -13,15 +13,17 @@ public class Point
      * A Double3 object representing the point's three coordinates.
      */
     final Double3 xyz;
+    //protected String toString;
 
     /**
      * Constructs a new Point object with the specified coordinates.
+     *
      * @param _xyz The coordinates of the point as a Double3 object.
      */
      Point(Double3 _xyz)
-    {
+     {
         this.xyz = _xyz;
-    }
+     }
 
     /**
      * Constructs a new Point object with the specified coordinates.
@@ -51,12 +53,16 @@ public class Point
      * @return true if the objects are equal, false otherwise.
      */
     @Override
-    public boolean equals(Object o)
-    {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Point point = (Point) o;
-        return Objects.equals(xyz, point.xyz);
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (!(o instanceof Point point)) return false;
+        return xyz.equals(point.xyz);
+    }
+    /*
+    if (o == null || getClass() != o.getClass()) return false;
+    Point point = (Point) o;
+    return Objects.equals(xyz, point.xyz);
     }
     /**
      * Returns a hash code value for the Point object.
@@ -73,9 +79,8 @@ public class Point
      * @param p1 The Point to calculate the distance to.
      * @return The distance between this Point and the specified Point.
      */
-    public double distance(Point p1)
+    public double distance (Point p1)
     {
-
         return Math.sqrt(distanceSquared(p1));
     }
 
@@ -84,9 +89,9 @@ public class Point
      * @param p1 The Point to calculate the distance to.
      * @return The square of the distance between this Point and the specified Point.
      */
-    public double distanceSquared(Point p1)
+    public double distanceSquared (Point p1)
     {
-        return (xyz.d1- p1.xyz.d1)*(xyz.d1- p1.xyz.d1) +(xyz.d2- p1.xyz.d2)*(xyz.d2- p1.xyz.d2)+(xyz.d3- p1.xyz.d3)*(xyz.d3- p1.xyz.d3);
+        return (xyz.d1 - p1.xyz.d1) * (xyz.d1 - p1.xyz.d1) + (xyz.d2 - p1.xyz.d2) * (xyz.d2 - p1.xyz.d2) + (xyz.d3 - p1.xyz.d3) * (xyz.d3 - p1.xyz.d3);
     }
 
     /**
@@ -94,17 +99,20 @@ public class Point
      * @param p0 The Point to subtract from this Point.
      * @return A Vector representing the result of the subtraction.
      */
-    public Vector subtract(Point p0) {
+    public Vector subtract (Point p0){
         return new Vector((this.xyz.subtract(p0.xyz)));
-
     }
 
+    public Point add (Vector v1)
+    {
+        return new Point(xyz.add(v1.xyz));
+    }
 
     /**
      * get of x
      * @return d1
      */
-    public double getX(){
+    public double getX () {
         return this.xyz.d1;
     }
 
@@ -113,7 +121,7 @@ public class Point
      * get of y
      * @return d2
      */
-    public double getY(){
+    public double getY () {
         return this.xyz.d2;
     }
 
@@ -121,7 +129,7 @@ public class Point
      * get of z
      * @return d3
      */
-    public double getZ(){
+    public double getZ () {
         return this.xyz.d3;
     }
 
@@ -130,9 +138,5 @@ public class Point
      * @param v1 The Vector to add to this Point.
      * @return A new Point object representing the result of the addition.
      */
-    public Point add(Vector v1)
-    {
-        return new Point(xyz.add(v1.xyz));
-    }
-
 }
+

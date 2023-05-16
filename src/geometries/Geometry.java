@@ -3,6 +3,7 @@ package geometries;
 import primitives.Point;
 import primitives.Vector;
 
+
 /**
  * The Geometry interface
  *   @author Tzofiya david 209918374

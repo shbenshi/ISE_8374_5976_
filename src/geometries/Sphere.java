@@ -5,6 +5,8 @@ import primitives.Ray;
 import primitives.Vector;
 
 import java.util.List;
+import static primitives.Util.alignZero;
+import static primitives.Util.isZero;
 
 /** A sphere class that inherits from RadialGeometry and represents a three-dimensional body and is based on a point and radius
  * system
@@ -15,19 +17,15 @@ public class Sphere extends RadialGeometry {
     /**
      * Center point of the Sphere
      */
-    final Point center;
-    /**
-     * the radius off the sphere
-     */
-    private double radius;
+    final private Point center;
 
     /**
      * A constructor that receives the radius value and initializes it with the help of the father
      *
-     * @param radius The radius value
+     * @param _radius The radius value
      */
-    public Sphere(Point _center, double radius) {
-        super(radius);
+    public Sphere(Point _center, double _radius) {
+        super(_radius);
         center = _center;
     }
 
@@ -38,7 +36,8 @@ public class Sphere extends RadialGeometry {
      * @return at this point returns null
      */
     public Vector getNormal(Point p1) {
-        return p1.subtract(center).normalize();
+
+        return (Vector)p1.subtract(center).normalize();
     }
 
     /**
@@ -55,46 +54,75 @@ public class Sphere extends RadialGeometry {
      * getter operation
      *
      * @return radius The radius value
-     */
+
     public double getRadius() {
         return radius;
-    }
-
+    }*/
     @Override
     public List<Point> findIntsersections(Ray ray) {
-        /*/*
-         * @param ray the ray to compute the intersections with the sphere
-         * @return a list with a single intersection point if the ray starts from the center of the sphere, or null otherwise.
-         */
+        double rad = getRadius();
+        Point P0 = ray.getP0();
+        Vector u = ray.getDir();
+        if (P0.equals(center))
+            return List.of(ray.getPoint(rad));
+        Vector v= center.subtract(P0);
+        double d1=u.dotProduct(v);
+        double d2= alignZero(Math.sqrt(v.lengthSquared()-d1*d1));
 
-        /* If the starting point of the given ray is the center of the sphere, returns a list containing the single intersection
-         * point that is furthest along the direction of the ray.
-         */
-        if (center.equals(ray.getP0()))
-            return List.of(ray.getP0().add(ray.getDir().scale(radius))); // return the distance between the ray and the center
-
-        /*Computes the distance from the ray's starting point to the sphere's center, projected onto the direction of the ray, and the distance from the sphere's
-         center to the closest point on the ray's line, which is perpendicular to the ray's direction.*/
-        Vector place = center.subtract(ray.getP0());
-        double normal = place.dotProduct(ray.getDir().normalize());
-        double dis  = Math.sqrt(place.lengthSquared() - normal * normal);
-        if (dis >= radius)
+        if(d2>=rad||isZero(d2-rad))
             return null;
-        /*Computes the distances from the ray's starting point to the intersection points with the sphere,
-         * if they exist and are in front of the ray.
-         */
-        double Sq = Math.sqrt(radius * radius - dis * dis);
-        if (normal + Sq <= 0 && normal - Sq <= 0)//both are on 'opposite' side of ray, so it doesn't count as an intersection
+        if(d2>=rad)
             return null;
+        double d =alignZero( Math.sqrt(rad * rad - d2 * d2));
 
-        // Both intersection points are in front of the ray's starting point.
-        if (normal + Sq > 0) {
-            if (normal - Sq > 0)
-                return List.of(ray.getP0().add(ray.getDir().scale(normal + Sq)), ray.getP0().add(ray.getDir().scale(normal - Sq)));
-            return List.of(ray.getP0().add(ray.getDir().scale(normal + Sq))); //    // Only the first intersection point is in front of the ray's starting point.
-        } else if (normal - Sq > 0)
-            return List.of(ray.getP0().add(ray.getDir().scale(normal - Sq)));//    // Only the second intersection point is in front of the ray's starting point.
-        return null; // Both intersection points are behind the ray's starting point, so they don't count as intersections.
+        if (d1 - d > 0 && (d1 + d > 0)) {
+            Point p1 = P0.add(u.scale(d1 + d));
+            Point p2 = P0.add(u.scale(d1 - d));
+            return List.of(p1,p2);
+        }
+        if (d1 + d > 0) {
+            Point p1 = P0.add(u.scale(d1 + d));
+            return List.of(p1);
+        }
+        if (d1 - d > 0){
+            Point p2 = P0.add(u.scale(d1 - d));
+            return List.of(p2);
+        }
 
+        return null;
+        /*
+        Vector v = ray.getDir();
+        Point p0 = ray.getP0();
+        if (center.equals(p0)) { // p0 is the center
+            return List.of(ray.getPoint(radius));
+        }
+        Vector u = center.subtract(p0);
+        double tm = alignZero(v.dotProduct(u));
+        double dSquared = isZero(tm) ? u.lengthSquared() : u.lengthSquared() - tm * tm;
+        double thSquared = alignZero(radius * radius - dSquared);
+        // if (thSquared <= 0)
+        //    return null;
+        double th = alignZero(Math.sqrt(thSquared));
+        double t1 = alignZero(tm - th);
+        double t2 = alignZero(tm + th);
+
+        //there is 2 intersection points
+        if (t1 > 0 && t2 > 0) {
+            Point p1=ray.getPoint(t1);
+            Point p2=ray.getPoint(t2);
+            return List.of(p1,p2);
+        }
+        //only t1 intersects the sphere
+        if(t1 > 0){
+            Point p1=ray.getPoint(t1);
+            return List.of(p1);
+        }
+        //only t2 intersects the sphere
+        if(t2 > 0){
+            Point p2=ray.getPoint(t2);
+            return List.of(p2);
+        }
+        return null;
+*/
     }
 }

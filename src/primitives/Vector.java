@@ -20,10 +20,9 @@ public class Vector extends Point
     {
         super(d1, d2, d3);
         Double3 p1 = new Double3(d1,d2,d3);
-        if (p1.equals(p1.ZERO))
+        if (p1.equals(Double3.ZERO))
             throw new IllegalArgumentException("ERROR: the vector equals to zero");
     }
-
     /**
      * Constructs a new Vector object using a Double3 object as the point.
      * @param xyz The Double3 object representing the point.
@@ -31,10 +30,16 @@ public class Vector extends Point
      */
     Vector(Double3 xyz)
     {
-        super(xyz);
-        if (xyz.equals(Double3.ZERO))
-            throw new IllegalArgumentException("ERROR: the vector equals to zero");
+        this(xyz.d1,xyz.d2,xyz.d3);
+
     }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if ((o instanceof Vector vector))return super.equals(o);
+        return false;    }
+
+
     /**
      * Returns a string representation of the Vector object.
      * @return A string representation of the Vector object.
@@ -42,7 +47,8 @@ public class Vector extends Point
     @Override
     public String toString()
     {
-        return "Vector{}";
+        return "Vector{ " +Double3.ZERO.toString()+super.toString()
+                +"}";
     }
 
     /**
@@ -52,7 +58,9 @@ public class Vector extends Point
      */
     public Vector add(Vector v1)
     {
-        return new Vector(xyz.add(v1.xyz));
+        Point p=super.add(v1);
+        return new Vector(p.xyz);
+        //return new Vector(xyz.add(v1.xyz));
     }
 
     /**
@@ -99,9 +107,13 @@ public class Vector extends Point
      */
     public Vector normalize()
     {
-        double lengthVec = Math.sqrt(dotProduct(this));
-        return this.scale(1/lengthVec);
-
+        //double lengthVec = Math.sqrt(dotProduct(this));
+        //return this.scale(1/lengthVec);
+        double len=length();
+        double x=  xyz.d1/len;
+        double y = xyz.d2/len;
+        double z = xyz.d3/len;
+        return new Vector(x,y,z);
     }
 
     /**

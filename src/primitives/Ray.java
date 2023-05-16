@@ -1,5 +1,5 @@
 package primitives;
-
+import java.util.List;
 import java.util.Objects;
 
 /** This class will represent a ray which is an argument that keep all the points on
@@ -8,9 +8,21 @@ import java.util.Objects;
 public class Ray
 {
     /* this is the first point */
-    private Point p0;
+    final private Point p0;
     /*this is the direction of the points*/
-    private Vector dir;
+    final private Vector dir;
+
+
+    /**
+     * this is a constructor that get vec and point and analyzing them
+     * @param p0 this is a point to analyzing
+     * @param v1 this is a vector that we're analyzing
+     */
+    public Ray(Point p0, Vector v1)
+    {
+        this.p0 = p0;
+        this.dir = v1.normalize();
+    }
 
     /**
      * this func convert the parameters to string
@@ -32,9 +44,8 @@ public class Ray
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Ray ray = (Ray) o;
-        return Objects.equals(p0, ray.p0) && Objects.equals(dir, ray.dir);
+        if (!(o instanceof Ray ray)) return false;
+        return p0.equals(ray.p0) && dir.equals(ray.dir);
     }
 
     @Override
@@ -42,17 +53,6 @@ public class Ray
         return Objects.hash(p0, dir);
     }
 
-    /**
-     * this is a constructor that get vec and point and analyzing them
-     * @param p0 this is a point to analyzing
-     * @param v1 this is a vector that we're analyzing
-     */
-    public Ray(Point p0, Vector v1)
-    {
-        this.p0 = p0;
-        this.dir = v1;
-        v1.normalize();
-    }
 
     /**
      * this is a get func to the point
@@ -68,4 +68,8 @@ public class Ray
     public Vector getDir() {
         return dir;
     }
+    public Point getPoint(double t){
+        return p0.add(dir.scale(t));
+    }
+
 }

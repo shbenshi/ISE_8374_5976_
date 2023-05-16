@@ -1,6 +1,7 @@
 package geometries;
 import primitives.*;
 import java.util.List;
+import java.util.Objects;
 public interface Intersectable {
-    List<Point> findIntsersections(Ray ray);
+    public List<Point> findIntsersections(Ray ray);
 }
