@@ -76,16 +76,16 @@ public class Sphere extends RadialGeometry {
         double d =alignZero( Math.sqrt(rad * rad - d2 * d2));
 
         if (d1 - d > 0 && (d1 + d > 0)) {
-            Point p1 = P0.add(u.scale(d1 + d));
-            Point p2 = P0.add(u.scale(d1 - d));
+            Point p1=ray.getPoint(d1+d2);
+            Point p2 = ray.getPoint(d1 - d);
             return List.of(p1,p2);
         }
         if (d1 + d > 0) {
-            Point p1 = P0.add(u.scale(d1 + d));
+            Point p1 = ray.getPoint(d1 + d);
             return List.of(p1);
         }
         if (d1 - d > 0){
-            Point p2 = P0.add(u.scale(d1 - d));
+            Point p2 = ray.getPoint(d1 - d);
             return List.of(p2);
         }
 
