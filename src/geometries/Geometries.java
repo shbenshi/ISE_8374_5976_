@@ -21,6 +21,7 @@ public class Geometries {
         geoList.addAll(Arrays.asList(geometries));//check
 
     }
+    // njnj
     public List<Point> findIntersections(Ray ray){
         List<Point> Intersections = null;
         boolean flag = false;
