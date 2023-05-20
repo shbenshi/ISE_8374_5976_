@@ -25,21 +25,16 @@ public class Geometries implements Intersectable {
     // njnj
     public List<Point> findIntsersections(Ray ray) {
                      //findIntsersections
-        List<Point> Intersections = null;
-        boolean flag = false;
-        for (Intersectable geometry : geoList) {
-            if (geometry.findIntsersections(ray) != null) {
-                if (!flag) {
-                    Intersections = geometry.findIntsersections(ray);
-                    flag = true;
-                } else {
-                    Intersections.addAll(geometry.findIntsersections(ray));
-                }
+        List<Point> result = new LinkedList<>();
+        for (Intersectable geo : geoList) {
+            List<Point> temp = geo.findIntsersections(ray);
+            if (temp != null) {
+                result.addAll(temp);
             }
         }
-        if (flag) {
-            return Intersections;
+        if (result.isEmpty()) {
+            return null;
         }
-        return null;
+        return result;
     }
 }

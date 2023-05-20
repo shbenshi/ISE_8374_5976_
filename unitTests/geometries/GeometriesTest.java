@@ -27,15 +27,15 @@ class GeometriesTest {
         List<Point> result = geo.findIntsersections(new Ray(new Point(-1,-1,-1),new Vector(2,2,2)));
         assertEquals(2, result.size(), "A few geometries intersects");
         // =============== Boundary Values Tests ==================
-        //TC02:A ray intersects with all geometries
+        //TC11:A ray intersects with all geometries
         result=geo.findIntsersections(new Ray(new Point(0.2,0.2,-0.6),new Vector(0,0,1)));
         assertEquals(4,result.size(),"All geometries intersects");
-        //TC03:A ray intersects with only one geometry
+        //TC12:A ray intersects with only one geometry
         result=geo.findIntsersections(new Ray(new Point(0.2,0.2,0.2),new Vector(1,1,1)));
         assertEquals(1,result.size(),"Only 1 geometry intersect");
-        //TC04: A ray does not intersect with any geometry
+        //TC13: A ray does not intersect with any geometry
         assertNull(geo.findIntsersections(new Ray(new Point(1, 1, 1), new Vector(1, 1, 1))), "No geometries intersects");
-        //TC05: An empty list of geometries, so no intersection is expected
+        //TC14: An empty list of geometries, so no intersection is expected
         assertNull(new Geometries().findIntsersections(new Ray(new Point(1,2,3), new Vector(2,2,2))), "Empty list of geometries");
 
     }
