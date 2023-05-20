@@ -1,28 +1,30 @@
 package geometries;
-
-import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import primitives.Point;
 import primitives.Ray;
 
 
-public class Geometries {
+public class Geometries implements Intersectable {
     private List<Intersectable> geoList;
 
     public Geometries()
     {
-        this.geoList = new LinkedList<>();
+        this.geoList = new LinkedList<Intersectable>();
     }
     public Geometries(Intersectable...geometry) {
-        geoList = List.of(geometry);
+        geoList = new LinkedList<Intersectable>();
+        Collections.addAll(geoList, geometry);
     }
     public void add(Intersectable... geometries){
-        geoList.addAll(Arrays.asList(geometries));//check
+        Collections.addAll(geoList,geometries);//check
 
     }
     // njnj
-    public List<Point> findIntersections(Ray ray){
+    public List<Point> findIntsersections(Ray ray) {
+                     //findIntsersections
         List<Point> Intersections = null;
         boolean flag = false;
         for (Intersectable geometry : geoList) {

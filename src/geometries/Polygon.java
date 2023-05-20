@@ -83,6 +83,7 @@ public class Polygon implements Geometry {
 
    @Override
    public List<Point> findIntsersections(Ray ray) {
+
       List<Point> intersections = this.plane.findIntsersections(ray);
 
       // if there is no Intersections
