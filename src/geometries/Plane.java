@@ -89,12 +89,12 @@ public class Plane implements Geometry {
 
     @Override
     public List<Point> findIntsersections(Ray ray) {
-        if (q0.equals(ray.getP0()))// both start from same place
+        if (q0.equals(ray.getP0()))// start from same place
             return null;
-        if (isZero(getNormal().dotProduct(ray.getDir()))) // if the dot product ret zero they are vertical
+        if (isZero(getNormal().dotProduct(ray.getDir()))) // if vertical
             return null;
-        double res = getNormal().dotProduct(q0.subtract(ray.getP0())) / normal.dotProduct(ray.getDir()); // res represent the dis from the ray
-        if (res <= 0 || isZero(res))// if it is equal or small then zero it means that there is no intersection
+        double res = getNormal().dotProduct(q0.subtract(ray.getP0())) / normal.dotProduct(ray.getDir()); // represent the distance from the ray
+        if (res <= 0 || isZero(res))// if there is no intersection
             return null;
         return List.of(ray.getP0().add(ray.getDir().scale(res)));
     }
