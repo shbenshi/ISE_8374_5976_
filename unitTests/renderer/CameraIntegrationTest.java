@@ -22,7 +22,7 @@ class CameraIntegrationTest {
      * @param geo    The intersectable geometry to perform intersection tests with.
      * @return The total number of intersections between the camera and the geometry.
      */
-    public int cameraIntegrations(Camera camera, Intersectable geo) {
+    public int cameraIntegrations(Camera camera, Intersectable geometries) {
         int counter = 0;
         List<Point> points = null;
         camera.setVPSize(3, 3);
@@ -30,7 +30,7 @@ class CameraIntegrationTest {
 
         for (int i = 0; i < 3; ++i) {
             for (int j = 0; j < 3; ++j) {
-                List<Point> intersections = geo.findIntsersections(camera.constructRay(3, 3, j, i));
+                List<Point> intersections = geometries.findIntsersections(camera.constructRay(3, 3, j, i));
 
                 // Add the intersections to the list of all points
                 if (intersections != null) {
