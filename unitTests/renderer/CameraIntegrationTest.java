@@ -1,4 +1,5 @@
 package renderer;
+import org.junit.jupiter.api.Test;
 import primitives.*;
 import geometries.*;
 import java.util.List;
@@ -8,6 +9,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.LinkedList;
 
 class CameraIntegrationTest {
+
+    static final Point ZERO_POINT = new Point(0, 0, 0);
+
+
+
+
     /**
      * Performs the integration between a camera and an intersectable geometry and returns the total number of intersections.
      *
@@ -42,8 +49,59 @@ class CameraIntegrationTest {
         return counter;
     }
 
+    @Test
+    public void cameraRaySphereIntegration()
+    {
+        Camera camera0 = new Camera(ZERO_POINT, new Vector(0, 0, -1), new Vector(0, -1, 0));
+        Camera camera1 = new Camera(new Point(0, 0, 0.5), new Vector(0, 0, -1), new Vector(0, -1, 0));
 
+        // TC01:
+        assertEquals(2, cameraIntegrations(camera0, new Sphere(new Point(0, 0, -3),1)));
 
+        // TC02:
+        assertEquals(18, cameraIntegrations(camera1, new Sphere( new Point(0, 0, -2.5),2.5)));
+
+        // TC03:
+        assertEquals(10, cameraIntegrations(camera1, new Sphere(new Point(0, 0, -2), 2)));
+
+        // TC04:
+        assertEquals(9, cameraIntegrations(camera1, new Sphere(new Point(0, 0, -1), 4)));
+
+        // TC05:
+        assertEquals(0, cameraIntegrations(camera0, new Sphere(new Point(0, 0, 1), 0.5)));
+    }
+
+    @Test
+    public void cameraRayTriangleIntegration()
+    {
+        Camera camera = new Camera(ZERO_POINT, new Vector(0,0,-1),new Vector(0,-1,0));
+
+        // TC01:
+        assertEquals(1, cameraIntegrations(camera, new Triangle(new Point(1, 1, -2), new Point(-1, 1, -2), new Point(0, -1, -2))));
+
+        // TC02:
+        assertEquals(2, cameraIntegrations(camera, new Triangle(new Point(1, 1, -2), new Point(-1, 1, -2), new Point(0, -20, -2))));
+
+    }
+
+    @Test
+    public void cameraRayPlaneIntegration()
+    {
+        Camera camera = new Camera(ZERO_POINT,new Vector(0,0,-1),new Vector(0,-1,0));
+
+        // TC01:
+        assertEquals(9, cameraIntegrations(camera, new Plane(new Point(0, 0, -5), new Vector(0, 0, 1))));
+
+        // TC02:
+        assertEquals(9, cameraIntegrations(camera, new Plane(new Point(0, 0, -5), new Vector(0, 1, 2))));
+
+        // TC03:
+        assertEquals(6, cameraIntegrations(camera, new Plane(new Point(0, 0, -5), new Vector(0, 1, 1))));
+
+        // TC04:
+        assertEquals(0, cameraIntegrations(camera, new Plane(new Point(0, 0, -5), new Vector(0, -1, 0))));
+
+    }
 
 
 
