@@ -50,7 +50,7 @@ public class Camera {
         }
         this.to = _to;
         this.up = _up;
-        Vector _right =  _to.crossProduct(_up);
+        this.right =  _to.crossProduct(_up);
         this.to.normalize();
         this.up.normalize();
         //this.right.normalize();
@@ -85,9 +85,7 @@ public class Camera {
         }
 
         if (!isZero(Xj)) {
-            out.println("hi");
             Pij = Pij.add(getRight().scale(Xj));//לא עובר את השורה הזאת בכלל
-            out.println("byy");
         }
 
 
@@ -95,34 +93,6 @@ public class Camera {
         Vector Vij = Pij.subtract(place);
 
         return new Ray(place, Vij);
-
-
-
-
-
-
-        /*Point viewPlaneCenter = place.add(to.scale(dis));
-        double pixelRatioX = width / nX;
-        double pixelRatioY = height / nY;
-
-// Calculate the coordinates of point (i,j) on the view plane
-        Point Pij = viewPlaneCenter;
-
-// Calculate the offsets for moving on the view plane
-        double offsetY = -(i - (nY - 1) / 2.0) * pixelRatioY;
-        double offsetX = (j - (nX - 1) / 2.0) * pixelRatioX;
-// Apply the offsets to the view plane coordinates to get the final point (i,j)
-        if (!isZero(offsetX)) {
-            Pij = Pij.add(getRight().scale(offsetX));//**************** this is the problems   *****  not continue in running****
-        }
-        if (!isZero(offsetY)) {
-            Pij = Pij.add(up.scale(offsetY));
-        }
-// Calculate the vector from the camera's eye in the direction of point (i,j) on the view plane
-        Vector Vij = Pij.subtract(place);
-        return new Ray(place, Vij);*/
-
-
     }
 
 }
