@@ -20,6 +20,7 @@ import java.util.LinkedList;
 
 class CameraIntegrationTest {
 
+    //field
     static final Point ZERO_POINT = new Point(0, 0, 0);
 
 
