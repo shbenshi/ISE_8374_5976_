@@ -19,7 +19,7 @@ class CameraIntegrationTest {
      * Performs the integration between a camera and an intersectable geometry and returns the total number of intersections.
      *
      * @param camera The camera object used for the integration.
-     * @param geo    The intersectable geometry to perform intersection tests with.
+     * @param geometries    The intersectable geometry to perform intersection tests with.
      * @return The total number of intersections between the camera and the geometry.
      */
     public int cameraIntegrations(Camera camera, Intersectable geometries) {
