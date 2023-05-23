@@ -49,56 +49,72 @@ class CameraIntegrationTest {
         return counter;
     }
 
+
+    /**
+     * Integration test for Camera and Sphere.
+     * This method tests the integration between a Camera and a Sphere, calculating the number of intersections.
+     */
     @Test
     public void cameraRaySphereIntegration()
     {
         Camera camera0 = new Camera(ZERO_POINT, new Vector(0, 0, -1), new Vector(0, -1, 0));
         Camera camera1 = new Camera(new Point(0, 0, 0.5), new Vector(0, 0, -1), new Vector(0, -1, 0));
 
-        // TC01:
+        Camera camera0 = new Camera(ZERO_POINT, new Vector(0, 0, -1), new Vector(0, -1, 0));
+        Camera camera1 = new Camera(new Point(0, 0, 0.5), new Vector(0, 0, -1), new Vector(0, -1, 0));
+
+        // TC01: Test case for camera-ray-sphere integration
         assertEquals(2, cameraIntegrations(camera0, new Sphere(new Point(0, 0, -3),1)));
 
-        // TC02:
-        assertEquals(18, cameraIntegrations(camera1, new Sphere( new Point(0, 0, -2.5),2.5)));
+        // TC02: Test case for camera-ray-sphere integration
+        assertEquals(18, cameraIntegrations(camera1, new Sphere(new Point(0, 0, -2.5),2.5)));
 
-        // TC03:
+        // TC03: Test case for camera-ray-sphere integration
         assertEquals(10, cameraIntegrations(camera1, new Sphere(new Point(0, 0, -2), 2)));
 
-        // TC04:
+        // TC04: Test case for camera-ray-sphere integration
         assertEquals(9, cameraIntegrations(camera1, new Sphere(new Point(0, 0, -1), 4)));
 
-        // TC05:
+        // TC05: Test case for camera-ray-sphere integration
         assertEquals(0, cameraIntegrations(camera0, new Sphere(new Point(0, 0, 1), 0.5)));
     }
 
+    /**
+     * Integration test for Camera and Triangle.
+     * This method tests the integration between a Camera and a Triangle, calculating the number of intersections.
+     */
     @Test
     public void cameraRayTriangleIntegration()
     {
         Camera camera = new Camera(ZERO_POINT, new Vector(0,0,-1),new Vector(0,-1,0));
 
-        // TC01:
+        // TC01: Test case for camera-ray-triangle integration
         assertEquals(1, cameraIntegrations(camera, new Triangle(new Point(1, 1, -2), new Point(-1, 1, -2), new Point(0, -1, -2))));
 
-        // TC02:
+        // TC02: Test case for camera-ray-triangle integration
         assertEquals(2, cameraIntegrations(camera, new Triangle(new Point(1, 1, -2), new Point(-1, 1, -2), new Point(0, -20, -2))));
-
     }
 
+    /**
+     * Integration test for Camera and Plane.
+     * This method tests the integration between a Camera and a Plane, calculating the number of intersections.
+     */
     @Test
     public void cameraRayPlaneIntegration()
     {
         Camera camera = new Camera(ZERO_POINT,new Vector(0,0,-1),new Vector(0,-1,0));
 
-        // TC01:
+
+        // TC01: Test case for camera-ray-plane integration
         assertEquals(9, cameraIntegrations(camera, new Plane(new Point(0, 0, -5), new Vector(0, 0, 1))));
 
-        // TC02:
+        // TC02: Test case for camera-ray-plane integration
         assertEquals(9, cameraIntegrations(camera, new Plane(new Point(0, 0, -5), new Vector(0, 1, 2))));
 
-        // TC03:
+        // TC03: Test case for camera-ray-plane integration
         assertEquals(6, cameraIntegrations(camera, new Plane(new Point(0, 0, -5), new Vector(0, 1, 1))));
 
-        // TC04:
+        // TC04: Test case for camera-ray-plane integration
         assertEquals(0, cameraIntegrations(camera, new Plane(new Point(0, 0, -5), new Vector(0, -1, 0))));
 
     }
