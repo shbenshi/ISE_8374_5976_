@@ -12,7 +12,7 @@ import primitives.*;
 
 import static primitives.Util.isZero;
 public class Camera {
-    // fileds
+    // filed
     private Point place;
     private Vector to;
     private Vector up;
