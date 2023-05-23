@@ -4,6 +4,7 @@ import primitives.*;
 
 import static primitives.Util.isZero;
 public class Camera {
+    // fileds
     private Point place;
     private Vector to;
     private Vector up;
