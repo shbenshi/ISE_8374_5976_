@@ -1,3 +1,11 @@
+/**
+ This class represents a camera in a renderer.
+ It defines the position of the camera, the direction it is facing, and the up vector.
+ It also provides methods for setting the view plane size and distance from the camera.
+ Authors:
+ Tzofiya David (209918374)
+ Shira Ben Shimol (326065976)
+ */
 package renderer;
 import geometries.Plane;
 import primitives.*;
