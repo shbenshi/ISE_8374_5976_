@@ -60,9 +60,6 @@ class CameraIntegrationTest {
         Camera camera0 = new Camera(ZERO_POINT, new Vector(0, 0, -1), new Vector(0, -1, 0));
         Camera camera1 = new Camera(new Point(0, 0, 0.5), new Vector(0, 0, -1), new Vector(0, -1, 0));
 
-        Camera camera0 = new Camera(ZERO_POINT, new Vector(0, 0, -1), new Vector(0, -1, 0));
-        Camera camera1 = new Camera(new Point(0, 0, 0.5), new Vector(0, 0, -1), new Vector(0, -1, 0));
-
         // TC01: Test case for camera-ray-sphere integration
         assertEquals(2, cameraIntegrations(camera0, new Sphere(new Point(0, 0, -3),1)));
 
