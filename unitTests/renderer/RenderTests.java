@@ -3,12 +3,12 @@ package renderer;
 import static java.awt.Color.YELLOW;
 
 import org.junit.jupiter.api.Test;
+import renderer.Camera;
 
 import geometries.Sphere;
 import geometries.Triangle;
 import lighting.AmbientLight;
 import primitives.*;
-import renderer.*;
 import scene.Scene;
 
 /** Test rendering a basic image
@@ -19,10 +19,7 @@ public class RenderTests {
     * grid */
    @Test
    public void basicRenderTwoColorTest() {
-      Scene scene = new Scene("Test scene")//
-         .setAmbientLight(new AmbientLight(new Color(255, 191, 191), //
-                                           new Double3(1, 1, 1))) //
-         .setBackground(new Color(75, 127, 90));
+      Scene scene = new Scene("Test scene").setSceneAmbient(new AmbientLight(new Color(255, 191, 191), new Double3(1, 1, 1))).setSceneBack(new Color(75, 127, 90));
 
       scene.geometries.add(new Sphere(new Point(0, 0, -100), 50d),
                            new Triangle(new Point(-100, 0, -100), new Point(0, 100, -100), new Point(-100, 100, -100)), // up
@@ -32,7 +29,7 @@ public class RenderTests {
                            // left
                            new Triangle(new Point(100, 0, -100), new Point(0, -100, -100), new Point(100, -100, -100))); // down
       // right
-      Camera camera = new Camera(Point.ZERO, new Vector(0, 0, -1), new Vector(0, 1, 0)) //
+      Camera camera = new Camera(new Point(Double3.ZERO), new Vector(0, 0, -1), new Vector(0, 1, 0)) //
          .setVPDistance(100) //
          .setVPSize(500, 500) //
          .setImageWriter(new ImageWriter("base render test", 1000, 1000))

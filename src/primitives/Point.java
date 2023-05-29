@@ -20,7 +20,7 @@ public class Point
      *
      * @param _xyz The coordinates of the point as a Double3 object.
      */
-     Point(Double3 _xyz)
+    public Point(Double3 _xyz)
      {
         this.xyz = _xyz;
      }

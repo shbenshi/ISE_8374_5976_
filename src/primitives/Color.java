@@ -8,10 +8,13 @@ package primitives;
 public class Color {
    /** The internal fields maintain RGB components as double numbers from 0 to
     * whatever... */
-   private final Double3     rgb;
+   private final Double3  rgb;
 
    /** Black color = (0,0,0) */
    public static final Color BLACK = new Color();
+
+   /** BLUE color = (0,0,255)*/
+   public static final Color GOLD = new Color(212, 161, 42);
 
    /** Default constructor - to generate Black Color (privately) */
    private Color() { rgb = Double3.ZERO; }

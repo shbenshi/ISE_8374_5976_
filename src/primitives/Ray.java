@@ -72,5 +72,9 @@ public class Ray
     {
         return p0.add(dir.scale(t));
     }
+    public Point findClosetPoint(List<Point> collection)
+    {
+        return null;
+    }
 
 }
