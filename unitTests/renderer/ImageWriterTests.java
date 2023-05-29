@@ -2,7 +2,7 @@ package renderer;
 import primitives.Color;
 import org.junit.jupiter.api.Test;
 
-
+// does it does?
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -23,7 +23,7 @@ class ImageWriterTests {
         ImageWriter imageWriter = new ImageWriter("testGoldGrid", 800, 500);
 
         // Calculate the value for the fringes
-        double fringes = imageWriter.getNx() / 16;// שוליים
+        double fringes = imageWriter.getNx() / 16;
 
         // Iterate over the image pixels
         for (int i = 0; i < 800; i++)
