@@ -72,8 +72,26 @@ public class Ray
     {
         return p0.add(dir.scale(t));
     }
-    public Point findClosetPoint(List<Point> collection)
+
+    /**
+     * Finds the closest point to a given point from a collection of points.
+     *
+     * @param collection A list of points to search for the closest point.
+     * @return The closest point from the collection, or null if the collection is null.
+     */
+    public Point findClosestPoint(List<Point> collection)
     {
+        if(collection == null)
+            return null;
+        Point closestPoint = collection.get(0);
+        double smallestDistance = closestPoint.distance(this.p0);
+        for (Point p: collection) {
+            if (p.distance(this.p0) < smallestDistance) {
+                closestPoint = p;
+                smallestDistance = closestPoint.distance(this.p0);
+            }
+        }
+        return closestPoint;
 
     }
 
