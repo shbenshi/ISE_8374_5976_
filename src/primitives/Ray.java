@@ -74,7 +74,7 @@ public class Ray
     }
     public Point findClosetPoint(List<Point> collection)
     {
-        return null;
+
     }
 
 }

@@ -19,7 +19,7 @@ public class RenderTests {
     * grid */
    @Test
    public void basicRenderTwoColorTest() {
-      Scene scene = new Scene("Test scene").setSceneAmbient(new AmbientLight(new Color(255, 191, 191), new Double3(1, 1, 1))).setSceneBack(new Color(75, 127, 90));
+      Scene scene = new Scene("Test scene").setAmbientLight(new AmbientLight(new Color(255, 191, 191), new Double3(1, 1, 1))).setSceneBack(new Color(75, 127, 90));
 
       scene.geometries.add(new Sphere(new Point(0, 0, -100), 50d),
                            new Triangle(new Point(-100, 0, -100), new Point(0, 100, -100), new Point(-100, 100, -100)), // up
