@@ -10,7 +10,8 @@ import java.util.List;
 /**
  * Unit tests for the Ray class.
  *
- * @author [Your Name]
+ * @author Tzofiya David 20991874
+ * and Shira ben shimol 326065976
  */
 class RayTest {
     /**
