@@ -27,6 +27,7 @@ public class Camera {
 
     private ImageWriter imageWriter;
     private RayTracerBase rayTracerBase;
+
     /**
      * Get the position of the camera.
      * @return The position of the camera as a Point.
@@ -34,6 +35,7 @@ public class Camera {
     public Point getP0() {
         return P0;
     }
+
     /**
      * Get the direction vector of the camera.
      * @return The direction vector of the camera as a Vector.
@@ -41,6 +43,7 @@ public class Camera {
     public Vector getvTo() {
         return vTo;
     }
+
     /**
      * Get the up vector of the camera.
      * @return The up vector of the camera as a Vector.
@@ -48,6 +51,7 @@ public class Camera {
     public Vector getvUp() {
         return vUp;
     }
+
     /**
      * Get the right vector of the camera.
      * @return The right vector of the camera as a Vector.
@@ -63,6 +67,7 @@ public class Camera {
     public double getDis() {
         return dis;
     }
+
     /**
      * Get the height of the view plane.
      * @return The height of the view plane as a double.
@@ -70,6 +75,7 @@ public class Camera {
     public double getHeight() {
         return height;
     }
+
     /**
      * Get the width of the view plane.
      * @return The width of the view plane as a double.
@@ -77,6 +83,7 @@ public class Camera {
     public double getWidth() {
         return width;
     }
+
     /**
      * Constructs a new Camera object with the specified position, direction, and up vector.
      * @param _P0 The position of the camera as a Point.
@@ -93,6 +100,7 @@ public class Camera {
         this.vTo = _vTo.normalize();
         this.vRight =  _vTo.crossProduct(_vUp).normalize();
     }
+
     /**
      * Set the size of the view plane.
      * @param _width The width of the view plane as a double.
@@ -106,11 +114,23 @@ public class Camera {
         return this;
     }
 
+    /**
+     * Sets the image writer for the camera.
+     *
+     * @param imageWriter The image writer to be set.
+     * @return The Camera object for method chaining.
+     */
     public Camera setImageWriter(ImageWriter imageWriter) {
         this.imageWriter = imageWriter;
         return this;
     }
 
+    /**
+     * Sets the ray tracer for the camera.
+     *
+     * @param rayTracerBase The ray tracer to be set.
+     * @return The Camera object for method chaining.
+     */
     public Camera setRayTracer(RayTracerBase rayTracerBase) {
         this.rayTracerBase = rayTracerBase;
         return this;
@@ -164,13 +184,29 @@ public class Camera {
         Vector Vij = PIJ.subtract(P0);
         return new Ray(P0, Vij);
     }
+    /**
+     * Casts a ray from the camera's eye to a specific point on the view plane, traces the ray, and writes the resulting color to the image.
+     *
+     * @param nX The number of pixels in the width of the view plane.
+     * @param nY The number of pixels in the height of the view plane.
+     * @param i  The vertical coordinate of the pixel.
+     * @param j  The horizontal coordinate of the pixel.
+     */
     private void castRay(int nX, int nY, int i, int j) {
         Ray ray = constructRay(nX, nY, j, i);
         Color pixelColor = rayTracerBase.traceRay(ray);
         imageWriter.writePixel(j, i, pixelColor);
     }
+
+    /**
+     * Renders the image using the configured camera settings, image writer, and ray tracer.
+     *
+     * @return The Camera object for method chaining.
+     * @throws MissingResourceException If any required resource is missing.
+     */
     public Camera renderImage() {
         try {
+            // Check if all required resources are available
             if (P0 == null)
                 throw new MissingResourceException("no img", ImageWriter.class.getName(), "");
             if (vTo == null)
@@ -193,18 +229,26 @@ public class Camera {
             }
             int nX = imageWriter.getNx();
             int nY = imageWriter.getNy();
-            //rendering the image
+
+            // Rendering the image
             for (int i = 0; i < nY; i++) {
                 for (int j = 0; j < nX; j++) {
                     castRay(nX, nY, i, j);
                 }
             }
-//            }
         } catch (MissingResourceException e) {
             throw new UnsupportedOperationException("Not implemented yet" + e.getClassName());
         }
         return this;
     }
+
+    /**
+     * Prints a grid pattern on the image using the specified interval and color.
+     *
+     * @param interval The interval between grid lines.
+     * @param color    The color of the grid lines.
+     * @throws MissingResourceException If the image writer is missing.
+     */
     public void printGrid(int interval, Color color) throws MissingResourceException {
         if (this.imageWriter == null)
             throw new MissingResourceException("missing Camera", ImageWriter.class.getName(), "");
@@ -217,8 +261,12 @@ public class Camera {
         }
         imageWriter.writeToImage();
     }
-
-        public void writeToImage() {
+    /**
+     * Writes the image to the output file using the configured image writer.
+     *
+     * @throws MissingResourceException If the image writer is missing.
+     */
+    public void writeToImage() {
         if (this.imageWriter == null) // the image writer is uninitialized
             throw new MissingResourceException("missing Camera", ImageWriter.class.getName(), "");
         imageWriter.writeToImage();
