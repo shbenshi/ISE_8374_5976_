@@ -16,7 +16,7 @@ import primitives.Ray;
  * @author Tzofiya and Shira
  */
 
-public class Geometries implements Intersectable {
+public class Geometries extends Intersectable {
     private List<Intersectable> geoList;
 
     /**

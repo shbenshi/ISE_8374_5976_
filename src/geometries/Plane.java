@@ -16,7 +16,7 @@ import java.util.List;
  * @author Tzofiya david 209918374
  * and Shira ben shimol 326065976
  */
-public class Plane implements Geometry {
+public class Plane extends Geometry {
     /** A point in the plane. */
     private final Point q0;
     /** The normal vector to the plane. */

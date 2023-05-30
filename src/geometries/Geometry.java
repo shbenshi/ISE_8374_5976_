@@ -1,5 +1,6 @@
 package geometries;
 
+import primitives.Color;
 import primitives.Point;
 import primitives.Vector;
 
@@ -9,11 +10,20 @@ import primitives.Vector;
  *   @author Tzofiya david 209918374
  *   and Shira ben shimol 326065976 */
 
-public interface Geometry extends Intersectable {
+public abstract class Geometry extends Intersectable {
+    protected Color emission = Color.BLACK;
+
+    public void setEmission(Color emission) {
+        this.emission = emission;
+    }
+
+    public Color getEmission() {
+        return emission;
+    }
 
     /**
      * gett func
      */
-    public Vector getNormal(Point p1);
+    public abstract Vector getNormal(Point p1);
 
 }
