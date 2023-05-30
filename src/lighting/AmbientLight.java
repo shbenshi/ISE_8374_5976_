@@ -16,7 +16,7 @@ public class AmbientLight {
 
 
     /**
-     * A constant representing no ambient light, with color black.
+     * A constant representingg no ambient light, with color black.
      */    public static final Color NONE = Color.BLACK;
 
     /**
