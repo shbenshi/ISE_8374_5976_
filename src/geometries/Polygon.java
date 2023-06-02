@@ -81,7 +81,7 @@ public class Polygon extends Geometry {
    @Override
    public Vector getNormal(Point point) { return plane.getNormal(); }
 
-   @Override
+   /*@Override
    public List<Point> findIntsersections(Ray ray) {
 
       List<Point> intersections = this.plane.findIntsersections(ray);
@@ -121,5 +121,9 @@ public class Polygon extends Geometry {
       return List.of(intersections.get(0));
 
    }
-
+   */
+   @Override
+   public List<GeoPoint> findGeoIntersectionsHelper(Ray ray) throws IllegalAccessException {
+      return null;
+   }
 }
