@@ -55,7 +55,7 @@ public class Ray
 
 
     /**
-     * this is a get func to the point
+     * this is a get funcc to the point
      * @return the point
      */
     public Point getP0() {
