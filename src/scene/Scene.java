@@ -17,6 +17,22 @@ public class Scene {
     public AmbientLight ambientLight = new AmbientLight(AmbientLight.NONE, Double3.ZERO);
     public Geometries geometries = new Geometries();
 
+    public String getSceneName() {
+        return sceneName;
+    }
+
+    public Color getSceneBack() {
+        return sceneBack;
+    }
+
+    public AmbientLight getAmbientLight() {
+        return ambientLight;
+    }
+
+    public Geometries getGeometries() {
+        return geometries;
+    }
+
     /**
      * Constructs a new Scene object with the specified scene name.
      *
