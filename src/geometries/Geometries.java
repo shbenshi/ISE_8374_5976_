@@ -17,14 +17,14 @@ import primitives.Ray;
  */
 
 public class Geometries extends Intersectable {
-    private List<Intersectable> geoList;
+    private  List<Intersectable> geometries;
 
     /**
      * Constructs an empty Geometries object.
      */
     public Geometries()
     {
-        this.geoList = new LinkedList<Intersectable>();
+        this.geometries = new LinkedList<Intersectable>();
     }
 
     /**
@@ -33,8 +33,8 @@ public class Geometries extends Intersectable {
      * @param geometry An array of intersectable geometries to add to the collection.
      */
     public Geometries(Intersectable...geometry) {
-        geoList = new LinkedList<Intersectable>();
-        Collections.addAll(geoList, geometry);
+        geometries = new LinkedList<Intersectable>();
+        Collections.addAll(geometries, geometry);
     }
 
     /**
@@ -43,7 +43,7 @@ public class Geometries extends Intersectable {
      * @param geometries An array of intersectable geometries to add to the collection.
      */
     public void add(Intersectable... geometries){
-        Collections.addAll(geoList,geometries);//check
+        Collections.addAll(this.geometries,geometries);//check
 
     }
 
@@ -53,10 +53,11 @@ public class Geometries extends Intersectable {
      * @param ray The ray to find intersections with.
      * @return A list of intersection points with the ray, or null if no intersections are found.
      */
-    public List<Point> findIntsersections(Ray ray) {
-        List<Point> result = new LinkedList<>();
-        for (Intersectable geo : geoList) {
-            List<Point> temp = geo.findIntsersections(ray);
+    public List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
+        //if there are no intersections return null
+        List<GeoPoint> result = new LinkedList<>();
+        for (Intersectable geo : geometries) {
+            List<GeoPoint> temp = geo.findGeoIntersectionsHelper(ray);
             if (temp != null) {
                 result.addAll(temp);
             }

@@ -4,15 +4,19 @@ import java.util.List;
 import java.util.Objects;
 
 public abstract class Intersectable {
-     public List<Point> findIntsersections(Ray ray) {
-          return null;
+     public  List<Point> findIntsersections(Ray ray) {
+          var geoList = findGeoIntersections(ray);
+          return geoList == null ? null : geoList.stream().map(gp -> gp.point).toList();
      }
 
-     public List<GeoPoint> findGeoIntersections() {
-          return null;
+     public final List<GeoPoint> findGeoIntersections(Ray ray) {
+          return findGeoIntersectionsHelper(ray);
      }
-
-     protected List<GeoPoint> findGeoIntersectionsHelper;
+     public List<Point> findIntersections(Ray ray) {
+          var geoList = findGeoIntersections(ray);
+          return geoList == null ? null : geoList.stream().map(gp -> gp.point).toList();
+     }
+     protected abstract List<GeoPoint> findGeoIntersectionsHelper(Ray ray);
      public static class GeoPoint {
           public Geometry geometry;
           public Point point;
@@ -41,6 +45,17 @@ public abstract class Intersectable {
           public GeoPoint(Geometry geometry, Point point) {
                this.geometry = geometry;
                this.point = point;
+          }
+          public double getX() {
+               return point.getX();
+          }
+
+          public double getY() {
+               return point.getY();
+          }
+
+          public double getZ() {
+               return point.getZ();
           }
      }
 

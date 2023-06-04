@@ -82,44 +82,43 @@ public class Polygon extends Geometry {
    public Vector getNormal(Point point) { return plane.getNormal(); }
 
    @Override
-   public List<Point> findIntsersections(Ray ray) {
+   public List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
+      // check if the ray intersects the plane of the polygon
+      Plane plane = new Plane(vertices.get(0), vertices.get(1), vertices.get(2));
+      if (plane.findGeoIntersectionsHelper(ray) == null) return null;
+      // need to have list of intersections, as the barycentric coordinates method asks
+      List<GeoPoint> intersections = plane.findGeoIntersectionsHelper(ray);
+      // there could be 1 intersection point with the plane, check if it is inside the polygon
+      GeoPoint point = intersections.get(0);
+      // Find the triangle in the polygon that contains the point
+      for (int i = 0; i < size - 2; i++) {
+         Point vertex1 = vertices.get(0);
+         Point vertex2 = vertices.get(i + 1);
+         Point vertex3 = vertices.get(i + 2);
+      /*
+      Explaination of the barycentric coordinates method:
+        https://en.wikipedia.org/wiki/Barycentric_coordinate_system#Conversion_between_barycentric_and_Cartesian_coordinates
+       */
+         // Calculate the barycentric coordinates of the point with respect to the triangle
+         //w1 = ((y2 - y3) * (x - x3) + (x3 - x2) * (y - y3)) / ((y2 - y3) * (x1 - x3) + (x3 - x2) * (y1 - y3))
+         double w1 = ((vertex2.getY() - vertex3.getY()) * (point.getX() - vertex3.getX()) +
+                 (vertex3.getX() - vertex2.getX()) * (point.getY() - vertex3.getY())) /
+                 ((vertex2.getY() - vertex3.getY()) * (vertex1.getX() - vertex3.getX()) +
+                         (vertex3.getX() - vertex2.getX()) * (vertex1.getY() - vertex3.getY()));
+         //w2 = ((y3 - y1) * (x - x3) + (x1 - x3) * (y - y3)) / ((y2 - y3) * (x1 - x3) + (x3 - x2) * (y1 - y3))
+         double w2 = ((vertex3.getY() - vertex1.getY()) * (point.getX() - vertex3.getX()) +
+                 (vertex1.getX() - vertex3.getX()) * (point.getY() - vertex3.getY())) /
+                 ((vertex2.getY() - vertex3.getY()) * (vertex1.getX() - vertex3.getX()) +
+                         (vertex3.getX() - vertex2.getX()) * (vertex1.getY() - vertex3.getY()));
 
-      List<Point> intersections = this.plane.findIntsersections(ray);
+         double w3 = 1 - w1 - w2;
 
-      // if there is no Intersections
-      if (intersections == null)
-         return null;
-
-      int verSize = vertices.size();
-
-      Vector v1 = vertices.get(verSize - 1).subtract(ray.getP0());
-      Vector v2 = vertices.get(0).subtract(ray.getP0());
-
-      Vector n = v1.crossProduct(v2).normalize();
-      double dirN = ray.getDir().dotProduct(n);
-      boolean positive = dirN > 0;
-
-      if (isZero(dirN))
-         return null;
-
-      for (int i = 1; i < verSize; ++i)
-      {
-         v1 = v2;
-         v2 = vertices.get(i).subtract(ray.getP0());
-         n = v1.crossProduct(v2).normalize();
-         dirN = ray.getDir().dotProduct(n);
-
-         //no intersection
-         if (isZero(dirN))
-            return null;
-
-         //not the same sign
-         if (dirN > 0 != positive)
-            return null;
+         if (w1 > 0 && w2 > 0 && w3 > 0) {
+            // The point is inside the triangle (and therefore inside the polygon)
+            return List.of(new GeoPoint(this, point.point));
+         }
       }
-
-      return List.of(intersections.get(0));
-
+      // The point is outside the polygon
+      return null;
    }
-
 }

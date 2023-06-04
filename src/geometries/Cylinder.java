@@ -33,13 +33,9 @@ public class Cylinder extends Tube {
      * @return The normal vector at the given point
      */
     public Vector getNormal(Point p1) {
-        /* if the given point equals to the exist point
-         you need to return the opposite direction*/
         if ((p1.equals(axisRay.getP0())))
             return ((axisRay.getDir()).scale(-1));
 
-        /* if the given point equals to the exist point + dir*height
-         you need to return the exist direction*/
         if (p1.equals(((axisRay.getP0()).add((axisRay.getDir()).scale(height))))) {
             return axisRay.getDir();
         }

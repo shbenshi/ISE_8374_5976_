@@ -88,14 +88,17 @@ public class Plane extends Geometry {
     }
 
     @Override
-    public List<Point> findIntsersections(Ray ray) {
-        if (q0.equals(ray.getP0()))// start from same place
+    public List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
+        double denominator = this.getNormal().dotProduct(ray.getDir());
+        if (isZero(denominator)) {
             return null;
-        if (isZero(getNormal().dotProduct(ray.getDir()))) // if vertical
+        }
+        if (q0.equals(ray.getP0()))
             return null;
-        double res = getNormal().dotProduct(q0.subtract(ray.getP0())) / normal.dotProduct(ray.getDir()); // represent the distance from the ray
-        if (res <= 0 || isZero(res))// if there is no intersection
-            return null;
-        return List.of(ray.getP0().add(ray.getDir().scale(res)));
+        double t = (this.getNormal().dotProduct(q0.subtract(ray.getP0()))) / denominator;
+        if (t > 0) {
+            return List.of(new GeoPoint(this, ray.getPoint(t)));
+        }
+        return null;
     }
 }
