@@ -101,4 +101,32 @@ public class Plane extends Geometry {
         }
         return null;
     }
+
+
+
+    @Override
+    public List<GeoPoint> findGeoIntersectionsHelper(Ray ray) throws IllegalAccessException  {
+        Point P0=ray.getP0();
+        Vector v=ray.getDir();
+        Vector n=normal;
+        if(q0.equals(P0)){
+            return null;
+        }
+        Vector P0_Q0=q0.subtract(P0);
+        double nP0Q0=alignZero(n.dotProduct(P0_Q0));
+
+        if(isZero(nP0Q0)){
+            return null;
+        }
+        double nv=alignZero(n.dotProduct(v));
+        if(isZero(nv)){
+            return null;
+        }
+        double t=alignZero(nP0Q0/nv);
+        if(t<=0){
+            return null;
+        }
+        Point point=ray.getPoint(t);
+        return List.of(new GeoPoint(this, point));
+    }
 }
