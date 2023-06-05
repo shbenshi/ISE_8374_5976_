@@ -22,7 +22,6 @@ public class AmbientLight extends Light{
     /**
      * A constant representing the ambient coefficient as zero.
      */
-    public static final Double3 KA = Double3.ZERO;
 
  //todo: chanage commit
     /**
