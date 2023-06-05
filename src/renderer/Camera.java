@@ -192,7 +192,7 @@ public class Camera {
      * @param i  The vertical coordinate of the pixel.
      * @param j  The horizontal coordinate of the pixel.
      */
-    private void castRay(int nX, int nY, int i, int j) {
+    private void castRay(int nX, int nY, int i, int j){
         Ray ray = constructRay(nX, nY, j, i);
         Color pixelColor = rayTracerBase.traceRay(ray);
         imageWriter.writePixel(j, i, pixelColor);
@@ -204,7 +204,7 @@ public class Camera {
      * @return The Camera object for method chaining.
      * @throws MissingResourceException If any required resource is missing.
      */
-    public Camera renderImage() {
+    public Camera renderImage(){
         try {
             // Check if all required resources are available
             if (P0 == null)

@@ -12,20 +12,20 @@ import primitives.Material;
  *   and Shira ben shimol 326065976 */
 
 public abstract class Geometry extends Intersectable {
-    private Material material = new Material();
+    Material material = new Material();
     protected Color emission = Color.BLACK;
 
     public Material getMaterial() {
         return material;
     }
-
     public Geometry setMaterial(Material material) {
         this.material = material;
         return this;
     }
 
-    public void setEmission(Color emission) {
+    public Geometry setEmission(Color emission) {
         this.emission = emission;
+        return this;
     }
 
     public Color getEmission() {

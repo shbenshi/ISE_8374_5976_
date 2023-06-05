@@ -1,4 +1,4 @@
-package renderer;
+package lighting;
 
 import static java.awt.Color.*;
 
