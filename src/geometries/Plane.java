@@ -104,8 +104,8 @@ public class Plane extends Geometry {
 
 
 
-    @Override
-    public List<GeoPoint> findGeoIntersectionsHelper(Ray ray) throws IllegalAccessException  {
+/*    @Override
+    public List<GeoPoint> findGeoIntersectionsHelper(Ray ray){
         Point P0=ray.getP0();
         Vector v=ray.getDir();
         Vector n=normal;
@@ -128,5 +128,5 @@ public class Plane extends Geometry {
         }
         Point point=ray.getPoint(t);
         return List.of(new GeoPoint(this, point));
-    }
+    }*/
 }

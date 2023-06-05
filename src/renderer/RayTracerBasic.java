@@ -48,6 +48,6 @@ public class RayTracerBasic extends RayTracerBase{
      * @return The color at the specified point.
      */
     private Color calcColor(GeoPoint intersection, Ray point) {
-        return this._scene.ambientLight.getIntesity();  // at this point of the project we'll return the ambient light
+        return this._scene.ambientLight.getIntensity();  // at this point of the project we'll return the ambient light
     }
 }

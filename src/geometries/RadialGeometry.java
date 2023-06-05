@@ -10,7 +10,7 @@ package geometries;
 public abstract class RadialGeometry extends Geometry
 {
     /** The radius field with protected access */
-    protected final double radius;
+    protected double radius;
 
     /**
      * Constructs a new RadialGeometry object with the specified radius.
