@@ -3,6 +3,10 @@ import primitives.Color;
 import primitives.Double3;
 import lighting.AmbientLight;
 import geometries.Geometries;
+import lighting.LightSource;
+
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * A class representing a scene in a ray tracing application.
@@ -12,12 +16,14 @@ import geometries.Geometries;
  *  Shira Ben Shimol 326065976
  */
 public class Scene {
+
     public String sceneName;
     public Color sceneBack = Color.BLACK;
     public AmbientLight ambientLight = new AmbientLight(AmbientLight.NONE, Double3.ZERO);
     public Geometries geometries = new Geometries();
+    public List<LightSource> lights=new LinkedList<>();
 
-    public String getSceneName() {
+   /* public String getSceneName() {
         return sceneName;
     }
 
@@ -31,7 +37,7 @@ public class Scene {
 
     public Geometries getGeometries() {
         return geometries;
-    }
+    }*/
 
     /**
      * Constructs a new Scene object with the specified scene name.
@@ -77,5 +83,11 @@ public class Scene {
         this.geometries = _geometries;
         return this;
 
+    }
+
+
+    public Scene setLights(List<LightSource> lights) {
+        this.lights = lights;
+        return this;
     }
 }

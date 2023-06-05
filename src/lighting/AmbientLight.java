@@ -14,7 +14,6 @@ import primitives.Double3;
 public class AmbientLight extends Light{
 
 
-
     /**
      * A constant representingg no ambient light, with color black.
      */
@@ -37,6 +36,10 @@ public class AmbientLight extends Light{
         super(Ia.scale(Ka));
     }
 
+    public AmbientLight(Color Ia, double Ka) {
+
+        super(Ia.scale(Ka));
+    }
 //    /**
 //     * Returns the intensity of the ambient light.
 //     *
