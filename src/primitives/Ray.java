@@ -70,14 +70,28 @@ public class Ray
     public Vector getDir() {
         return dir;
     }
+    /**
+     * Returns a point on the ray at a given parameter value (t).
+     * The point is calculated by adding the scaled direction vector to the ray's starting point.
+     *
+     * @param t The parameter value along the ray
+     * @return The point on the ray at parameter t
+     */
     public Point getPoint(double t)
     {
         return p0.add(dir.scale(t));
     }
+    /**
+     * Finds the closest GeoPoint from a list of GeoPoints.
+     * The closest GeoPoint is determined based on the distance between the ray's starting point (p0)
+     * and the points in the list. Returns null if the list is null or empty.
+     *
+     * @param intsersections The list of GeoPoints to find the closest one from
+     * @return The closest GeoPoint, or null if the list is null or empty
+     */
     public GeoPoint findClosestGeoPoint(List<GeoPoint> intsersections) {
         if (intsersections == null || intsersections.isEmpty())
             return null;
-        //compute the distance between the ray's starting point and the first point in the list
         double minDistance = Double.MAX_VALUE;
         GeoPoint minPoint = intsersections.get(0);
         for (GeoPoint gp : intsersections) {

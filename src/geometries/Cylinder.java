@@ -65,6 +65,14 @@ public class Cylinder extends Tube {
         return height;
     }
 
+
+    /**
+     * Helper function to find the geometric intersections of the ray with the geometry.
+     * This function returns a list of GeoPoint objects representing the intersections.
+     *
+     * @param ray The ray for which to find the intersections.
+     * @return A list of GeoPoint objects representing the geometric intersections, or null if there are no intersections.
+     */
     @Override
     public List<GeoPoint> findGeoIntsersectionsHelper(Ray ray) {
         return null;

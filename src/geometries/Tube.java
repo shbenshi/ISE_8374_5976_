@@ -56,6 +56,13 @@ public class Tube extends RadialGeometry{
         return axisRay;
     }
 
+    /**
+     * Finds the intersection points between the tube and a given ray.
+     *
+     * @param ray The ray to intersect with the tube
+     * @return A list of intersection points (GeoPoints) between the tube and the ray,
+     *         or null if there are no intersections
+     */
     @Override
     public List<GeoPoint> findGeoIntsersectionsHelper(Ray ray)
     {

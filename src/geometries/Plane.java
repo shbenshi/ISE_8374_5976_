@@ -87,6 +87,13 @@ public class Plane extends Geometry {
         return q0;
     }
 
+    /**
+     * Returns a list of intersection points between the plane and a given ray.
+     * The method checks if the ray intersects the plane and returns the intersection point(s) if any.
+     *
+     * @param ray The ray to find intersections with
+     * @return A list of GeoPoints representing the intersections, or null if there are no intersections
+     */
     @Override
     public List<GeoPoint> findGeoIntsersectionsHelper(Ray ray) {
         double denominator = this.getNormal().dotProduct(ray.getDir());
@@ -101,32 +108,4 @@ public class Plane extends Geometry {
         }
         return null;
     }
-
-
-
-/*    @Override
-    public List<GeoPoint> findGeoIntersectionsHelper(Ray ray){
-        Point P0=ray.getP0();
-        Vector v=ray.getDir();
-        Vector n=normal;
-        if(q0.equals(P0)){
-            return null;
-        }
-        Vector P0_Q0=q0.subtract(P0);
-        double nP0Q0=alignZero(n.dotProduct(P0_Q0));
-
-        if(isZero(nP0Q0)){
-            return null;
-        }
-        double nv=alignZero(n.dotProduct(v));
-        if(isZero(nv)){
-            return null;
-        }
-        double t=alignZero(nP0Q0/nv);
-        if(t<=0){
-            return null;
-        }
-        Point point=ray.getPoint(t);
-        return List.of(new GeoPoint(this, point));
-    }*/
 }
