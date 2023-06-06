@@ -74,13 +74,13 @@ public class Ray
     {
         return p0.add(dir.scale(t));
     }
-    public GeoPoint findClosestGeoPoint(List<GeoPoint> intersections) {
-        if (intersections == null || intersections.isEmpty())
+    public GeoPoint findClosestGeoPoint(List<GeoPoint> intsersections) {
+        if (intsersections == null || intsersections.isEmpty())
             return null;
         //compute the distance between the ray's starting point and the first point in the list
         double minDistance = Double.MAX_VALUE;
-        GeoPoint minPoint = intersections.get(0);
-        for (GeoPoint gp : intersections) {
+        GeoPoint minPoint = intsersections.get(0);
+        for (GeoPoint gp : intsersections) {
             double dist = gp.point.distanceSquared(p0);
             if (dist < minDistance) {
                 minDistance = dist;

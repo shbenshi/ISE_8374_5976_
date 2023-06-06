@@ -52,39 +52,57 @@ class PlaneTests {
     }
 
     @Test
-    void findIntersections() {
-        Plane p = new Plane((new Point(0,0,1)),new Point(1,0,0),new Point(0,1,0));
+    void testFindIntsersections(){
+        Plane plane = new Plane(new Point(-1,0,1), new Point(0,1,1), new Point(1,0,1));
         // ============ Equivalence Partitions Tests ==============
-        List<Point> i = p.findIntsersections(new Ray(new Point(2,1,0), new Vector(-2, -1, 1)));
+        // The Ray can't be orthogonal nor parallel to the plane
+        // TC01 the ray intersects the plane
+        List<Point> result1 = plane.findIntsersections(new Ray(new Point(2, 0, 0),
+                new Vector(-2, 0, 2)));
+        assertEquals(1, result1.size(), "Wrong number of points");
+        assertEquals(new Point(1, 0,1), result1.get(0),"Ray not orthogonal nor parallel to the plane and intersect it");
+        // TC02 the ray does not intersect the plane
+        assertNull(plane.findIntsersections(new Ray(new Point(1, 0, 2),
+                new Vector(1, 0, 1))),"Ray Ray is neither orthogonal nor parallel to the plane and doesn't intersect it");
 
-        // EP01:
-        assertEquals(i.size(), 1, "EP01 The count of intersection points is incorrect");
-        assertEquals(i.get(0),new Point(0, 0, 1), "EP01 Incorrect intersection point");
 
-        // EP02:
-        assertNull(p.findIntsersections(new Ray(new Point(2, 1, 0), new Vector(2, 1, -1))), "EP01 No intersection - should return null");
+        // =============== Boundary Values Tests ==================
+        // **** Group: The ray is parallel to the plane
+        // TC11 the ray is included in the plane
+        assertNull(plane.findIntsersections(new Ray(new Point(1, 0, 2),
+                new Vector(-2, 0, 0))),"Ray parallel to the plane and not included in it");
 
-        // ============ Boundary Values Tests ==============
+        // TC12 the ray is not included in the plane
+        assertNull(plane.findIntsersections(new Ray(new Point(-2, 0, 1),
+                new Vector(4, 1, 0))),"Ray parallel to the plane and included in it");
 
-        // BVA01:
-        assertNull(p.findIntsersections(new Ray(new Point(1, 0, 0), new Vector(1, 0, -1))), "Ray is included - should return null");
 
-        // BVA02:
-        assertNull(p.findIntsersections(new Ray(new Point(0, 0, 2), new Vector(1, 0, -1))), "Ray is parallel - no intersection, should return null");
+        // **** Group: The ray is orthogonal to the plane
+        // TC13 the ray starts before the plane
+        List<Point> result13 = plane.findIntsersections(new Ray(new Point(1, 0, 0),
+                new Vector(0, 0, 2)));
+        assertEquals(1, result13.size(), "Wrong number of points");
+        assertEquals(new Point(1, 0,1), result13.get(0),"Ray starts before the plane");
 
-        // BVA03:
-        assertEquals(p.findIntsersections(new Ray(new Point(0, 0, 0), new Vector(1d / 3, 1d / 3, 1d / 3))).get(0), new Point(1d / 3, 1d / 3, 1d / 3), "Orthogonal ray with 1 intersection point does not work");
+        // TC14 the ray starts in the plane (1 point)
+        assertNull(plane.findIntsersections(new Ray(new Point(2, 0, 1),
+                new Vector(0,0,1))),"Ray starts in the plane");
 
-        // BVA04:
-        assertNull(p.findIntsersections(new Ray(new Point(1d / 3, 1d / 3, 1d / 3), new Vector(1d / 3, 1d / 3, 1d / 3))), "Orthogonal ray that starts on does not work");
+        // TC15 the ray starts after the plane
+        assertNull(plane.findIntsersections(new Ray(new Point(2, 0, 2),
+                new Vector(0,0,1))),"Ray starts after the plane");
 
-        // BVA05:
-        assertNull(p.findIntsersections(new Ray(new Point(2, 2, 2), new Vector(1d / 3, 1d / 3, 1d / 3))), "Orthogonal ray with no intersection does not work");
 
-        // BVA06:
-        assertNull(p.findIntsersections(new Ray(new Point(0, 1, 0), new Vector(1, 0, 0))), "Not orthogonal ray that starts on plane does not work");
+        // **** Group: Ray is neither orthogonal nor parallel to the plane
+        // TC16 the ray begins at the plane (p0 is in the plane)
+        assertNull(plane.findIntsersections(new Ray(new Point(0, 0, 1),
+                        new Vector(2,0,2))),
+                "Ray is neither orthogonal nor parallel to the plane and starts at the plane");
 
-        // BVA07:
-        assertNull(p.findIntsersections(new Ray(new Point(0, 0, 1), new Vector(1, 0, 0))), "Not orthogonal ray that starts on reference point does not work");
+        // TC17 the ray begins in the same point which appears as reference point in the plane
+        assertNull(plane.findIntsersections(new Ray(new Point(1, 0, 1),
+                        new Vector(1,0,2))),
+                "Ray is neither orthogonal nor parallel to the plane and starts at a reference point of the plane");
+
     }
 }

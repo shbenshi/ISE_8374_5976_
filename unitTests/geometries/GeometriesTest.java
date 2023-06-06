@@ -5,11 +5,6 @@ import primitives.Point;
 import primitives.Ray;
 import java.util.List;
 import primitives.Vector;
-
-
-
-
-
 import java.util.LinkedList;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -18,25 +13,37 @@ class GeometriesTest {
 
 
     @Test
-    void findIntersections() {
-        Geometries geo = new Geometries(new Sphere(new Point(0,0,2),0.5),
-                new Polygon(new Point( 1, 0, 0), new Point(0,  1, 0), new Point(-1, 0, 0), new Point(0, -1, 0)),
-                new Triangle(new Point(1, 0, 0), new Point(0, 1, 0), new Point(0, 0, 1)));
+    void testFindIntersections() {
         // ============ Equivalence Partitions Tests ==============
-        //TC01:A ray intersects with a few geometries
-        List<Point> result = geo.findIntsersections(new Ray(new Point(-1,-1,-1),new Vector(2,2,2)));
-        assertEquals(2, result.size(), "A few geometries intersects");
+        Intersectable triangle = new Triangle(new Point(-1,-2,0), new Point(0,1,0), new Point(3,0,0));
+        Intersectable sphere = new Sphere(new Point(0,1,1), 1);
+        Intersectable plane = new Plane(new Point(0,0,2), new Point(0,1,2), new Point(1,0,2));
+        Geometries objects = new Geometries(triangle, sphere,plane);
+        // TC01 a few objects has intersections points but not all of them
+        assertEquals(2, objects.findIntsersections(new Ray(
+                        new Point(0,-1,-1), new Vector(0,0,5))).size(),
+                "Ray intersect with not all of the objects");
+
         // =============== Boundary Values Tests ==================
-        //TC11:A ray intersects with all geometries
-        result=geo.findIntsersections(new Ray(new Point(0.2,0.2,-0.6),new Vector(0,0,1)));
-        assertEquals(4,result.size(),"All geometries intersects");
-        //TC12:A ray intersects with only one geometry
-        result=geo.findIntsersections(new Ray(new Point(0.2,0.2,0.2),new Vector(1,1,1)));
-        assertEquals(1,result.size(),"Only 1 geometry intersect");
-        //TC13: A ray does not intersect with any geometry
-        assertNull(geo.findIntsersections(new Ray(new Point(1, 1, 1), new Vector(1, 1, 1))), "No geometries intersects");
-        //TC14: An empty list of geometries, so no intersection is expected
-        assertNull(new Geometries().findIntsersections(new Ray(new Point(1,2,3), new Vector(2,2,2))), "Empty list of geometries");
+        // TC11 empty objects collection
+        assertNull(new Geometries().findIntsersections(new Ray(
+                        new Point(0,0,4), new Vector(0,0,1))),
+                "There is no objects for the ray to intersect with");
+
+        // TC12 there is no intersection points with none of the objects
+        assertNull(objects.findIntsersections(new Ray(
+                        new Point(0,0,4), new Vector(0,0,1))),
+                "Ray doesn't intersect with any of the objects");
+
+        // TC13 there is intersection points with exactly one object
+        assertEquals(1, objects.findIntsersections(new Ray(
+                        new Point(0,0,1), new Vector(0,0,2))).size(),
+                "Ray intersect with exactly one object");
+
+        // TC14 there is intersection points with all the objects
+        assertEquals(4, objects.findIntsersections(new Ray(
+                        new Point(1,-1,-1), new Vector(-1,3,5))).size(),
+                "Ray intersect with all of the objects");
 
     }
 }

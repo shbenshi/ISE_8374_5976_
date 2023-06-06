@@ -82,14 +82,14 @@ public class Polygon extends Geometry {
    public Vector getNormal(Point point) { return plane.getNormal(); }
 
    @Override
-   public List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
+   public List<GeoPoint> findGeoIntsersectionsHelper(Ray ray) {
       // check if the ray intersects the plane of the polygon
       Plane plane = new Plane(vertices.get(0), vertices.get(1), vertices.get(2));
-      if (plane.findGeoIntersectionsHelper(ray) == null) return null;
+      if (plane.findGeoIntsersectionsHelper(ray) == null) return null;
       // need to have list of intersections, as the barycentric coordinates method asks
-      List<GeoPoint> intersections = plane.findGeoIntersectionsHelper(ray);
+      List<GeoPoint> intsersections = plane.findGeoIntsersectionsHelper(ray);
       // there could be 1 intersection point with the plane, check if it is inside the polygon
-      GeoPoint point = intersections.get(0);
+      GeoPoint point = intsersections.get(0);
       // Find the triangle in the polygon that contains the point
       for (int i = 0; i < size - 2; i++) {
          Point vertex1 = vertices.get(0);

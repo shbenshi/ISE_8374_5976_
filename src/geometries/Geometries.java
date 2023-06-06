@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 import primitives.Point;
 import primitives.Ray;
-
+import java.util.ArrayList;
 
 /**
  * Geometries represents a collection of intersectable geometries.
@@ -57,7 +57,7 @@ public class Geometries extends Intersectable {
         //if there are no intersections return null
         List<GeoPoint> result = new LinkedList<>();
         for (Intersectable geo : geometries) {
-            List<GeoPoint> temp = geo.findGeoIntersectionsHelper(ray);
+            List<GeoPoint> temp = geo.findGeoIntsersectionsHelper(ray);
             if (temp != null) {
                 result.addAll(temp);
             }
@@ -67,4 +67,18 @@ public class Geometries extends Intersectable {
         }
         return result;
     }
+
+    @Override
+    protected List<GeoPoint> findGeoIntsersectionsHelper(Ray ray) {
+        List<GeoPoint> intersectionsPoints = null;
+        for (Intersectable object : this.geometries) {
+            List<GeoPoint> objectPointsList = object.findGeoIntsersections(ray);
+            if (objectPointsList != null) {
+                if (intersectionsPoints == null) {
+                    intersectionsPoints = new ArrayList<>();
+                }
+                intersectionsPoints.addAll(objectPointsList);
+            }
+        }
+        return intersectionsPoints;    }
 }

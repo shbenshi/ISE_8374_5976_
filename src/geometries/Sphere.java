@@ -60,7 +60,7 @@ public class Sphere extends RadialGeometry {
     }*/
 
     @Override
-    public List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
+    public List<GeoPoint> findGeoIntsersectionsHelper(Ray ray) {
         // if the ray starts at the center of the sphere
         double tm = 0;
         double d = 0;

@@ -3,7 +3,15 @@ import primitives.*;
 import java.util.List;
 
 public abstract class Intersectable {
-     public final List<GeoPoint> findGeoIntersections(Ray ray) {
+     protected abstract List<GeoPoint> findGeoIntsersectionsHelper(Ray ray) ;
+     public List<GeoPoint> findGeoIntsersections(Ray ray)  {
+          return findGeoIntsersectionsHelper(ray);
+     }
+     public List<Point> findIntsersections(Ray ray) {
+          var geoList = findGeoIntsersections(ray);
+          return geoList == null ? null : geoList.stream().map(gp -> gp.point).toList();
+     }
+     /*public final List<GeoPoint> findGeoIntersections(Ray ray) {
 
           return findGeoIntersectionsHelper(ray);
      }
@@ -11,11 +19,6 @@ public abstract class Intersectable {
      protected abstract List<GeoPoint> findGeoIntersectionsHelper(Ray ray);
 
      public  List<Point> findIntsersections(Ray ray) {
-          var geoList = findGeoIntersections(ray);
-          return geoList == null ? null : geoList.stream().map(gp -> gp.point).toList();
-     }
-/*
-     public List<Point> findIntersections(Ray ray) {
           var geoList = findGeoIntersections(ray);
           return geoList == null ? null : geoList.stream().map(gp -> gp.point).toList();
      }*/
