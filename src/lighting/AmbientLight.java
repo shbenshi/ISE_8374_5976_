@@ -39,13 +39,5 @@ public class AmbientLight extends Light{
 
         super(Ia.scale(Ka));
     }
-//    /**
-//     * Returns the intensity of the ambient light.
-//     *
-//     * @return The intensity of the ambient light.
-//     */
-//    public Color getIntesity() {
-//
-//        return intesity;
-//    }
+
 }
