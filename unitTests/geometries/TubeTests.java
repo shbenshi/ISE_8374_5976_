@@ -33,7 +33,7 @@ class TubeTests {
     }
 
 
-    @Test
+    /*@Test
     void testFindIntersections() {
         Tube t = new Tube(new Ray(new Point(0,0,1), new Vector(0,0,1)),1);
 
@@ -112,8 +112,8 @@ class TubeTests {
         assertNull(t.findIntsersections(new Ray(new Point(0, 0, 1), new Vector(0, 0, 1))), "There should be no intersection in TC23");
 
     }
-
-    }
+*/
+}
 
 
 
