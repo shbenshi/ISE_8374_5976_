@@ -93,7 +93,7 @@ public class PolygonTests {
     }
 
     @Test
-    void testFindIntsersections() {
+    void testFindIntersections() {
         Polygon p1 = new Polygon(new Point(1,1,1), new Point(2,0.5,0.5),new Point(1,-1,1), new Point(-2,0.5,2.5));
 // ============ Equivalence Partitions Tests ==============
         // TC01: intersection in the polygon

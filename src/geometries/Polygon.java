@@ -82,10 +82,10 @@ public class Polygon extends Geometry {
    public Vector getNormal(Point point) { return plane.getNormal(); }
 
    @Override
-   protected List<GeoPoint> findGeoIntsersectionsHelper(Ray ray) {
+  protected List<GeoPoint> findGeoIntsersectionsHelper(Ray ray) {
       List<GeoPoint> points = plane.findGeoIntsersections(ray);
       // check if there is an intersection point with the plane
-      if(points == null){
+      if (points == null) {
          return null;
       }
       // check if a given point is inside the polygon
@@ -101,16 +101,16 @@ public class Polygon extends Geometry {
          crossVectors[i] = vectorToP0[i].crossProduct(vectorToP0[(i + 1) % size]).normalize();
       }
       int numPositiveNumbers = 0;
-      for(Vector vector : crossVectors){
+      for (Vector vector : crossVectors) {
          double vn = v.dotProduct(vector);
-         if(isZero(vn)){
+         if (isZero(vn)) {
             return null;
          }
-         if(vn > 0){
+         if (vn > 0) {
             numPositiveNumbers++;
          }
       }
-      if (numPositiveNumbers != 0 && numPositiveNumbers != size){
+      if (numPositiveNumbers != 0 && numPositiveNumbers != size) {
          return null;
       }
       return points;

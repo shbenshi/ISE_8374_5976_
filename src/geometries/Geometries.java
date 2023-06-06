@@ -53,7 +53,7 @@ public class Geometries extends Intersectable {
      * @param ray The ray to find intersections with.
      * @return A list of intersection points with the ray, or null if no intersections are found.
      */
-    public List<GeoPoint> findGeoIntersectionsHelper(Ray ray) {
+    public List<GeoPoint> findGeoIntsersectionsHelper(Ray ray) {
         //if there are no intersections return null
         List<GeoPoint> result = new LinkedList<>();
         for (Intersectable geo : geometries) {
@@ -67,18 +67,4 @@ public class Geometries extends Intersectable {
         }
         return result;
     }
-
-    @Override
-    protected List<GeoPoint> findGeoIntsersectionsHelper(Ray ray) {
-        List<GeoPoint> intersectionsPoints = null;
-        for (Intersectable object : this.geometries) {
-            List<GeoPoint> objectPointsList = object.findGeoIntsersections(ray);
-            if (objectPointsList != null) {
-                if (intersectionsPoints == null) {
-                    intersectionsPoints = new ArrayList<>();
-                }
-                intersectionsPoints.addAll(objectPointsList);
-            }
-        }
-        return intersectionsPoints;    }
 }

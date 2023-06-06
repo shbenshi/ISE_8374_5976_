@@ -3,14 +3,26 @@ import primitives.*;
 import java.util.List;
 
 public abstract class Intersectable {
-     protected abstract List<GeoPoint> findGeoIntsersectionsHelper(Ray ray) ;
-     public List<GeoPoint> findGeoIntsersections(Ray ray)  {
+     public final List<GeoPoint> findGeoIntsersections(Ray ray) {
+
           return findGeoIntsersectionsHelper(ray);
      }
+
+     /**
+      * @param ray intersecting the geometry
+      * @return list of intersection points
+      */
+     protected abstract List<GeoPoint> findGeoIntsersectionsHelper(Ray ray);
+
+     /**
+      * @param ray The ray that we want to find the intersections with the geometry shape
+      * @return list of points where the ray intersect the geometry shape, using the findGeoIntersections method
+      */
      public List<Point> findIntsersections(Ray ray) {
           var geoList = findGeoIntsersections(ray);
           return geoList == null ? null : geoList.stream().map(gp -> gp.point).toList();
      }
+
      /*public final List<GeoPoint> findGeoIntersections(Ray ray) {
 
           return findGeoIntersectionsHelper(ray);
