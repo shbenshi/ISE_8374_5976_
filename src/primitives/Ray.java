@@ -1,6 +1,7 @@
 package primitives;
 import java.util.List;
 import java.util.Objects;
+import renderer.RayTracerBasic;
 import geometries.Intersectable.GeoPoint;
 
 
@@ -13,6 +14,8 @@ public class Ray
     final private Point p0;
     /*this is the direction of the points*/
     final private Vector dir;
+    private static final double DELTA = 0.1;
+
 
 
     /**
@@ -25,6 +28,13 @@ public class Ray
         this.p0 = p0;
         this.dir = v1.normalize();
     }
+
+    public Ray(Point p0, Vector n, Vector dir) {
+        double eps= dir.dotProduct(n)>=0? DELTA :-DELTA;
+        this.p0 = p0.add(n.scale(eps));
+        this.dir = dir.normalize();
+    }
+
 
     /**
      * this func convert the parameters to string

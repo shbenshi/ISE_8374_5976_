@@ -13,6 +13,8 @@ package primitives;
  */
 public class Material {
 
+    public Double3 kT = Double3.ZERO;
+    public Double3 kR = Double3.ZERO;
     /** The diffuse reflection coefficient */
     public Double3 kD=Double3.ZERO;
     /** The specular reflection coefficient */
