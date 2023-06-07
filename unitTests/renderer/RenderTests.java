@@ -8,9 +8,7 @@ import geometries.Sphere;
 import geometries.Triangle;
 import lighting.AmbientLight;
 import primitives.*;
-import primitives.Double3.*;
 
-import renderer.*;
 import scene.Scene;
 
 /** Test rendering a basic image
