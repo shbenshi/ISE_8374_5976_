@@ -101,7 +101,7 @@ public class Polygon extends Geometry {
          crossVectors[i] = vectorToP0[i].crossProduct(vectorToP0[(i + 1) % size]).normalize();
       }
       int numPositiveNumbers = 0;
-      for (Vector vector : crossVectors) {
+      for (Vector vector : crossVectors) {//
          double vn = v.dotProduct(vector);
          if (isZero(vn)) {
             return null;
