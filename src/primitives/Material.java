@@ -12,7 +12,6 @@ package primitives;
  * [Author Name 2]
  */
 public class Material {
-
     public Double3 kT = Double3.ZERO;
     public Double3 kR = Double3.ZERO;
     /** The diffuse reflection coefficient */
@@ -22,6 +21,34 @@ public class Material {
     /** The shininess factor */
     public int nShininess =0;
 
+    public Double3 getkT() {
+        return kT;
+    }
+
+    public Material setKt(double kt) {
+        this.kT = new Double3(kt, kt, kt);
+        return this;
+    }
+
+
+
+
+    public Double3 getKr() {
+        return kR;
+    }
+    public Material setKr(Double3 kR) {
+        this.kR = kR;
+        return this;
+    }
+
+    public Material setKr(double kr) {
+        this.kR = new Double3(kr);
+        return this;
+    }
+    public Material setKt(Double3 kT) {
+        this.kT = kT;
+        return this;
+    }
 
     /**
      * Sets the diffuse reflection coefficient.
