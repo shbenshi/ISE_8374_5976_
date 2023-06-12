@@ -45,7 +45,7 @@ public abstract class Intersectable {
           public Geometry geometry;
           public Point point;
 
-     @Override
+          @Override
           public String toString() {
                return "GeoPoint{" +
                        "geometry=" + geometry +
@@ -53,20 +53,20 @@ public abstract class Intersectable {
                        '}';
           }
 
-     @Override
-     public boolean equals(Object o) {
+          @Override
+          public boolean equals(Object o) {
           if (this == o) return true;
           if (!(o instanceof GeoPoint geoPoint)) return false;
           return geometry.equals(geoPoint.geometry) && point.equals(geoPoint.point);
-     }
+          }
 
-     /**
-      * Constructs a GeoPoint object with the specified geometry and point.
-      *
-      * @param geometry The geometry of the intersection.
-      * @param point    The point of intersection.
-      */
-     public GeoPoint(Geometry geometry, Point point) {
+          /**
+          * Constructs a GeoPoint object with the specified geometry and point.
+          *
+          * @param geometry The geometry of the intersection.
+          * @param point    The point of intersection.
+          */
+          public GeoPoint(Geometry geometry, Point point) {
                this.geometry = geometry;
                this.point = point;
           }
