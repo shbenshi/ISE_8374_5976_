@@ -42,10 +42,7 @@ public class Ray
      */
     @Override
     public String toString() {
-        return "Ray{" +
-                "p0=" + p0 +
-                ", dir=" + dir +
-                '}';
+        return p0.toString() + dir.toString();
     }
 
     /**
@@ -64,7 +61,9 @@ public class Ray
     public int hashCode() {
         return Objects.hash(p0, dir);
     }
-
+    public Point findPoint(double d) {
+        return this.p0.add(this.dir.scale(d));
+    }
 
     /**
      * this is a get funcc to the point
@@ -89,6 +88,8 @@ public class Ray
      */
     public Point getPoint(double t)
     {
+        if (t==0)
+            return p0;
         return p0.add(dir.scale(t));
     }
     /**

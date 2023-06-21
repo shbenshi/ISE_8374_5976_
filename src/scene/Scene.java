@@ -17,13 +17,13 @@ import java.util.List;
  */
 public class Scene {
 
-    public String sceneName;
-    public Color sceneBack = Color.BLACK;
-    public AmbientLight ambientLight = new AmbientLight(AmbientLight.NONE, Double3.ZERO);
-    public Geometries geometries = new Geometries();
-    public List<LightSource> lights=new LinkedList<>();
+    private String sceneName;
+    private Color sceneBack = Color.BLACK;
+    private AmbientLight ambientLight = new AmbientLight(AmbientLight.NONE, Double3.ZERO);
+    private Geometries geometries = new Geometries();
+    private List<LightSource> lights=new LinkedList<>();
 
-   /* public String getSceneName() {
+    public String getSceneName() {
         return sceneName;
     }
 
@@ -37,16 +37,18 @@ public class Scene {
 
     public Geometries getGeometries() {
         return geometries;
-    }*/
+    }
 
-    /**
-     * Constructs a new Scene object with the specified scene name.
-     *
-     * @param _sceneName The name of the scene.
-     */
-    public Scene(String _sceneName) {
-        this.sceneName = _sceneName;
-        geometries = new Geometries();
+    public List<LightSource> getLights() {
+        return lights;
+    }
+
+    private Scene(SceneBuilder builder) {
+        this.sceneName = builder.sceneName;
+        this.ambientLight = builder.ambientLight;
+        this.sceneBack = builder.sceneBack;
+        this.geometries = builder.geometries;
+        this.lights = builder.lights;
     }
 
 
@@ -89,6 +91,43 @@ public class Scene {
     public Scene setLights(List<LightSource> lights) {
         this.lights = lights;
         return this;
+    }
+    public static class SceneBuilder {
+        private final String sceneName;
+        private Color sceneBack = Color.BLACK;
+        private List<LightSource> lights = new LinkedList<>();
+        private Geometries geometries = new Geometries();
+        private AmbientLight ambientLight = new AmbientLight(AmbientLight.NONE, Double3.ZERO);
+
+        public SceneBuilder(String _sceneName) {
+            this.sceneName = _sceneName;
+        }
+
+
+        public SceneBuilder setLights(List<LightSource> lights) {
+            this.lights = lights;
+            return this;
+        }
+
+        public SceneBuilder setBackground(Color _sceneBack) {
+            this.sceneBack = _sceneBack;
+
+            return this;
+        }
+
+        public SceneBuilder setGeometries(Geometries geometries) {
+            this.geometries = geometries;
+            return this;
+        }
+
+        public SceneBuilder setAmbientLight(AmbientLight ambientLight) {
+            this.ambientLight = ambientLight;
+            return this;
+        }
+
+        public Scene build() {
+            return new Scene(this);
+        }
     }
 
 

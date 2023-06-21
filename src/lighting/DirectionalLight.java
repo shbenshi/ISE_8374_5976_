@@ -3,6 +3,7 @@ package lighting;
 import primitives.Color;
 import primitives.Point;
 import primitives.Vector;
+import java.util.List;
 
 public class DirectionalLight extends Light implements LightSource{
     private final Vector direction;
@@ -14,13 +15,14 @@ public class DirectionalLight extends Light implements LightSource{
 
     @Override
     public Color getIntensity(Point point) {
-        return getIntensity();// same intensity for all points
+        return getIntensity();
     }
 
     @Override
     public Vector getL(Point p) {
         return direction.normalize();
     }
+
 
     @Override
     public double getDistance(Point point) {

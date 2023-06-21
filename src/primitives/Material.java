@@ -30,7 +30,10 @@ public class Material {
         return this;
     }
 
-
+    public Material setKt(Double3 kT) {
+        this.kT = kT;
+        return this;
+    }
 
 
     public Double3 getKr() {
@@ -45,10 +48,7 @@ public class Material {
         this.kR = new Double3(kr);
         return this;
     }
-    public Material setKt(Double3 kT) {
-        this.kT = kT;
-        return this;
-    }
+
 
     /**
      * Sets the diffuse reflection coefficient.
