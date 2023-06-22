@@ -43,10 +43,10 @@ public class PointLight extends Light implements LightSource{
         return this;
     }
 
-    public PointLight(Color intensity,Point position)
+    public PointLight(Color intensity,Point _position)
     {
         super(intensity);
-        this.position = position;
+        this.position = _position;
     }
 
 

@@ -5,13 +5,13 @@ import primitives.Point;
 
 
 public class SpotLight extends PointLight{
-    protected double narrowBeam = 1;//default value, so this will not affect the result
+    protected double narrowBeam = 1;//not affect the result
 
     private Vector direction;
 
-    public SpotLight(Color intensity, Point position, Vector direction) {
-        super(intensity, position);
-        this.direction = direction.normalize();
+    public SpotLight(Color _intensity, Point _position, Vector _direction) {
+        super(_intensity, _position);
+        this.direction = _direction.normalize();
     }
 
 

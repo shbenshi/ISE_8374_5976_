@@ -17,7 +17,7 @@ import java.util.ArrayList;
  */
 
 public class Geometries extends Intersectable {
-    private  List<Intersectable> geometries;
+    List<Intersectable> geometries;
 
     /**
      * Constructs an empty Geometries object.

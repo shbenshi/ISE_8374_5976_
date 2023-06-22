@@ -19,11 +19,7 @@ public class AmbientLight extends Light{
      */
     public static final Color NONE = Color.BLACK;
 
-    /**
-     * A constant representing the ambient coefficient as zero.
-     */
-
- //todo: chanage commit
+    //todo: change commit
     /**
      * Constructs an AmbientLight object with the specified intensity and coefficient.
      *

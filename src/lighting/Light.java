@@ -2,11 +2,11 @@ package lighting;
 
 import primitives.Color;
 
-abstract  class Light {
-    private Color intensity;
+public abstract  class Light {
+    private final Color intensity;
 
-    protected Light(Color intensity) {
-        this.intensity = intensity;
+    protected Light(Color _intensity) {
+        this.intensity = _intensity;
     }
 
     public Color getIntensity() {

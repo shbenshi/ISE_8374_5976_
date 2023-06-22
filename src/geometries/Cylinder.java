@@ -23,6 +23,9 @@ public class Cylinder extends Tube {
      */
     public Cylinder(Ray _axis, double _radius, double _height) {
         super(_axis, _radius);
+        if (_height < 0) {
+            throw new IllegalArgumentException("height cannot be negative");
+        }
         height = _height;
 
     }
@@ -34,7 +37,7 @@ public class Cylinder extends Tube {
      */
     public Vector getNormal(Point p1) {
         if ((p1.equals(axisRay.getP0())))
-            return ((axisRay.getDir()).scale(-1));
+            return ((axisRay.getDir()));
 
         if (p1.equals(((axisRay.getP0()).add((axisRay.getDir()).scale(height))))) {
             return axisRay.getDir();
@@ -60,8 +63,7 @@ public class Cylinder extends Tube {
      * Getter operation for the height of the cylinder.
      * @return The height of the cylinder
      */
-    public double getHeight()
-    {
+    public double getHeight() {
         return height;
     }
 
