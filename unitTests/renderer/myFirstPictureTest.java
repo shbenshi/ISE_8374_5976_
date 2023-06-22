@@ -36,7 +36,7 @@ public class myFirstPictureTest {
                 new Sphere(new Point(0, -25, 0), 20).setEmission(new Color(115,81,55)) //
                         .setMaterial(new Material().setKd(0).setKs(0).setShininess(100)),
 
-                /*new Triangle(new Point(-12,-20,0),new Point(12,-20,0), new Point(0,-3,0)).setEmission(new Color(white))
+                /*new Triangle(new Point(-17,-25,0),new Point(17,-25,0), new Point(0,78,0)).setEmission(new Color(white))
                         .setMaterial(new Material().setKd(0).setKs(0).setShininess(100)),*/
                 new Plane(new Point(0, 0, -100), new Vector(0, 0, 1)).setEmission(new Color(0, 199, 108))
                         .setMaterial(new Material().setKd(0.5).setKs(0.5).setShininess(100))
@@ -51,7 +51,7 @@ public class myFirstPictureTest {
                         //.setKt(new Double3(0.5, 0, 0))));*/
 
         scene.getLights().add(
-                new SpotLight(new Color(1000, 600, 20), new Point(-100, -100, 500), new Vector(1, 0, -2))
+                new SpotLight(new Color(10000, 60, 200), new Point(-100, -100, 500), new Vector(1, 0, -2))
                         .setKl(0.000004).setKq(0.000006));
         scene.getLights().add(
                 new DirectionalLight(new Color(250, 150, 200).scale(0.2), new Vector(-2, -2, 1))
