@@ -114,7 +114,7 @@ public class minip1Test {
                 new Sphere(new Point(41, 35, 0), 5d).setEmission(new Color(WHITE))
                         .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000))
 
-                //4
+
                 );
 
 
