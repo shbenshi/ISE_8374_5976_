@@ -31,7 +31,7 @@ public class myFirstPictureTest {
                         .setMaterial(new Material().setKd(0).setKs(0).setShininess(100)),
 
                 new Sphere(new Point(-32, 9, 100), 6d).setEmission(new Color(115,81,55)) //
-                        .setMaterial(new Material().setKd(0).setKs(0).setShininess(130)),
+                        .setMaterial(new Material().setKd(0).setKs(0).setShininess(1301)),
 
                 new Sphere(new Point(0, -25, 0), 20).setEmission(new Color(115,81,55)) //
                         .setMaterial(new Material().setKd(0).setKs(0).setShininess(100)),
