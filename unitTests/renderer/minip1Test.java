@@ -62,26 +62,60 @@ public class minip1Test {
                         setMaterial(new Material().setKd(0.9).setKs(0.3).setShininess(1000).setKt(0.6)),
                 new Sphere(new Point(-61.8,25,0),1.7d).setEmission(new Color(yellow)).
                         setMaterial(new Material().setKd(0.9).setKs(0.3).setShininess(1000).setKt(0.6))
-        );//shirra
+        );
 
+        //snow
+        scene.getGeometries().add(
+                new Triangle(new Point(-40,0,0), new Point(-31,13,0),new Point(-25,0,0))
+                        .setEmission(new Color(250,245,245))
+                        .setMaterial(new Material().setKd(0.3).setKs(0.6).setShininess(200).setKr(0.4)),
+                new Triangle(new Point(-7,6,0),new Point(12,28,0),new Point(19,6,0))
+                    .setEmission(new Color(250,245,245))
+                    .setMaterial(new Material().setKd(0.3).setKs(0.6).setShininess(200).setKr(0.4)),
+                new Triangle(new Point(41,-2,0),new Point(49,11,0),new Point(53.8,-2,0))
+                        .setEmission(new Color(250,245,245))
+                        .setMaterial(new Material().setKd(0.3).setKs(0.6).setShininess(200).setKr(0.4))
+
+
+                );
         //mountain
         scene.getGeometries().add(
                 new Triangle(new Point(-70,-45,0),new Point(-31,13,0),new Point(-5,-45,0)).setEmission(new Color(175,175,175))
-                        .setMaterial(new Material().setKd(0).setKs(0).setShininess(100)),
+                        .setMaterial(new Material().setKd(0.6).setKs(0.4).setShininess(200)),
                 new Triangle(new Point(-50,-45,0),new Point(12,28,0),new Point(35,-45,0)).setEmission(new Color(175,175,175))
                         .setMaterial(new Material().setKd(0).setKs(0).setShininess(100)),
                 new Triangle(new Point(15,-45,0),new Point(49,11,0), new Point(69,-45,0)).setEmission(new Color(175,175,175))
                         .setMaterial(new Material().setKd(0).setKs(0).setShininess(100))
         );
 
+        //cloud
         scene.getGeometries().add(
-                new Sphere(new Point(10, 50, 0), 10d).setEmission(new Color(WHITE)).setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
-                new Sphere(new Point(1, 47, 0), 7d).setEmission(new Color(WHITE)).setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
-                new Sphere(new Point(19, 47, 0), 7d).setEmission(new Color(WHITE)).setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000))
+                //1
+                new Sphere(new Point(10, 50, 0), 10d).setEmission(new Color(WHITE))
+                        .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
+                new Sphere(new Point(1, 47, 0), 7d).setEmission(new Color(WHITE))
+                        .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
+                new Sphere(new Point(19, 47, 0), 7d).setEmission(new Color(WHITE))
+                        .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
+
+                //2
+                new Sphere(new Point(55, 64, 0), 6d).setEmission(new Color(WHITE))
+                        .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
+                new Sphere(new Point(60, 62, 0), 4d).setEmission(new Color(WHITE))
+                        .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
+                new Sphere(new Point(50, 62, 0), 4d).setEmission(new Color(WHITE))
+                        .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
+
+                //3
+                new Sphere(new Point(47, 37, 0), 7d).setEmission(new Color(WHITE))
+                        .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
+                new Sphere(new Point(53, 35, 0), 5d).setEmission(new Color(WHITE))
+                        .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
+                new Sphere(new Point(41, 35, 0), 5d).setEmission(new Color(WHITE))
+                        .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000))
+                );
 
 
-
-        );
 
 
                 camera.setImageWriter(new ImageWriter("minip1", 1000, 1000)) //
