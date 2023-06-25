@@ -18,7 +18,7 @@ import static java.awt.Color.*;
 public class myFirstPictureTest {
     @Test
     public void myFirstPictureTest() {
-        Scene scene = new Scene.SceneBuilder("final picture")
+        Scene scene = new Scene.SceneBuilder("our picture")
                 .build();// mens black
         Camera camera = new Camera(new Point(0, 0, 1000), new Vector(0, 0, -1), new Vector(0, 1, 0));
         camera.setVPSize(150, 150).setVPDistance(1000);
