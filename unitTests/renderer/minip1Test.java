@@ -42,7 +42,7 @@ public class minip1Test {
                         setMaterial(new Material().setKd(0.9).setKs(0.3).setShininess(1000).setKt(0.6))
 
 
-        );
+        );//shirra
 
 
 
