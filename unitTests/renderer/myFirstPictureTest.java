@@ -13,6 +13,33 @@ import org.junit.jupiter.api.Test;
 import primitives.*;
 
 import static java.awt.Color.*;
+/*        Scene scene = new Scene.SceneBuilder("finalPicture")
+                .build();// mens black
+        Camera camera = new Camera(new Point(0, 0, 1000), new Vector(0, 0, -1), new Vector(0, 1, 0));
+        camera.setVPSize(150, 150).setVPDistance(1000);
+
+        Material mountain1 = new Material().setKd(0.6).setKs(0.4).setShininess(200);
+        scene.getGeometries().add(
+                new Triangle(new Point(-120, 10,0), new Point(-200, -45, 0),new Point(-200, 0, 80)).setEmission(new Color(YELLOW)).setMaterial(new Material().setKd(0).setKs(0).setShininess(1000)),
+                new Triangle(new Point(-120,10,0), new Point(-200, 45, 0),new Point(-200, 0, 80)).setEmission(new Color(YELLOW)).setMaterial(new Material().setKd(0).setKs(0).setShininess(1000)),
+                new Triangle(new Point(-260,10,0), new Point(-200, -45, 0), new Point(-200, 0, 80)).setEmission(new Color(YELLOW)).setMaterial(new Material().setKd(0).setKs(0).setShininess(1000)),
+                new Triangle(new Point(-260,10,0), new Point(-200, 45, 0), new Point(-200, 0, 80)).setEmission(new Color(YELLOW)).setMaterial(new Material().setKd(0).setKs(0).setShininess(1000))
+        );
+
+        scene.getLights().add(
+                new SpotLight(new Color(10000, 4000, 12), new Point(0, 123, 0), new Vector(0, -2, 0))
+                        .setKl(0.00000009).setKq(0.0009));
+
+        scene.getLights().add(
+                new DirectionalLight(new Color(0, 0, 120).scale(0.8), new Vector(1,67 ,0))
+        );
+        scene.getLights().add(
+                new PointLight(new Color(90,250,120),new Point( 100,100,0))
+        );
+        camera.setImageWriter(new ImageWriter("minip1", 1000, 1000)) //
+        .setRayTracer(new RayTracerBasic(scene)) //
+        .renderImage() //
+        .writeToImage();*/
 
 
 public class myFirstPictureTest {

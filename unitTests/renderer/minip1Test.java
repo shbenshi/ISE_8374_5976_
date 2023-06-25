@@ -74,6 +74,14 @@ public class minip1Test {
                         .setMaterial(new Material().setKd(0).setKs(0).setShininess(100))
         );
 
+        scene.getGeometries().add(
+                new Sphere(new Point(10, 50, 0), 10d).setEmission(new Color(WHITE)).setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
+                new Sphere(new Point(1, 47, 0), 7d).setEmission(new Color(WHITE)).setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
+                new Sphere(new Point(19, 47, 0), 7d).setEmission(new Color(WHITE)).setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000))
+
+
+
+        );
 
 
                 camera.setImageWriter(new ImageWriter("minip1", 1000, 1000)) //
