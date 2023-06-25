@@ -66,9 +66,11 @@ public class minip1Test {
 
         //mountain
         scene.getGeometries().add(
-                new Triangle(new Point(-65,-40,0),new Point(-26,13,0),new Point(0,-37,0)).setEmission(new Color(175,175,175))
+                new Triangle(new Point(-70,-45,0),new Point(-31,13,0),new Point(-5,-45,0)).setEmission(new Color(175,175,175))
                         .setMaterial(new Material().setKd(0).setKs(0).setShininess(100)),
-                new Triangle(new Point(-45,-39,0),new Point(17,28,0),new Point(40,-37,0)).setEmission(new Color(175,175,175))
+                new Triangle(new Point(-50,-45,0),new Point(12,28,0),new Point(35,-45,0)).setEmission(new Color(175,175,175))
+                        .setMaterial(new Material().setKd(0).setKs(0).setShininess(100)),
+                new Triangle(new Point(15,-45,0),new Point(49,11,0), new Point(69,-45,0)).setEmission(new Color(175,175,175))
                         .setMaterial(new Material().setKd(0).setKs(0).setShininess(100))
         );
 
