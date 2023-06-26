@@ -74,18 +74,11 @@ public class myFirstPictureTest {
 
                 );
 
-               /* new Sphere(new Point(0, 0, 0), 250d)
-                .setEmission(new Color(java.awt.Color.yellow)).setMaterial(new Material().setKd(0.4).setKs(0.3).setShininess(100)
-                        .setKt(0.3)),
-                new Sphere(new Point(0, 0, 0), 25d)
-                .setEmission(new Color(java.awt.Color.black)).setMaterial(new Material().setKd(0.25).setKs(0.5).setShininess(100)));
-                        //.setKt(new Double3(0.5, 0, 0))));*/
-/*new Point(-100, -100, 500),*/
+
         scene.getLights().add(
                 new SpotLight(new Color(10000, 4000, 12), new Point(0, 123, 0), new Vector(0, -2, 0))
                         .setKl(0.00000009).setKq(0.0009));
 
-        /*scene.getLights().add(*/
         scene.getLights().add(
                 new DirectionalLight(new Color(0, 0, 120).scale(0.8), new Vector(1,67 ,0))
         );
