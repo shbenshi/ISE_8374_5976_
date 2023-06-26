@@ -40,15 +40,12 @@ public class minip1Test {
 
 
         scene.getLights().add(
-                new DirectionalLight(new Color(200, 200, 0), new Vector(0,-1 ,-3))
+                new DirectionalLight(new Color(200, 200, 0), new Vector(0,-4 ,-1))
         );
-        /*scene.getLights().add(
-                new DirectionalLight(new Color(200, 200, 0), new Vector(0,0 ,-1))
-        );*/
+        scene.getLights().add(
+                new SpotLight(new Color(600,700,400),new Point(-50,28,-2), new Vector(0,1,0))
+        );
 
-     /*   scene.getLights().add(
-                new PointLight(new Color(153,153,133),new Point( -10,80,200))
-        );*/
 
 
 
