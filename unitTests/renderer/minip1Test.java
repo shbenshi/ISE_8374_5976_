@@ -105,11 +105,6 @@ public class minip1Test {
 
 
 
-
-
-
-
-
                 //3- right
                /* new Triangle(new Point(15,-45,0),new Point(49,11,0), new Point(69,-45,0)).setEmission(new Color(175,175,175))
                         .setMaterial(new Material().setKd(0).setKs(0).setShininess(100))
