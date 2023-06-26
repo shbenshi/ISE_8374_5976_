@@ -92,8 +92,8 @@ public class myFirstPictureTest {
 
         camera.setImageWriter(new ImageWriter("ourPicture", 600, 600)) //
                 .setRayTracer(new RayTracerBasic(scene)) //
-                .renderImage() //
-                .writeToImage();
+                .renderImage(); //
+                camera.writeToImage();
     }
 
 

@@ -16,10 +16,10 @@ import static java.awt.Color.*;
 public class minip1Test {
     @Test
     public void minip1Test() {
-        Scene scene = new Scene.SceneBuilder("finalPicture").setBackground(new Color(135,206,250))
+        Scene scene = new Scene.SceneBuilder("finalPictureWithAnti").setBackground(new Color(135,206,250))
                 .build().setSceneBack(new Color(135,206,250));// mens black
         Camera camera = new Camera(new Point(0, 0, 1000), new Vector(0, 0, -1), new Vector(0, 1, 0));
-        camera.setVPSize(150, 150).setVPDistance(1000);
+        camera.setVPSize(150, 150).setVPDistance(1000).antiAliasingOn(5, false);
 
         //back
         scene.getGeometries().add(
@@ -332,9 +332,9 @@ public class minip1Test {
 
 
 
-                camera.setImageWriter(new ImageWriter("minip1", 1000, 1000)) //
+                camera.setImageWriter(new ImageWriter("minip1WithAnti", 2500, 2500)) //
                  .setRayTracer(new RayTracerBasic(scene)) //
-                .renderImage() //
-                .writeToImage();
+                .renderImage(); //
+                camera.writeToImage();
     }
 }

@@ -19,7 +19,6 @@ public class AmbientLight extends Light{
      */
     public static final Color NONE = Color.BLACK;
 
-    //todo: change commit
     /**
      * Constructs an AmbientLight object with the specified intensity and coefficient.
      *
@@ -29,6 +28,7 @@ public class AmbientLight extends Light{
     public AmbientLight(Color Ia, Double3 Ka) {
 
         super(Ia.scale(Ka));
+        //super(Color.BLACK);
     }
 
     public AmbientLight(Color Ia, double Ka) {
