@@ -25,7 +25,7 @@ public class minip1Test {
         scene.getGeometries().add(
 
                 new Plane(new Point(5, -80, -300), new Vector(5, -240, -20))
-                        .setEmission(new Color(185, 600, 1000).scale(0.35))//
+                        .setEmission(new Color(174,250,1300).scale(0.35))//
                         .setMaterial(new Material().setKd(0.5).setKs(0.5).setShininess(100))
         );
 
@@ -43,53 +43,53 @@ public class minip1Test {
                 new DirectionalLight(new Color(200, 200, 0), new Vector(0,-4 ,-1))
         );
         scene.getLights().add(
-                new SpotLight(new Color(600,700,400),new Point(-50,28,-2), new Vector(0,1,0))
+                new SpotLight(new Color(600,700,400),new Point(-40,28,-2), new Vector(0,1,0))
         );
-
-
-
+        scene.getLights().add(
+                new PointLight(new Color(100,100,0),new Point(-40,8,0))
+        );
 
 
         //sun
         scene.getGeometries().add(
-                new Sphere(new Point(-50,37,100), 10).setEmission(new Color(yellow)).
-                        setMaterial(new Material().setKd(0.9).setKs(0.3).setShininess(1000).setKt(0.6)),
-                new Sphere(new Point(-62.6,36.7,100),1.7d).setEmission(new Color(yellow)).
-                        setMaterial(new Material().setKd(0.9).setKs(0.3).setShininess(1000).setKt(0.6)),
-                new Sphere(new Point(-62,41,100),1.7d).setEmission(new Color(yellow)).
-                        setMaterial(new Material().setKd(0.9).setKs(0.3).setShininess(1000).setKt(0.6)),
-                new Sphere(new Point(-60.3,45,100),1.7d).setEmission(new Color(yellow)).
-                        setMaterial(new Material().setKd(0.9).setKs(0.3).setShininess(1000).setKt(0.6)),
-                new Sphere(new Point(-56.3,48,100),1.7d).setEmission(new Color(yellow)).
-                        setMaterial(new Material().setKd(0.9).setKs(0.3).setShininess(1000).setKt(0.6)),
-                new Sphere(new Point(-52,49.5,100),1.7d).setEmission(new Color(yellow)).
-                        setMaterial(new Material().setKd(0.9).setKs(0.3).setShininess(1000).setKt(0.6)),
-                new Sphere(new Point(-47.5,49.5,100),1.7d).setEmission(new Color(yellow)).
-                        setMaterial(new Material().setKd(0.9).setKs(0.3).setShininess(1000).setKt(0.6)),
-                new Sphere(new Point(-43,48,100),1.7d).setEmission(new Color(yellow)).
-                        setMaterial(new Material().setKd(0.9).setKs(0.3).setShininess(1000).setKt(0.6)),
-                new Sphere(new Point(-39.8,45,100),1.7d).setEmission(new Color(yellow)).
-                        setMaterial(new Material().setKd(0.9).setKs(0.3).setShininess(1000).setKt(0.6)),
-                new Sphere(new Point(-38,41.2,100),1.7d).setEmission(new Color(yellow)).
-                        setMaterial(new Material().setKd(0.9).setKs(0.3).setShininess(1000).setKt(0.6)),
-                new Sphere(new Point(-37.6,37,100),1.7d).setEmission(new Color(yellow)).
-                        setMaterial(new Material().setKd(0.9).setKs(0.3).setShininess(1000).setKt(0.6)),
-                new Sphere(new Point(-38,33,100),1.7d).setEmission(new Color(yellow)).
-                        setMaterial(new Material().setKd(0.9).setKs(0.3).setShininess(1000).setKt(0.6)),
-                new Sphere(new Point(-40,29,100),1.7d).setEmission(new Color(yellow)).
-                        setMaterial(new Material().setKd(0.9).setKs(0.3).setShininess(1000).setKt(0.6)),
-                new Sphere(new Point(-43,26,100),1.7d).setEmission(new Color(yellow)).
-                        setMaterial(new Material().setKd(0.9).setKs(0.3).setShininess(1000).setKt(0.6)),
-                new Sphere(new Point(-47,24.3,100),1.7d).setEmission(new Color(yellow)).
-                        setMaterial(new Material().setKd(0.9).setKs(0.3).setShininess(1000).setKt(0.6)),
-                new Sphere(new Point(-51.5,24,100),1.7d).setEmission(new Color(yellow)).
-                        setMaterial(new Material().setKd(0.9).setKs(0.3).setShininess(1000).setKt(0.6)),
-                new Sphere(new Point(-56,25.3,100),1.7d).setEmission(new Color(yellow)).
-                        setMaterial(new Material().setKd(0.9).setKs(0.3).setShininess(1000).setKt(0.6)),
-                new Sphere(new Point(-59.8,27.8,100),1.7d).setEmission(new Color(yellow)).
-                        setMaterial(new Material().setKd(0.9).setKs(0.3).setShininess(1000).setKt(0.6)),
-                new Sphere(new Point(-61.8,32,100),1.7d).setEmission(new Color(yellow)).
-                        setMaterial(new Material().setKd(0.9).setKs(0.3).setShininess(1000).setKt(0.6))
+                new Sphere(new Point(-50,37,100), 10).setEmission(new Color(248,246,20))
+                        .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
+                new Sphere(new Point(-62.6,36.7,100),1.7d).setEmission(new Color(248,246,20))
+                        .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
+                new Sphere(new Point(-62,41,100),1.7d).setEmission(new Color(248,246,20))
+                        .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
+                new Sphere(new Point(-60.3,45,100),1.7d).setEmission(new Color(248,246,20))
+                        .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
+                new Sphere(new Point(-56.3,48,100),1.7d).setEmission(new Color(248,246,20))
+                        .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
+                new Sphere(new Point(-52,49.5,100),1.7d).setEmission(new Color(248,246,20))
+                        .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
+                new Sphere(new Point(-47.5,49.5,100),1.7d).setEmission(new Color(248,246,20))
+                        .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
+                new Sphere(new Point(-43,48,100),1.7d).setEmission(new Color(248,246,20))
+                        .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
+                new Sphere(new Point(-39.8,45,100),1.7d).setEmission(new Color(248,246,20))
+                        .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
+                new Sphere(new Point(-38,41.2,100),1.7d).setEmission(new Color(248,246,20))
+                        .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
+                new Sphere(new Point(-37.6,37,100),1.7d).setEmission(new Color(248,246,20))
+                        .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
+                new Sphere(new Point(-38,33,100),1.7d).setEmission(new Color(248,246,20))
+                        .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
+                new Sphere(new Point(-40,29,100),1.7d).setEmission(new Color(248,246,20))
+                        .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
+                new Sphere(new Point(-43,26,100),1.7d).setEmission(new Color(248,246,20))
+                        .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
+                new Sphere(new Point(-47,24.3,100),1.7d).setEmission(new Color(248,246,20))
+                        .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
+                new Sphere(new Point(-51.5,24,100),1.7d).setEmission(new Color(248,246,20))
+                        .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
+                new Sphere(new Point(-56,25.3,100),1.7d).setEmission(new Color(248,246,20))
+                        .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
+                new Sphere(new Point(-59.8,27.8,100),1.7d).setEmission(new Color(248,246,20))
+                        .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
+                new Sphere(new Point(-61.8,32,100),1.7d).setEmission(new Color(248,246,20))
+                        .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000))
         );
 
 
@@ -149,72 +149,71 @@ public class minip1Test {
         //cloud
         scene.getGeometries().add(
                 //1-b
-                new Sphere(new Point(10, 60, 0), 10d).setEmission(new Color(WHITE))
+                new Sphere(new Point(10, 60, 0), 10d).setEmission(new Color(248,245,245))
                         .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
-                new Sphere(new Point(1, 57, 0), 7d).setEmission(new Color(WHITE))
+                new Sphere(new Point(1, 57, 0), 7d).setEmission(new Color(248,245,245))
                         .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
-                new Sphere(new Point(19, 57, 0), 7d).setEmission(new Color(WHITE))
+                new Sphere(new Point(19, 57, 0), 7d).setEmission(new Color(248,245,245))
                         .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
 
                 //2-s
-                new Sphere(new Point(55, 64, 0), 6d).setEmission(new Color(WHITE))
+                new Sphere(new Point(55, 64, 0), 6d).setEmission(new Color(248,245,245))
                         .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
-                new Sphere(new Point(60, 62, 0), 4d).setEmission(new Color(WHITE))
+                new Sphere(new Point(60, 62, 0), 4d).setEmission(new Color(248,245,245))
                         .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
-                new Sphere(new Point(50, 62, 0), 4d).setEmission(new Color(WHITE))
+                new Sphere(new Point(50, 62, 0), 4d).setEmission(new Color(248,245,245))
                         .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
 
                 //3 -m
-                new Sphere(new Point(47, 37, 0), 7d).setEmission(new Color(WHITE))
+                new Sphere(new Point(47, 37, 0), 7d).setEmission(new Color(248,245,245))
                         .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
-                new Sphere(new Point(53, 35, 0), 5d).setEmission(new Color(WHITE))
+                new Sphere(new Point(53, 35, 0), 5d).setEmission(new Color(248,245,245))
                         .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
-                new Sphere(new Point(41, 35, 0), 5d).setEmission(new Color(WHITE))
-                        .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
-
-
-
-                new Sphere(new Point(-58, 7.5, -200), 7d).setEmission(new Color(WHITE))
-                        .setMaterial(new Material().setKd(0.54).setKs(0.003).setShininess(3000).setKt(0.15)),
-                new Sphere(new Point(-63, 6, -200), 5d).setEmission(new Color(WHITE))
-                        .setMaterial(new Material().setKd(0.54).setKs(0.003).setShininess(3000).setKt(0.15)),
-                new Sphere(new Point(-52, 6, -200), 5d).setEmission(new Color(WHITE))
-                        .setMaterial(new Material().setKd(0.54).setKs(0.003).setShininess(3000).setKt(0.15)),
-
-
-                new Sphere(new Point(-30, 64, 0), 6d).setEmission(new Color(WHITE))
-                        .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
-                new Sphere(new Point(-35, 62, 0), 4d).setEmission(new Color(WHITE))
-                        .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
-                new Sphere(new Point(-24, 62, 0), 4d).setEmission(new Color(WHITE))
+                new Sphere(new Point(41, 35, 0), 5d).setEmission(new Color(248,245,245))
                         .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
 
 
 
-                new Sphere(new Point(-24, 34, 0), 7d).setEmission(new Color(WHITE))
+                new Sphere(new Point(-58, 7.5, -200), 7d).setEmission(new Color(248,245,245))
                         .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
-                new Sphere(new Point(-30, 32, 0), 5d).setEmission(new Color(WHITE))
+                new Sphere(new Point(-63, 6, -200), 5d).setEmission(new Color(248,245,245))
                         .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
-                new Sphere(new Point(-18, 32, 0), 5d).setEmission(new Color(WHITE))
+                new Sphere(new Point(-52, 6, -200), 5d).setEmission(new Color(248,245,245))
+                        .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
+
+                new Sphere(new Point(-30, 64, 0), 6d).setEmission(new Color(248,245,245))
+                        .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
+                new Sphere(new Point(-35, 62, 0), 4d).setEmission(new Color(248,245,245))
+                        .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
+                new Sphere(new Point(-24, 62, 0), 4d).setEmission(new Color(248,245,245))
+                        .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
+
+
+
+                new Sphere(new Point(-24, 34, 0), 7d).setEmission(new Color(248,245,245))
+                        .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
+                new Sphere(new Point(-30, 32, 0), 5d).setEmission(new Color(248,245,245))
+                        .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
+                new Sphere(new Point(-18, 32, 0), 5d).setEmission(new Color(248,245,245))
                         .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
 
                 //2-s
-                new Sphere(new Point(62, 15, 0), 6d).setEmission(new Color(WHITE))
+                new Sphere(new Point(62, 15, 0), 6d).setEmission(new Color(248,245,245))
                         .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
-                new Sphere(new Point(68, 13, 0), 4d).setEmission(new Color(WHITE))
+                new Sphere(new Point(68, 13, 0), 4d).setEmission(new Color(248,245,245))
                         .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
-                new Sphere(new Point(57, 13, 0), 4d).setEmission(new Color(WHITE))
+                new Sphere(new Point(57, 13, 0), 4d).setEmission(new Color(248,245,245))
                         .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
 
-                new Sphere(new Point(10, 27, -200), 15d).setEmission(new Color(WHITE))
+                new Sphere(new Point(10, 40, 0), 7.5d).setEmission(new Color(248,245,245))
                         .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
-                new Sphere(new Point(-3, 21, -200), 12d).setEmission(new Color(WHITE))
+                new Sphere(new Point(3, 38, 0), 5.5d).setEmission(new Color(248,245,245))
                         .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
-                new Sphere(new Point(23, 21, -200), 12d).setEmission(new Color(WHITE))
+                new Sphere(new Point(17, 38, 0), 5.5d).setEmission(new Color(248,245,245))
                         .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000))
                 );
 
-
+        //heals
         scene.getGeometries().add(
                 new Sphere(new Point(-55,-70,160),40).setEmission(new Color(0,121,67))
                         .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
