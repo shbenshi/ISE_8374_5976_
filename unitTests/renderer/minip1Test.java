@@ -21,11 +21,22 @@ public class minip1Test {
         Camera camera = new Camera(new Point(0, 0, 1000), new Vector(0, 0, -1), new Vector(0, 1, 0));
         camera.setVPSize(150, 150).setVPDistance(1000);
 
+        //back
+        scene.getGeometries().add(
+
+                new Plane(new Point(5, -80, -300), new Vector(5, -240, -20))
+                        .setEmission(new Color(185, 600, 1000).scale(0.35))//
+                        .setMaterial(new Material().setKd(0.5).setKs(0.5).setShininess(100))
+        );
+
+        //gross
         scene.getGeometries().add(
                 new Plane(new Point(0, -55, -750), new Vector(0, 0.5, 0))
                         .setEmission(new Color(178,255,141))
                         .setMaterial(new Material().setKd(0.5).setKs(0.5).setShininess(100))
         );
+
+
 
         //sun
         scene.getGeometries().add(
@@ -68,12 +79,7 @@ public class minip1Test {
                 new Sphere(new Point(-61.8,32,100),1.7d).setEmission(new Color(yellow)).
                         setMaterial(new Material().setKd(0.9).setKs(0.3).setShininess(1000).setKt(0.6))
         );
-        scene.getGeometries().add(
 
-                new Plane(new Point(5, -80, -300), new Vector(5, -240, -20))
-                        .setEmission(new Color(185, 266, 1000).scale(0.35))//
-                        .setMaterial(new Material().setKd(0.5).setKs(0.5).setShininess(100))
-        );
 
         //snow
         /*scene.getGeometries().add(
