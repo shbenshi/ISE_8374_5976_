@@ -145,6 +145,14 @@ public class minip1Test {
 
                 );
 
+        /*//birds
+        scene.getGeometries().add(
+                new Triangle(new Point(12,0,20), new Point(18,7,5), new Point(22,0,15))
+                        .setEmission(new Color(0,0,0))
+                        .setMaterial(new Material().setKd(0.2).setKs(0.6).setShininess(300))
+
+        );*/
+
 
         //cloud
         scene.getGeometries().add(
@@ -164,7 +172,7 @@ public class minip1Test {
                 new Sphere(new Point(50, 62, 0), 4d).setEmission(new Color(248,245,245))
                         .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
 
-                //3 -m
+                //6
                 new Sphere(new Point(47, 37, 0), 7d).setEmission(new Color(248,245,245))
                         .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
                 new Sphere(new Point(53, 35, 0), 5d).setEmission(new Color(248,245,245))
@@ -173,12 +181,12 @@ public class minip1Test {
                         .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
 
 
-
-                new Sphere(new Point(-58, 7.5, 0), 7d).setEmission(new Color(248,245,245))
+                //1
+                new Sphere(new Point(-58, 1, 0), 7d).setEmission(new Color(248,245,245))
                         .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
-                new Sphere(new Point(-63, 6, 0), 5d).setEmission(new Color(248,245,245))
+                new Sphere(new Point(-63, -1, 0), 5d).setEmission(new Color(248,245,245))
                         .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
-                new Sphere(new Point(-52, 6, 0), 5d).setEmission(new Color(248,245,245))
+                new Sphere(new Point(-52, -1, 0), 5d).setEmission(new Color(248,245,245))
                         .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
 
                 new Sphere(new Point(-30, 64, 0), 6d).setEmission(new Color(248,245,245))
@@ -197,12 +205,12 @@ public class minip1Test {
                 new Sphere(new Point(-7, 15, 0), 5d).setEmission(new Color(248,245,245))
                         .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
 */
-                //2-s
-                new Sphere(new Point(62, 15, 0), 6d).setEmission(new Color(248,245,245))
+                //7
+                new Sphere(new Point(62, 4, 0), 6d).setEmission(new Color(248,245,245))
                         .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
-                new Sphere(new Point(68, 13, 0), 4d).setEmission(new Color(248,245,245))
+                new Sphere(new Point(68, 2, 0), 4d).setEmission(new Color(248,245,245))
                         .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
-                new Sphere(new Point(57, 13, 0), 4d).setEmission(new Color(248,245,245))
+                new Sphere(new Point(57, 2, 0), 4d).setEmission(new Color(248,245,245))
                         .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
 
                 new Sphere(new Point(-20, 35, 0), 7.5d).setEmission(new Color(248,245,245))
@@ -213,7 +221,7 @@ public class minip1Test {
                         .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000))
                 );
 
-        //heals
+        //hills
         scene.getGeometries().add(
                 new Sphere(new Point(-55,-70,160),40).setEmission(new Color(0,121,67))
                         .setMaterial(new Material().setKd(0.5).setKs(0.6).setShininess(3000)),
