@@ -16,11 +16,16 @@ import static java.awt.Color.*;
 public class minip1Test {
     @Test
     public void minip1Test() {
-        Scene scene = new Scene.SceneBuilder("finalPicture")
-                .build().setSceneBack(new Color(173, 238, 255));// mens black
+        Scene scene = new Scene.SceneBuilder("finalPicture").setBackground(new Color(135,206,250))
+                .build().setSceneBack(new Color(135,206,250));// mens black
         Camera camera = new Camera(new Point(0, 0, 1000), new Vector(0, 0, -1), new Vector(0, 1, 0));
         camera.setVPSize(150, 150).setVPDistance(1000);
 
+        scene.getGeometries().add(
+                new Plane(new Point(0, -55, -750), new Vector(0, 0.5, 0))
+                        .setEmission(new Color(178,255,141))
+                        .setMaterial(new Material().setKd(0.5).setKs(0.5).setShininess(100))
+        );
 
         //sun
         scene.getGeometries().add(
@@ -63,6 +68,12 @@ public class minip1Test {
                 new Sphere(new Point(-61.8,32,100),1.7d).setEmission(new Color(yellow)).
                         setMaterial(new Material().setKd(0.9).setKs(0.3).setShininess(1000).setKt(0.6))
         );
+        scene.getGeometries().add(
+
+                new Plane(new Point(5, -80, -300), new Vector(5, -240, -20))
+                        .setEmission(new Color(185, 266, 1000).scale(0.35))//
+                        .setMaterial(new Material().setKd(0.5).setKs(0.5).setShininess(100))
+        );
 
         //snow
         /*scene.getGeometries().add(
@@ -81,35 +92,45 @@ public class minip1Test {
         //mountain
         scene.getGeometries().add(
                 //1- left
-                new Triangle(new Point(-47,-37,150),new Point(-28,16,0),new Point(-23,-45,0)).setEmission(new Color(175,175,175))
+                new Triangle(new Point(-47,-37,70),new Point(-28,16,0),new Point(-23,-45,0)).setEmission(new Color(175,175,175))
                         .setMaterial(new Material().setKd(0.6).setKs(0.4).setShininess(200)),
-                new Triangle(new Point(-5,-27,150),new Point(-28,16,0),new Point(-23,-45,0)).setEmission(new Color(175,175,175))
+                new Triangle(new Point(-5,-27,70),new Point(-28,16,0),new Point(-23,-45,0)).setEmission(new Color(175,175,175))
                         .setMaterial(new Material().setKd(0.6).setKs(0.4).setShininess(200)),
-                new Triangle(new Point(-47,-37,150),new Point(-28,16,0),new Point(-37,-42,0)).setEmission(new Color(175,175,175))
+                new Triangle(new Point(-47,-37,70),new Point(-28,16,0),new Point(-37,-42,0)).setEmission(new Color(175,175,175))
                         .setMaterial(new Material().setKd(0.6).setKs(0.4).setShininess(200)),
-                new Triangle(new Point(-5,-27,150),new Point(-28,16,0),new Point(-37,-42,-150)).setEmission(new Color(175,175,175))
+                new Triangle(new Point(-5,-27,70),new Point(-28,16,0),new Point(-37,-42,-70)).setEmission(new Color(175,175,175))
                         .setMaterial(new Material().setKd(0.6).setKs(0.4).setShininess(200)),
 
 
 
                 //2- middle
-                new Triangle(new Point(-20,-39,170),new Point(8,28,0),new Point(20,-42,170)).setEmission(new Color(175,175,175))
+                new Triangle(new Point(-25,-40,100),new Point(8,28,0),new Point(20,-42,100)).setEmission(new Color(175,175,175))
+                        .setMaterial(new Material().setKd(0).setKs(7).setShininess(100)),
+                new Triangle(new Point(-25,-40,100),new Point(8,28,0),new Point(10,-30,0)).setEmission(new Color(175,175,175))
                         .setMaterial(new Material().setKd(0).setKs(0).setShininess(100)),
-                new Triangle(new Point(-20,-39,170),new Point(8,28,0),new Point(10,-30,0)).setEmission(new Color(175,175,175))
+                new Triangle(new Point(10,-30,0),new Point(8,28,0),new Point(35,-45,0)).setEmission(new Color(175,175,175))
                         .setMaterial(new Material().setKd(0).setKs(0).setShininess(100)),
-                new Triangle(new Point(10,-30,0),new Point(8,28,0),new Point(35,-35,0)).setEmission(new Color(175,175,175))
+                new Triangle(new Point(20,-42,100),new Point(8,28,0),new Point(35,-45,0)).setEmission(new Color(175,175,175))
                         .setMaterial(new Material().setKd(0).setKs(0).setShininess(100)),
-                new Triangle(new Point(20,-42,170),new Point(8,28,0),new Point(35,-35,0)).setEmission(new Color(175,175,175))
-                        .setMaterial(new Material().setKd(0).setKs(0).setShininess(100))
 
 
 
 
                 //3- right
-               /* new Triangle(new Point(15,-45,0),new Point(49,11,0), new Point(69,-45,0)).setEmission(new Color(175,175,175))
+                new Triangle(new Point(25,-45,-5),new Point(45,18,0), new Point(70,-45,0)).setEmission(new Color(pink))
+                        .setMaterial(new Material().setKd(0).setKs(0).setShininess(100)),
+                new Triangle(new Point(10,-25,-5),new Point(45,18,0), new Point(40,-25,-5)).setEmission(new Color(red))
+                        .setMaterial(new Material().setKd(0).setKs(0).setShininess(100)),
+                new Triangle(new Point(25,-45,-5),new Point(45,18,0), new Point(10,-25,0)).setEmission(new Color(yellow))
+                        .setMaterial(new Material().setKd(0).setKs(0).setShininess(100)),
+                new Triangle(new Point(40,-25,-5),new Point(45,18,0), new Point(70,-45,0)).setEmission(new Color(blue))
                         .setMaterial(new Material().setKd(0).setKs(0).setShininess(100))
-*/
-        );
+
+
+
+
+
+                );
 
 
         //cloud
@@ -143,15 +164,15 @@ public class minip1Test {
 
 
 
-     /*  scene.getLights().add(
-                new SpotLight(new Color(10000, 4000, 12), new Point( -10,30,150), new Vector(13, -2, 0))
+       /*scene.getLights().add(
+                new SpotLight(new Color(153, 153, 133), new Point( -50,37,190), new Vector(-1, -1, 0))
                         .setKl(0.00000009).setKq(0.0009));
 */
        scene.getLights().add(
-                new DirectionalLight(new Color(0, 0, 60).scale(0.00000000000001), new Vector(0,45 ,0))
+                new DirectionalLight(new Color(0, 0, 60).scale(0.00000000000001), new Vector(-20,45 ,200))
         );
         scene.getLights().add(
-                new PointLight(new Color(153,153,133),new Point( -10,30,150))
+                new PointLight(new Color(153,153,133),new Point( -10,80,200))
         );
 
 
