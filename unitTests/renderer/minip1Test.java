@@ -38,6 +38,21 @@ public class minip1Test {
 
 
 
+
+        scene.getLights().add(
+                new DirectionalLight(new Color(200, 200, 0), new Vector(0,-1 ,-3))
+        );
+        /*scene.getLights().add(
+                new DirectionalLight(new Color(200, 200, 0), new Vector(0,0 ,-1))
+        );*/
+
+     /*   scene.getLights().add(
+                new PointLight(new Color(153,153,133),new Point( -10,80,200))
+        );*/
+
+
+
+
         //sun
         scene.getGeometries().add(
                 new Sphere(new Point(-50,37,100), 10).setEmission(new Color(yellow)).
@@ -108,7 +123,6 @@ public class minip1Test {
                         .setMaterial(new Material().setKd(0.6).setKs(0.4).setShininess(200)),
 
 
-
                 //2- middle
                 new Triangle(new Point(-25,-55,100),new Point(8,28,0),new Point(20,-62,100)).setEmission(new Color(125,70,0))
                         .setMaterial(new Material().setKd(0).setKs(7).setShininess(100)),
@@ -117,7 +131,7 @@ public class minip1Test {
                 new Triangle(new Point(10,-50,0),new Point(8,28,0),new Point(35,-65,0)).setEmission(new Color(125,70,0))
                         .setMaterial(new Material().setKd(0).setKs(0).setShininess(100)),
                 new Triangle(new Point(20,-62,100),new Point(8,28,0),new Point(35,-65,0)).setEmission(new Color(125,70,0))
-                        .setMaterial(new Material().setKd(0).setKs(0).setShininess(100)),
+                        .setMaterial(new Material().setKd(0.6).setKs(0.4).setShininess(100)),
 
 
 
@@ -126,11 +140,11 @@ public class minip1Test {
                 new Triangle(new Point(25,-65,-5),new Point(45,10,0), new Point(70,-65,0)).setEmission(new Color(97,61,5))
                         .setMaterial(new Material().setKd(0).setKs(0).setShininess(100)),
                 new Triangle(new Point(10,-45,-5),new Point(45,10,0), new Point(40,-45,-5)).setEmission(new Color(97,61,5))
-                        .setMaterial(new Material().setKd(0).setKs(0).setShininess(100)),
+                        .setMaterial(new Material().setKd(0.3).setKs(0.6).setShininess(200)),
                 new Triangle(new Point(25,-65,-5),new Point(45,10,0), new Point(10,-45,0)).setEmission(new Color(97,61,5))
-                        .setMaterial(new Material().setKd(0).setKs(0).setShininess(100)),
+                        .setMaterial(new Material().setKd(0.3).setKs(0.6).setShininess(200)),
                 new Triangle(new Point(40,-45,-5),new Point(45,10,0), new Point(70,-65,0)).setEmission(new Color(97,61,5))
-                        .setMaterial(new Material().setKd(0).setKs(0).setShininess(100))
+                        .setMaterial(new Material().setKd(0.3).setKs(0.6).setShininess(200))
 
                 );
 
@@ -218,23 +232,6 @@ public class minip1Test {
 
 
                 );
-
-       /*scene.getLights().add(
-                new SpotLight(new Color(153, 153, 133), new Point( -50,37,190), new Vector(-1, -1, 0))
-                        .setKl(0.00000009).setKq(0.0009));
-*/
-       scene.getLights().add(
-                new DirectionalLight(new Color(0, 0, 60).scale(0.00000000000001), new Vector(-20,45 ,200))
-        );
-        scene.getLights().add(
-                new PointLight(new Color(153,153,133),new Point( -10,80,200))
-        );
-
-
-
-
-
-
                 camera.setImageWriter(new ImageWriter("minip1", 1000, 1000)) //
                  .setRayTracer(new RayTracerBasic(scene)) //
                 .renderImage() //
