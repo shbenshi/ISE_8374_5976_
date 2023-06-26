@@ -154,85 +154,47 @@ public class minip1Test {
                         .setMaterial(new Material().setKd(0.2).setKs(0.6).setShininess(300))
 
         );*/
-
-
-
         //bubbles
-
         scene.getGeometries().add(
-
-                //hils1
                 //1
                 new Sphere(new Point(-48,-20,0),2d)
                         .setEmission(new Color(255,255,255).scale(0.05))
                         .setMaterial(new Material().setKd(0.1)
                                 .setKs(0.9).setShininess(300).setKt(0.8).setKr(0.4)),
-
-
-
-                //hils2
-                //2
+                new Sphere(new Point(-68,-30,0),2d)
+                        .setEmission(new Color(255,255,255).scale(0.05))
+                        .setMaterial(new Material().setKd(0.1)
+                                .setKs(0.9).setShininess(300).setKt(0.8).setKr(0.4)),
+                new Sphere(new Point(-68,-15,0),2d)
+                        .setEmission(new Color(255,255,255).scale(0.05))
+                        .setMaterial(new Material().setKd(0.1)
+                                .setKs(0.9).setShininess(300).setKt(0.8).setKr(0.2)),
                 new Sphere(new Point(-44,-42,221),1.5d)
                         .setEmission(new Color(255,255,255).scale(0.05))
                         .setMaterial(new Material().setKd(0.1)
-                                .setKs(0.9).setShininess(300).setKt(0.8)),
-                         /* //3
-                new Sphere(new Point(-14,-50,150),2d)
-                        .setEmission(new Color(255,255,255).scale(0.05))
-                        .setMaterial(new Material().setKd(0.1)
-                                .setKs(0.9).setShininess(300).setKt(0.8)),
-*/
-                //4
-                new Sphere(new Point(-42,-42,210),2.3d)
+                                .setKs(0.9).setShininess(300).setKt(0.9)),
+
+                new Sphere(new Point(-48,-30,210),1.7d)
                         .setEmission(new Color(255,255,255).scale(0.05))
                         .setMaterial(new Material().setKd(0.1)
                                 .setKs(0.9).setShininess(300).setKt(0.8)),
 
-                //5
-                new Sphere(new Point(-42,-43.4,220),2d)
+                new Sphere(new Point(-15,-40,220),2d)
+                        .setEmission(new Color(255,255,255).scale(0.05))
+                        .setMaterial(new Material().setKd(0.1)
+                                .setKs(0.9).setShininess(300).setKt(0.6)),
+
+                new Sphere(new Point(-30,-38,221),1.5d)
                         .setEmission(new Color(255,255,255).scale(0.05))
                         .setMaterial(new Material().setKd(0.1)
                                 .setKs(0.9).setShininess(300).setKt(0.8)),
-//8
-                new Sphere(new Point(-52,-39,221),1.5d)
+                new Sphere(new Point(-51,-50,221),2.3d)
                         .setEmission(new Color(255,255,255).scale(0.05))
                         .setMaterial(new Material().setKd(0.1)
                                 .setKs(0.9).setShininess(300).setKt(0.8)),
 
-                //
-                new Sphere(new Point(-46,-36,221),2.3d)
-                        .setEmission(new Color(255,255,255).scale(0.05))
-                        .setMaterial(new Material().setKd(0.1)
-                                .setKs(0.9).setShininess(300).setKt(0.8)),
-
-                //
-                new Sphere(new Point(-45,-33,223),2d)
-                        .setEmission(new Color(255,255,255).scale(0.05))
-                        .setMaterial(new Material().setKd(0.1)
-                                .setKs(0.9).setShininess(300).setKt(0.8)),
-//
-                new Sphere(new Point(-38,-35,221),2.6d)
-                        .setEmission(new Color(255,255,255).scale(0.05))
-                        .setMaterial(new Material().setKd(0.1)
-                                .setKs(0.9).setShininess(300).setKt(0.8)),
-
-
-                //hils3
-                //1
-                new Sphere(new Point(38,-39,221),2.6d)
-                        .setEmission(new Color(255,255,255).scale(0.05))
-                        .setMaterial(new Material().setKd(0.1)
-                                .setKs(0.9).setShininess(300).setKt(0.8)),
-
-                //2
-                new Sphere(new Point(40,-37,221),3d)
-                        .setEmission(new Color(255,255,255).scale(0.05))
-                        .setMaterial(new Material().setKd(0.1)
-                                .setKs(0.9).setShininess(300).setKt(0.8)),
-
-                //3
-                new Sphere(new Point(50,-41,221),1.7d)
-                        .setEmission(new Color(255,255,255).scale(0.05))
+                new Sphere(new Point(-28,-8,223),1.5d)
+                        .setEmission(new Color(255,255,0).scale(0.05))
                         .setMaterial(new Material().setKd(0.1)
                                 .setKs(0.9).setShininess(300).setKt(0.8))
 
@@ -241,11 +203,25 @@ public class minip1Test {
 
 
 
+                /*
 
+                new Sphere(new Point(38,-39,221),2.6d)
+                        .setEmission(new Color(255,255,255).scale(0.05))
+                        .setMaterial(new Material().setKd(0.1)
+                                .setKs(0.9).setShininess(300).setKt(0.8)),
 
+                //10
+                new Sphere(new Point(40,-37,221),3d)
+                        .setEmission(new Color(255,255,255).scale(0.05))
+                        .setMaterial(new Material().setKd(0.1)
+                                .setKs(0.9).setShininess(300).setKt(0.8)),
 
-
-
+                //11
+                new Sphere(new Point(50,-41,221),1.7d)
+                        .setEmission(new Color(255,255,255).scale(0.05))
+                        .setMaterial(new Material().setKd(0.1)
+                                .setKs(0.9).setShininess(300).setKt(0.8))
+                */
         );
 
         //cloud
