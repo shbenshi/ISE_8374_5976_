@@ -110,7 +110,6 @@ public class Camera {
             throw new IllegalArgumentException("number of rays through pixels must be positive");
         }
         this.antiAliasingNumRays = multiRaysNum;
-        //this.adaptiveSuperSampling=adaptive;
         return this;
     }
 
@@ -120,7 +119,7 @@ public class Camera {
     }
     public List<Ray> constructRaySuperSampling(int nX, int nY, int j, int i) {
         List<Ray> result = new LinkedList<Ray>();
-        //view plane center
+
         Point Pc = P0.add(vTo.scale(dis));
         double pixelHeight = (double) height / nY;
         double pixelWidth = (double) width / nX;
@@ -129,7 +128,7 @@ public class Camera {
 
         Point Pij = Pc;
         Point point;
-        //how to move from the center of the view plane.
+
         double Yi = -(0.5 + i - (nY - 1) / 2d) * pixelHeight + 0.5 * cellHeight;
         double Xj = (-0.5 + j - (nX - 1) / 2d) * pixelWidth + 0.5 * cellWidth;
         if (Xj != 0)
@@ -147,14 +146,13 @@ public class Camera {
         return result;
     }
     public Color pixelColorASS(int nX, int nY, int j, int i) {
-        //view plane center
+
         Point Pc = P0.add(vTo.scale(dis));
         double pixelHeight = (double) height / nY;
         double pixelWidth = (double) width / nX;
         double cellHeight = (double) pixelHeight / antiAliasingNumRays;
         double cellWidth = (double) pixelWidth / antiAliasingNumRays;
 
-        //pixel[i,j] center
         Point Pij = Pc;
         Point point;
         double Yi = -(0.5 + i - (nY - 1) / 2d) * pixelHeight + 0.5 * cellHeight; //how to move from the center of the view plane.
@@ -172,25 +170,22 @@ public class Camera {
         return recursiveConstructRay(Pij, colors, pixelHeight, pixelWidth, vUp, vRight, recursionLevel);//***
     }
     public Color recursiveConstructRay(Point corner, List<Color> c, double height, double width, Vector vUp, Vector vRight, int level) {
-        //if the colors are very similar return this color.
         if (c.get(0).equals(c.get(1)) && c.get(0).equals(c.get(2)) && c.get(0).equals(c.get(3)))
             return c.get(0);
-        //stop the recursion.
         if(level<=0) {
             return c.get(0).add(c.get(1)).add(c.get(2)).add(c.get(3)).reduce(4);
         }
-        // 01 if the point (and the color) between the point p0 and p1 (for example).
-        //Finds 3 internal points to be sent to the recursive calls.
+
         Point p01= corner.add(vUp.scale(height/2));
         Point p31= corner.add(vRight.scale(width/2));
         Point pCenter= corner.add(vUp.scale(height/2)).add(vRight.scale(width/2));
-        //find the colors of all the internal points.
+
         Color c01=castRay(new Ray(this.P0, p01.subtract(this.P0)));
         Color c12=castRay(new Ray(this.P0, corner.add(vUp.scale(height)).add(vRight.scale(width/2)).subtract(this.P0)));
         Color c23=castRay(new Ray(this.P0, corner.add(vUp.scale(height/2)).add(vRight.scale(width)).subtract(this.P0)));
         Color c31=castRay(new Ray(this.P0, p31.subtract(this.P0)));
         Color cCenter=castRay(new Ray(this.P0, pCenter.subtract(this.P0)));
-        //call the recursions and calculate the average.
+
         return  recursiveConstructRay(corner, List.of(c.get(0), c01, cCenter, c31), height / 2, width / 2, vUp, vRight, level-1)
                 .add(recursiveConstructRay(p01, List.of(c01, c.get(1), c12, cCenter), height / 2, width / 2, vUp, vRight, level-1))
                 .add(recursiveConstructRay(pCenter, List.of(cCenter, c12, c.get(2), c23), height / 2, width / 2, vUp, vRight, level-1))
@@ -282,16 +277,11 @@ public class Camera {
         if (!isZero(Xj)) {
             PIJ = PIJ.add(getvRight().scale(Xj));//לא עובר את השורה הזאת בכלל
         }
-        //vector from camera's eye in the direction of point(i,j) in the view-plane
         Vector Vij = PIJ.subtract(P0);
         return new Ray(P0, Vij);
     }
 
-  /*  private void castRay(int nX, int nY, int i, int j){
-        Ray ray = constructRay(nX, nY, j, i);
-        Color pixelColor = rayTracerBase.traceRay(ray);
-        imageWriter.writePixel(j, i, pixelColor);
-    }*/
+
     private Color castRay(Ray ray) {
         return rayTracerBase.traceRay(ray);
 
@@ -314,27 +304,15 @@ public class Camera {
             throw new MissingResourceException
                     ("can't render image because one of the fields of the camera is null", "", "");
         }
-        //call the appropriate function if it with multi threading.
-        /*if(multiThreading){
-            renderImageMultiThreading();
-            return;
-        }*/
+
         int Nx = imageWriter.getNx(), Ny = imageWriter.getNy();
         Color color;
-        //go over the pixels and find the color of each pixel.
         for (int i = 0; i < Ny; i++) {
             for (int j = 0; j < Nx; j++) {
-                //if the improvement "anti aliasing" is off- call the appropriate function.
                 if (antiAliasingNumRays == 1) {
                     Ray ray = constructRay(Nx, Ny, j, i);
                     color = castRay(ray);
                 }
-                //if the improvement "adaptive super sampling" is on- call the appropriate function
-               /* else if(adaptiveSuperSampling){
-                    color = pixelColorASS(Nx, Ny, j, i);
-                }*/
-                // if the improvement "anti aliasing" is on (and not adaptive)-
-                // call the appropriate function for getting the rays and calculate the average of the colors.
                 else {
                     List<Ray> rays = constructRaySuperSampling(Nx, Ny, j, i);
                     color = Color.BLACK;
@@ -348,43 +326,7 @@ public class Camera {
             }
         }
     }
-/*    public Camera renderImage(){
-        try {
-            // Check if all required resources are available
-            if (P0 == null)
-                throw new MissingResourceException("no img", ImageWriter.class.getName(), "");
-            if (vTo == null)
-                throw new MissingResourceException("no img", ImageWriter.class.getName(), "");
-            if (vUp == null)
-                throw new MissingResourceException("no img", ImageWriter.class.getName(), "");
-            if (vRight == null)
-                throw new MissingResourceException("no img", ImageWriter.class.getName(), "");
-            if (width == 0)
-                throw new MissingResourceException("no img", ImageWriter.class.getName(), "");
-            if (height == 0)
-                throw new MissingResourceException("no img", ImageWriter.class.getName(), "");
-            if (dis == 0)
-                throw new MissingResourceException("no img", ImageWriter.class.getName(), "");
-            if (imageWriter == null) {
-                throw new MissingResourceException("no img", ImageWriter.class.getName(), "");
-            }
-            if (rayTracerBase == null) {
-                throw new MissingResourceException("no img", RayTracerBase.class.getName(), "");
-            }
-            int nX = imageWriter.getNx();
-            int nY = imageWriter.getNy();
 
-            // Rendering the image
-            for (int i = 0; i < nY; i++) {
-                for (int j = 0; j < nX; j++) {
-                    castRay(nX, nY, i, j);
-                }
-            }
-        } catch (MissingResourceException e) {
-            throw new UnsupportedOperationException("Not implemented yet" + e.getClassName());
-        }
-        return this;
-    }*/
 
     /**
      * Prints a grid pattern on the image using the specified interval and color.

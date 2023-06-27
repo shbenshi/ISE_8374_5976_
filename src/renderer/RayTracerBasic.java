@@ -47,7 +47,13 @@ public class RayTracerBasic extends RayTracerBase {
 
     }
 
-
+    /**
+     * Calculates the color at the intersection point of a ray with the scene.
+     *
+     * @param closestPoint The closest intersection point.
+     * @param ray          The ray being traced.
+     * @return The color at the intersection point.
+     */
     private Color calcColor(GeoPoint closestPoint, Ray ray) {
         return calcColor(closestPoint, ray, MAX_CALC_COLOR_LEVEL, INITIAL_K)
                 .add(_scene.getAmbientLight().getIntensity());
@@ -64,6 +70,16 @@ public class RayTracerBasic extends RayTracerBase {
         return 1 == level ? color
                 : color.add(calcGlobalEffects(intersection, ray, level, k));
     }
+
+    /**
+     * Calculates the global effects of reflection and refraction at the intersection point.
+     *
+     * @param gp    The intersection point.
+     * @param ray   The ray being traced.
+     * @param level The recursion level.
+     * @param k     The current coefficient of transparency.
+     * @return The color resulting from the global effects.
+     */
     private Color calcGlobalEffects(GeoPoint gp, Ray ray, int level, Double3 k) {
         Color color = Color.BLACK;
         Vector v = ray.getDir();
@@ -74,7 +90,15 @@ public class RayTracerBasic extends RayTracerBase {
                 .add(calcGlobalEffect(constructRefractedRay(gp, v, n),
                         level, k, material.kT));
     }
-
+    /**
+     * Calculates the effect of reflection or refraction at a specific intersection point.
+     *
+     * @param ray  The reflected or refracted ray.
+     * @param level The recursion level.
+     * @param k     The current coefficient of transparency.
+     * @param kx    The coefficient of reflection or refraction.
+     * @return The color resulting from the effect.
+     */
     private Color calcGlobalEffect(Ray ray, int level, Double3 k, Double3 kx) {
         Double3 kkx = k.product(kx);
         if (kkx.lowerThan(MIN_CALC_COLOR_K)) return Color.BLACK;
@@ -101,6 +125,14 @@ public class RayTracerBasic extends RayTracerBase {
             }
             return true;
         }*/
+    /**
+     * Calculates the local effects of diffusive and specular reflection at an intersection point.
+     *
+     * @param gp  The intersection point.
+     * @param ray The ray being traced.
+     * @param k   The current coefficient of transparency.
+     * @return The color resulting from the local effects.
+     */
     private Color calcLocalEffects(GeoPoint gp, Ray ray, Double3 k) {
         Color color = gp.geometry.getEmission();
         Vector vector = ray.getDir();
@@ -125,23 +157,54 @@ public class RayTracerBasic extends RayTracerBase {
         return color;
     }
 
-
+    /**
+     * Calculates the specular reflection color at an intersection point.
+     *
+     * @param material The material of the intersected geometry.
+     * @param n        The normal vector at the intersection point.
+     * @param l        The vector towards the light source.
+     * @param nl       The dot product of the normal and light vectors.
+     * @param v        The direction vector of the ray.
+     * @return The color resulting from the specular reflection.
+     */
     private Double3 calcSpecular(Material material, Vector n, Vector l, double nl, Vector v) {
         Vector r = l.subtract(n.scale(2 * nl));
         double max = -r.dotProduct(v);
         return alignZero(max) > 0 ? material.kS.scale(Math.pow(max, material.nShininess)) : Double3.ZERO;
     }
 
+    /**
+     * Calculates the diffusive reflection color at an intersection point.
+     *
+     * @param material The material of the intersected geometry.
+     * @param nl       The dot product of the normal and light vectors.
+     * @return The color resulting from the diffusive reflection.
+     */
     private Double3 calcDiffusive(Material material, double nl) {
         return material.kD.scale(nl < 0 ? -nl : nl);
     }
 
-
+    /**
+     * Constructs a refracted ray at an intersection point.
+     *
+     * @param gp The intersection point.
+     * @param v  The direction vector of the incident ray.
+     * @param n  The normal vector at the intersection point.
+     * @return The refracted ray.
+     */
     private Ray constructRefractedRay(GeoPoint gp, Vector v, Vector n) {
         return new Ray(gp.point, n, v);
     }
 
-    //constructs the reflected ray
+
+    /**
+     * Constructs a reflected ray at an intersection point.
+     *
+     * @param gp The intersection point.
+     * @param v  The direction vector of the incident ray.
+     * @param n  The normal vector at the intersection point.
+     * @return The reflected ray.
+     */
     private Ray constructReflectedRay(GeoPoint gp, Vector v, Vector n) {
         double vn = v.dotProduct(n);
         if (vn == 0) {
@@ -151,12 +214,27 @@ public class RayTracerBasic extends RayTracerBase {
         return new Ray(gp.point, n, r);
     }
 
-
+    /**
+     * Finds the closest intersection of a ray with the scene.
+     *
+     * @param ray The ray being traced.
+     * @return The closest intersection point.
+     */
     private GeoPoint findClosestIntersection(Ray ray) {
         var intersections = _scene.getGeometries().findGeoIntsersections(ray);
         return ray.findClosestGeoPoint(intersections);
     }
 
+
+    /**
+     * Calculates the coefficient of transparency for a ray passing through a geometry to a light source.
+     *
+     * @param gp     The intersection point between the ray and the geometry.
+     * @param light  The light source.
+     * @param l      The direction vector towards the light source.
+     * @param n      The normal vector at the intersection point.
+     * @return The coefficient of transparency.
+     */
     private Double3 transparency(GeoPoint gp, LightSource light, Vector l, Vector n) {
         Vector lightDirection = l.scale(-1); // from point to light source
         Ray lightRay = new Ray(gp.point, n, lightDirection); // ray to check shading

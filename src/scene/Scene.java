@@ -87,43 +87,85 @@ public class Scene {
 
     }
 
-
+    /**
+     * Sets the list of light sources in the scene.
+     *
+     * @param lights The list of light sources to set.
+     * @return The current Scene object for method chaining.
+     */
     public Scene setLights(List<LightSource> lights) {
         this.lights = lights;
         return this;
     }
-    public static class SceneBuilder {
+    /**
+     * A builder class for creating Scene objects.
+     * Allows for fluent construction of Scene objects with different properties.
+     */
+     public static class SceneBuilder {
         private final String sceneName;
         private Color sceneBack = Color.BLACK;
         private List<LightSource> lights = new LinkedList<>();
         private Geometries geometries = new Geometries();
         private AmbientLight ambientLight = new AmbientLight(AmbientLight.NONE, Double3.ZERO);
 
+        /**
+         * Constructs a SceneBuilder object with the specified scene name.
+         *
+         * @param _sceneName The name of the scene.
+         */
         public SceneBuilder(String _sceneName) {
             this.sceneName = _sceneName;
         }
 
-
+        /**
+         * Sets the list of light sources in the scene.
+         *
+         * @param lights The list of light sources to set.
+         * @return The current SceneBuilder object for method chaining.
+         */
         public SceneBuilder setLights(List<LightSource> lights) {
             this.lights = lights;
             return this;
         }
+
+        /**
+         * Sets the background color of the scene.
+         *
+         * @param _sceneBack The background color to set.
+         * @return The current SceneBuilder object for method chaining.
+         */
 
         public SceneBuilder setBackground(Color _sceneBack) {
             this.sceneBack = _sceneBack;
 
             return this;
         }
-
+        /**
+         * Sets the geometries of the scene.
+         *
+         * @param geometries The geometries to set.
+         * @return The current SceneBuilder object for method chaining.
+         */
         public SceneBuilder setGeometries(Geometries geometries) {
             this.geometries = geometries;
             return this;
         }
 
+        /**
+         * Sets the ambient light of the scene.
+         *
+         * @param ambientLight The ambient light to set.
+         * @return The current SceneBuilder object for method chaining.
+         */
         public SceneBuilder setAmbientLight(AmbientLight ambientLight) {
             this.ambientLight = ambientLight;
             return this;
         }
+        /**
+         * Constructs a Scene object with the set properties.
+         *
+         * @return The constructed Scene object.
+         */
 
         public Scene build() {
             return new Scene(this);

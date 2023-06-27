@@ -28,9 +28,13 @@ public class AmbientLight extends Light{
     public AmbientLight(Color Ia, Double3 Ka) {
 
         super(Ia.scale(Ka));
-        //super(Color.BLACK);
     }
-
+    /**
+     * Constructs an AmbientLight object with the specified intensity and coefficient.
+     *
+     * @param Ia The intensity of the ambient light.
+     * @param Ka The coefficient that affects the ambient light's intensity.
+     */
     public AmbientLight(Color Ia, double Ka) {
 
         super(Ia.scale(Ka));

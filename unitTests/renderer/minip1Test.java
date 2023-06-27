@@ -16,10 +16,10 @@ import static java.awt.Color.*;
 public class minip1Test {
     @Test
     public void minip1Test() {
-        Scene scene = new Scene.SceneBuilder("finalPictureWithAnti").setBackground(new Color(135,206,250))
+        Scene scene = new Scene.SceneBuilder("finalPicture").setBackground(new Color(135,206,250))
                 .build().setSceneBack(new Color(135,206,250));// mens black
         Camera camera = new Camera(new Point(0, 0, 1000), new Vector(0, 0, -1), new Vector(0, 1, 0));
-        camera.setVPSize(150, 150).setVPDistance(1000).antiAliasingOn(5, false);
+        camera.setVPSize(150, 150).setVPDistance(1000);
 
         //back
         scene.getGeometries().add(
@@ -49,6 +49,21 @@ public class minip1Test {
         scene.getLights().add(
                 new PointLight(new Color(100,100,0),new Point(-40,8,0))
         );
+        // new_min2
+        scene.getLights().add(
+                new SpotLight(new Color(100, 200, 700), new Point(-80, 100, 100), new Vector(-1, -1,100)) //
+                        .setKl(4E-4).setKq(2E-5)
+        );
+
+        //2new_minip2
+        /*scene.getLights().add(
+                new PointLight(new Color(100,100,100),new Point(-10,-50,0))
+        );*/
+       /* scene.getLights().add(
+                new DirectionalLight(new Color(200, 200, 0), new Vector(0,0 ,-5))
+        );
+*/
+
 
 
         //sun
@@ -157,43 +172,43 @@ public class minip1Test {
         //bubbles
         scene.getGeometries().add(
                 //1
-                new Sphere(new Point(-48,-20,0),2d)
+                new Sphere(new Point(-48,11,0),2d)
                         .setEmission(new Color(255,255,255).scale(0.05))
                         .setMaterial(new Material().setKd(0.1)
                                 .setKs(0.9).setShininess(300).setKt(0.8).setKr(0.4)),
-                new Sphere(new Point(-68,-30,0),2d)
+                new Sphere(new Point(-68,-20,0),2d)
                         .setEmission(new Color(255,255,255).scale(0.05))
                         .setMaterial(new Material().setKd(0.1)
                                 .setKs(0.9).setShininess(300).setKt(0.8).setKr(0.4)),
-                new Sphere(new Point(-68,-15,0),2d)
+                new Sphere(new Point(-68,15,0),2d)
                         .setEmission(new Color(255,255,255).scale(0.05))
                         .setMaterial(new Material().setKd(0.1)
                                 .setKs(0.9).setShininess(300).setKt(0.8).setKr(0.2)),
-                new Sphere(new Point(-44,-42,221),1.5d)
+                new Sphere(new Point(-44,8,155),1.5d)
                         .setEmission(new Color(255,255,255).scale(0.05))
                         .setMaterial(new Material().setKd(0.1)
                                 .setKs(0.9).setShininess(300).setKt(0.9)),
 
-                new Sphere(new Point(-48,-30,210),1.7d)
+                new Sphere(new Point(-48,-15,210),1.7d)
                         .setEmission(new Color(255,255,255).scale(0.05))
                         .setMaterial(new Material().setKd(0.1)
                                 .setKs(0.9).setShininess(300).setKt(0.8)),
 
-                new Sphere(new Point(-15,-40,220),2d)
+                new Sphere(new Point(-15,-10,220),2d)
                         .setEmission(new Color(255,255,255).scale(0.05))
                         .setMaterial(new Material().setKd(0.1)
                                 .setKs(0.9).setShininess(300).setKt(0.6)),
 
-                new Sphere(new Point(-30,-38,221),1.5d)
+                new Sphere(new Point(-30,-8,221),1.5d)
                         .setEmission(new Color(255,255,255).scale(0.05))
                         .setMaterial(new Material().setKd(0.1)
                                 .setKs(0.9).setShininess(300).setKt(0.8)),
-                new Sphere(new Point(-51,-50,221),2.3d)
+                new Sphere(new Point(-51,-5,221),2.3d)
                         .setEmission(new Color(255,255,255).scale(0.05))
                         .setMaterial(new Material().setKd(0.1)
                                 .setKs(0.9).setShininess(300).setKt(0.8)),
 
-                new Sphere(new Point(-28,-8,223),1.5d)
+                new Sphere(new Point(-28,22,223),1.5d)
                         .setEmission(new Color(255,255,0).scale(0.05))
                         .setMaterial(new Material().setKd(0.1)
                                 .setKs(0.9).setShininess(300).setKt(0.8))
@@ -332,7 +347,7 @@ public class minip1Test {
 
 
 
-                camera.setImageWriter(new ImageWriter("minip1WithAnti", 2500, 2500)) //
+                camera.setImageWriter(new ImageWriter("minip1", 2500, 2500)) //
                  .setRayTracer(new RayTracerBasic(scene)) //
                 .renderImage(); //
                 camera.writeToImage();
