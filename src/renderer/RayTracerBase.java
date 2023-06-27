@@ -2,6 +2,8 @@ package renderer;
 
 import scene.*;
 import primitives.*;
+import java.util.List;
+
 
 /**
  * This class represents a camera in a renderer.
@@ -31,5 +33,10 @@ public abstract class RayTracerBase {
      * @return The color at the intersection point.
      */
     public abstract Color traceRay(Ray ray);
+
+    public abstract Color average_color_calculator(List<Ray> rays);
+    public abstract Color AdaptiveSuperSamplingRec(Point centerP, double Width, double Height, double minWidth, double minHeight, Point cameraLoc, Vector Vright, Vector Vup, List<Point> prePoints);
+    public abstract  Color traceBeamRay(List<Ray> beam);
+
 
 }

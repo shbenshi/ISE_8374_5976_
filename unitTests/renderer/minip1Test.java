@@ -16,10 +16,10 @@ import static java.awt.Color.*;
 public class minip1Test {
     @Test
     public void minip1Test() {
-        Scene scene = new Scene.SceneBuilder("finalPicture").setBackground(new Color(135,206,250))
+        Scene scene = new Scene.SceneBuilder("finalPictureWithAnti").setBackground(new Color(135,206,250))
                 .build().setSceneBack(new Color(135,206,250));// mens black
         Camera camera = new Camera(new Point(0, 0, 1000), new Vector(0, 0, -1), new Vector(0, 1, 0));
-        camera.setVPSize(150, 150).setVPDistance(1000);
+        camera.setVPSize(150, 150).setVPDistance(1000).setThreadsCount(4).setNumberOfRays(300).setadaptive(false);//.antiAliasingOn(9, true);
 
         //back
         scene.getGeometries().add(
@@ -49,22 +49,11 @@ public class minip1Test {
         scene.getLights().add(
                 new PointLight(new Color(100,100,0),new Point(-40,8,0))
         );
-        // new_min2
+// new_min2
         scene.getLights().add(
                 new SpotLight(new Color(100, 200, 700), new Point(-80, 100, 100), new Vector(-1, -1,100)) //
                         .setKl(4E-4).setKq(2E-5)
         );
-
-        //2new_minip2
-        /*scene.getLights().add(
-                new PointLight(new Color(100,100,100),new Point(-10,-50,0))
-        );*/
-       /* scene.getLights().add(
-                new DirectionalLight(new Color(200, 200, 0), new Vector(0,0 ,-5))
-        );
-*/
-
-
 
         //sun
         scene.getGeometries().add(
@@ -169,7 +158,6 @@ public class minip1Test {
                         .setMaterial(new Material().setKd(0.2).setKs(0.6).setShininess(300))
 
         );*/
-        //bubbles
         scene.getGeometries().add(
                 //1
                 new Sphere(new Point(-48,11,0),2d)
@@ -347,7 +335,7 @@ public class minip1Test {
 
 
 
-                camera.setImageWriter(new ImageWriter("minip1", 2500, 2500)) //
+                camera.setImageWriter(new ImageWriter("minip1WithAnti", 1000, 1000)) //
                  .setRayTracer(new RayTracerBasic(scene)) //
                 .renderImage(); //
                 camera.writeToImage();
