@@ -157,7 +157,7 @@ public class minip1Test {
                         .setEmission(new Color(0,0,0))
                         .setMaterial(new Material().setKd(0.2).setKs(0.6).setShininess(300))
 
-        );*/
+        );*///
         scene.getGeometries().add(
                 //1
                 new Sphere(new Point(-48,11,0),2d)
