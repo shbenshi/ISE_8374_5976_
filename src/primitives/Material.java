@@ -8,11 +8,14 @@ package primitives;
  * The values are represented using the Double3 class, which stores three double values (RGB).
  * The class provides methods for setting the values of kD, kS, and nShininess.
  * Authors:
- * [Author Name 1]
- * [Author Name 2]
+ * shira
+ * tzofia
  */
 public class Material {
+    /** The transmission coefficient for refracted rays */
+
     public Double3 kT = Double3.ZERO;
+    /** The reflection coefficient for reflected rays */
     public Double3 kR = Double3.ZERO;
     /** The diffuse reflection coefficient */
     public Double3 kD=Double3.ZERO;
@@ -21,29 +24,61 @@ public class Material {
     /** The shininess factor */
     public int nShininess =0;
 
+    /**
+     * Returns the transmission coefficient for refracted rays.
+     *
+     * @return The transmission coefficient
+     */
     public Double3 getkT() {
         return kT;
     }
 
+    /**
+     * Sets the transmission coefficient for refracted rays to the specified value.
+     *
+     * @param kt The transmission coefficient to set
+     * @return The Material object with the updated transmission coefficient
+     */
     public Material setKt(double kt) {
         this.kT = new Double3(kt, kt, kt);
         return this;
     }
-
+    /**
+     * Sets the transmission coefficient for refracted rays to the specified value.
+     *
+     * @param kT The transmission coefficient to set
+     * @return The Material object with the updated transmission coefficient
+     */
     public Material setKt(Double3 kT) {
         this.kT = kT;
         return this;
     }
 
 
+    /**
+     * Returns the reflection coefficient for reflected rays.
+     *
+     * @return The reflection coefficient
+     */
     public Double3 getKr() {
         return kR;
     }
+    /**
+     * Sets the reflection coefficient for reflected rays to the specified value.
+     *
+     * @param kR The reflection coefficient to set
+     * @return The Material object with the updated reflection coefficient
+     */
     public Material setKr(Double3 kR) {
         this.kR = kR;
         return this;
     }
-
+    /**
+     * Sets the reflection coefficient for reflected rays to the specified value.
+     *
+     * @param kr The reflection coefficient to set
+     * @return The Material object with the updated reflection coefficient
+     */
     public Material setKr(double kr) {
         this.kR = new Double3(kr);
         return this;

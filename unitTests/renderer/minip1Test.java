@@ -40,6 +40,9 @@ public class minip1Test {
 
         // light
         scene.getLights().add(
+                new SpotLight(new Color(120, 120, 0), new Point(200,200 ,200), new Vector(-1,-1,0)).setKl(4E-4).setKq(2E-5)
+        );
+        scene.getLights().add(
                 new DirectionalLight(new Color(200, 200, 0), new Vector(0,-4 ,-1))
         );
         scene.getLights().add(
@@ -263,7 +266,7 @@ public class minip1Test {
 
                 );
 
-                camera.setImageWriter(new ImageWriter("FINISH", 2500, 2500)) //
+                camera.setImageWriter(new ImageWriter("FINISHpICTURE", 2500, 2500)) //
                  .setRayTracer(new RayTracerBasic(scene)) //
                 .renderImage(); //
                 camera.writeToImage();

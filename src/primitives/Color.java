@@ -105,8 +105,20 @@ public class Color {
       return new Color(rgb.d1 / k.d1, rgb.d2 / k.d2, rgb.d3 / k.d3);
    }
 
+   /**
+    * Returns a string representation of the color in the format "rgb: r,g,b".
+    *
+    * @return The string representation of the color
+    */
    @Override
    public String toString() { return "rgb:" + rgb; }
+   /**
+    * Checks if the color is almost equal to the given color, allowing a tolerance of 2 units
+    * for each component (red, green, blue).
+    *
+    * @param color The color to compare with
+    * @return true if the colors are almost equal, false otherwise
+    */
    public  boolean isAlmostEquals(primitives.Color color) {
 
       return  (Math.abs(this.rgb.d1-color.rgb.d1)<= 2) &&

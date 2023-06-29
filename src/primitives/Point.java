@@ -60,15 +60,6 @@ public class Point
         if (!(o instanceof Point point)) return false;
         return xyz.equals(point.xyz);
     }
-    /*
-    if (o == null || getClass() != o.getClass()) return false;
-    Point point = (Point) o;
-    return Objects.equals(xyz, point.xyz);
-    }
-    /**
-     * Returns a hash code value for the Point object.
-     * @return A hash code value for the Point object.
-     */
     @Override
     public int hashCode()
     {
@@ -134,10 +125,5 @@ public class Point
         return this.xyz.d3;
     }
 
-    /**
-     * Adds the specified Vector to this Point object and returns the result as a new Point object.
-     * @param v1 The Vector to add to this Point.
-     * @return A new Point object representing the result of the addition.
-     */
 }
 

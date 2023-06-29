@@ -40,6 +40,14 @@ public class Camera {
     private int threadsCount;
     private int numberOfRays = 81;
 
+
+    /**
+     * Renders the image using the configured ray tracer and image writer.
+     *IBUD
+     * @return The current Camera object for method chaining.
+     * @throws UnsupportedOperationException if the ray tracer, image writer, view plane size, or distance is not set.
+     * @throws IllegalArgumentException      if the number of rays is set to 0.
+     */
     public Camera renderImage() {
         if (this.rayTracer == null || this.imageWriter == null
                 || this.width == 0 || this.height == 0
@@ -104,32 +112,57 @@ public class Camera {
         return this;
     }
 
-
+    /**
+     * Applies adaptive super-sampling technique to compute the color for a specific pixel.
+     *
+     * @param nX         The number of pixels in the X-axis.
+     * @param nY         The number of pixels in the Y-axis.
+     * @param j          The row index of the current pixel.
+     * @param i          The column index of the current pixel.
+     * @param numOfRays  The total number of rays used for super-sampling.
+     * @return The computed color for the pixel using adaptive super-sampling.
+     */
     private Color AdaptiveSuperSampling(int nX, int nY, int j, int i,  int numOfRays)  {
+        // Extract necessary camera vectors and location
         Vector Vright = vRight;
         Vector Vup = vUp;
         Point cameraLoc = this.P0;
+        // Calculate the number of rays in each row/column
         int numOfRaysInRowCol = (int)Math.floor(Math.sqrt(numOfRays));
+        // If there is only one ray, return the result of casting a single ray
         if(numOfRaysInRowCol == 1)  return castRay(nX,nY,j,i);
+        // Calculate the pixel dimensions and center point
         double rY = alignZero(height / nY);
         // the ratio Rx = w/Nx, the width of the pixel
         double rX = alignZero(width / nX);
         Point pIJ = getCenterOfPixel(i,j,nX,nY,rY,rX);
+        // Calculate the sub-pixel sizes
         double PRy = rY/numOfRaysInRowCol;
         double PRx = rX/numOfRaysInRowCol;
+        // Call the recursive AdaptiveSuperSamplingRec method to compute the color
+
         return rayTracer.AdaptiveSuperSamplingRec(pIJ, rX, rY, PRx, PRy,cameraLoc,Vright, Vup,null);
     }
 
-
+    /**
+     * Prints a grid pattern on the image, using the specified interval and color.
+     *
+     * @param interval  The interval between grid lines.
+     * @param color     The color of the grid lines.
+     * @return The Camera object for method chaining.
+     * @throws UnsupportedOperationException if the imageWriter is null.
+     */
     public Camera printGrid(int interval, Color color)
     {
         if (imageWriter == null) throw new UnsupportedOperationException("MissingResourcesException");
 
+        // Draw vertical grid lines
         for (int i = 0; i < imageWriter.getNx(); i+=interval) {
             for (int j = 0; j < imageWriter.getNy(); j+=1) {
                 imageWriter.writePixel(i, j, new Color(color.getColor()));
             }
         }
+        // Draw horizontal grid lines
         for (int i = 0; i < imageWriter.getNy(); i+=interval) {
             for (int j = 0; j < imageWriter.getNx(); j+=1) {
                 imageWriter.writePixel(j, i, new Color(color.getColor()));
@@ -139,13 +172,24 @@ public class Camera {
     }
 
 
-
+    /**
+     * Writes the image using the initialized image writer.
+     *
+     * @throws MissingResourceException if the image writer is uninitialized.
+     */
     public void writeToImage() {
         if (this.imageWriter == null) // the image writer is uninitialized
             throw new MissingResourceException("missing Camera", ImageWriter.class.getName(), "");
         imageWriter.writeToImage();
     }
-
+    /**
+     * Constructs a Camera object with the specified parameters.
+     *
+     * @param _P0  The camera's location.
+     * @param _vTo The direction the camera is pointing towards.
+     * @param _vUp The upward direction of the camera.
+     * @throws IllegalArgumentException if the direction vectors of the camera are not orthogonal.
+     */
     public Camera(Point _P0, Vector _vTo, Vector _vUp) throws IllegalArgumentException {
         if (!isZero(_vTo.dotProduct(_vUp)))
             throw new IllegalArgumentException("direction vectors of camera must be orthogonal");
@@ -154,6 +198,16 @@ public class Camera {
         this.vUp = _vUp.normalize();
         this.vRight = _vTo.crossProduct(_vUp).normalize();
     }
+
+    /**
+     * Constructs a ray from the camera's position through the specified pixel coordinates.
+     *
+     * @param nX The number of pixels in the X direction.
+     * @param nY The number of pixels in the Y direction.
+     * @param j  The X coordinate of the pixel.
+     * @param i  The Y coordinate of the pixel.
+     * @return The constructed ray.
+     */
     public Ray constructRay(int nX, int nY, double j, double i) {
         double ry = height / nY;
         double rx = width / nX;
@@ -169,14 +223,42 @@ public class Camera {
         return new Ray(P0, p.subtract(P0));
     }
 
+    /**
+     * Casts a ray and returns the color calculated by the ray tracer.
+     *
+     * @param ray The ray to be cast.
+     * @return The color calculated by the ray tracer.
+     */
    private Color castRay(Ray ray) {
         return rayTracer.traceRay(ray);
 
     }
+
+    /**
+     * Casts a ray through the specified pixel coordinates and returns the color calculated by the ray tracer.
+     *
+     * @param nX The number of pixels in the X direction.
+     * @param nY The number of pixels in the Y direction.
+     * @param i  The X coordinate of the pixel.
+     * @param j  The Y coordinate of the pixel.
+     * @return The color calculated by the ray tracer.
+     */
     private Color castRay(int nX, int nY, int i, int j)
     {
         return rayTracer.traceRay(constructRay(nX, nY, i, j));
     }
+
+    /**
+     * Calculates the center point of a pixel given its coordinates and dimensions.
+     *
+     * @param i           The X coordinate of the pixel.
+     * @param j           The Y coordinate of the pixel.
+     * @param nX          The number of pixels in the X direction.
+     * @param nY          The number of pixels in the Y direction.
+     * @param pixelHeight The height of a pixel.
+     * @param pixelWidth  The width of a pixel.
+     * @return The center point of the pixel.
+     */
     public Point getCenterOfPixel(int i, int j, int nX,int nY,double pixelHeight,double pixelWidth)
     {
         Point center = this.P0.add(this.vTo.scale(dis));
@@ -186,6 +268,17 @@ public class Camera {
         if (xj !=0 ) center = center.add(this.vRight.scale(xj));
         return center;
     }
+    /**
+     * Constructs a beam of rays for a pixel at the specified coordinates, with a grid pattern.
+     *
+     * @param i            The X coordinate of the pixel.
+     * @param j            The Y coordinate of the pixel.
+     * @param nX           The number of pixels in the X direction.
+     * @param nY           The number of pixels in the Y direction.
+     * @param gridWidth    The width of the ray grid.
+     * @param pixelWidth   The width of a pixel.
+     * @return A list of rays forming a beam for the pixel.
+     */
     private List<Ray> constructRayBeam(int i, int j, int nX, int nY, int gridWidth, int gridHighet, double pixelHighet, double pixelWidth)
     {
         List<Ray> beam = new ArrayList<>();
@@ -199,6 +292,18 @@ public class Camera {
         }
         return beam;
     }
+    /**
+     * Constructs a ray within a pixel at the specified coordinates, relative to a grid.
+     *
+     * @param nX          The number of pixels in the X direction.
+     * @param nY          The number of pixels in the Y direction.
+     * @param j           The X coordinate of the ray within the grid.
+     * @param i           The Y coordinate of the ray within the grid.
+     * @param center      The center point of the pixel.
+     * @param gridWidth   The width of the ray grid.
+     * @param gridHeight  The height of the ray grid.
+     * @return The constructed ray.
+     */
     private Ray constructRayInPixel(int nX, int nY, int j, int i, Point center, int gridWidth, int gridHeight) {
         Point pij = center;
         double yi = -(i - ((double) gridHeight - 1) / 2) * (height / nY) / gridHeight;
@@ -219,15 +324,33 @@ public class Camera {
         height = _height;
         return this;
     }
+    /**
+     * Sets the number of rays for each pixel during rendering.
+     *
+     * @param numberOfRays The number of rays to be cast for each pixel.
+     * @return The Camera instance with the updated number of rays.
+     */
     public Camera setNumberOfRays(int numberOfRays) {
         this.numberOfRays = numberOfRays;
         return this;
     }
 
+    /**
+     * Sets the number of threads to be used for rendering.
+     *
+     * @param threadsCount The number of threads to be used for rendering.
+     * @return The Camera instance with the updated number of threads.
+     */
     public Camera setThreadsCount(int threadsCount) {
         this.threadsCount = threadsCount;
         return this;
     }
+    /**
+     * Sets whether adaptive super-sampling should be used during rendering.
+     *
+     * @param adaptive Boolean value indicating whether adaptive super-sampling should be used.
+     * @return The Camera instance with the updated adaptive super-sampling setting.
+     */
     public Camera setadaptive(boolean adaptive) {
         this.adaptive = adaptive;
         return this;

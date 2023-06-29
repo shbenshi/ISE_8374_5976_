@@ -36,7 +36,7 @@ public class Cylinder extends Tube {
      * @return The normal vector at the given point
      */
     public Vector getNormal(Point p1) {
-        double t=0;
+        double t = 0;
         if (!p1.equals(axisRay.getP0()))
             t = axisRay.getDir().dotProduct(p1.subtract(axisRay.getP0()));
         if (t == this.height) // if is on base B return the dir
@@ -45,27 +45,6 @@ public class Cylinder extends Tube {
             return axisRay.getDir().scale(-1);
         else
             return super.getNormal(p1);// if is not on the bases then return get normal of tube
-       /* if ((p1.equals(axisRay.getP0())))
-            return ((axisRay.getDir()));
-
-        if (p1.equals(((axisRay.getP0()).add((axisRay.getDir()).scale(height))))) {
-            return axisRay.getDir();
-        }
-        *//* if the given point minus exist point  X exist dir equal  zero
-         you need to return the opposite direction*//*
-        if ((p1.subtract(axisRay.getP0())).dotProduct(axisRay.getDir()) == 0) {
-            return ((axisRay.getDir()).scale(-1));
-        }
-        *//* if the given point minus exist point  + exist* height X dir equal  zero
-         you need to return the exist direction*//*
-        if ((p1.subtract((axisRay.getP0()).add((axisRay.getDir()).scale(height)))).dotProduct(axisRay.getDir()) == 0)
-            return axisRay.getDir();
-
-        // if it is none of the written above return just the normal of cylinder
-        double H = ((p1.subtract(axisRay.getP0())).dotProduct(axisRay.getDir()));
-        Point p2 = (axisRay.getP0()).add((axisRay.getDir()).scale(H));
-        return ((p1.subtract(p2)).normalize());*/
-
     }
 
     /**

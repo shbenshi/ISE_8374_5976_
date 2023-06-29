@@ -34,9 +34,27 @@ public abstract class RayTracerBase {
      */
     public abstract Color traceRay(Ray ray);
 
+    /**
+     * Calculates the average color from a list of rays.
+     *
+     * @param rays The list of rays to calculate the average color from.
+     * @return The average color calculated from the list of rays.
+     */
     public abstract Color average_color_calculator(List<Ray> rays);
+    /**
+     * Performs recursive adaptive super-sampling to compute the color at a given point.
+     *
+     * @param centerP    The center point of the pixel being sampled.
+     * @param Width      The width of the pixel being sampled.
+     * @param Height     The height of the pixel being sampled.
+     * @param minWidth   The minimum width of the sub-pixels during adaptive super-sampling.
+     * @param minHeight  The minimum height of the sub-pixels during adaptive super-sampling.
+     * @param cameraLoc  The location of the camera.
+     * @param Vright     The right vector of the camera.
+     * @param Vup        The up vector of the camera.
+     * @param prePoints  The list of precomputed points for adaptive super-sampling.
+     * @return The color computed for the given point using adaptive super-sampling.
+     */
     public abstract Color AdaptiveSuperSamplingRec(Point centerP, double Width, double Height, double minWidth, double minHeight, Point cameraLoc, Vector Vright, Vector Vup, List<Point> prePoints);
-    public abstract  Color traceBeamRay(List<Ray> beam);
-
 
 }

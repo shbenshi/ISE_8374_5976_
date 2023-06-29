@@ -28,7 +28,13 @@ public class Ray
         this.p0 = p0;
         this.dir = v1.normalize();
     }
-
+    /**
+     * Constructs a new Ray object with the specified starting point, direction, and surface normal.
+     *
+     * @param p0  The starting point of the ray
+     * @param n   The surface normal vector
+     * @param dir The direction vector of the ray
+     */
     public Ray(Point p0, Vector n, Vector dir) {
         double eps= dir.dotProduct(n)>=0? DELTA :-DELTA;
         this.p0 = p0.add(n.scale(eps));
@@ -61,10 +67,6 @@ public class Ray
     public int hashCode() {
         return Objects.hash(p0, dir);
     }
-    public Point findPoint(double d) {
-        return this.p0.add(this.dir.scale(d));
-    }
-
     /**
      * this is a get funcc to the point
      * @return the point
