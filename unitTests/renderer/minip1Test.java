@@ -12,7 +12,7 @@ import lighting.SpotLight;
 import scene.*;
 import org.junit.jupiter.api.Test;
 import primitives.*;
-
+//final
 public class minip1Test {
     @Test
     public void minip1Test() {
