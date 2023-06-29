@@ -263,7 +263,7 @@ public class minip1Test {
 
                 );
 
-                camera.setImageWriter(new ImageWriter("YaYs", 600, 600)) //
+                camera.setImageWriter(new ImageWriter("FINISH", 2500, 2500)) //
                  .setRayTracer(new RayTracerBasic(scene)) //
                 .renderImage(); //
                 camera.writeToImage();
