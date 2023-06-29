@@ -38,7 +38,7 @@ public class Camera {
 
     private boolean adaptive;
     private int threadsCount;
-    private int numberOfRays = 1;
+    private int numberOfRays = 81;
 
     public Camera renderImage() {
         if (this.rayTracer == null || this.imageWriter == null

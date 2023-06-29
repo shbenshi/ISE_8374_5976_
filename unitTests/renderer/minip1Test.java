@@ -16,7 +16,7 @@ import primitives.*;
 public class minip1Test {
     @Test
     public void minip1Test() {
-        Scene scene = new Scene.SceneBuilder("finalPictureWithAnti").setBackground(new Color(135,206,250))
+        Scene scene = new Scene.SceneBuilder("minipF").setBackground(new Color(135,206,250))
                 .build().setSceneBack(new Color(135,206,250));// mens black
         Camera camera = new Camera(new Point(0, 0, 1000), new Vector(0, 0, -1), new Vector(0, 1, 0));
         camera.setVPSize(150, 150).setVPDistance(1000).setThreadsCount(4).setNumberOfRays(81).setadaptive(true);
@@ -135,96 +135,58 @@ public class minip1Test {
                 );
         //bubble
         scene.getGeometries().add(
-                //1
-                new Sphere(new Point(-48,11,0),2d)
+                //1 not this, with KR, mavrika yoter
+                new Sphere(new Point(-60,-34,0),1.5d)
+                        .setEmission(new Color(255,255,255).scale(0.05))
+                        .setMaterial(new Material().setKd(0.3)
+                                .setKs(0.6).setShininess(300).setKt(0.8).setKr(0.4).setKt(0.9)),
+                // this one
+                new Sphere(new Point(-70,-32,0),1.3d)
                         .setEmission(new Color(255,255,255).scale(0.05))
                         .setMaterial(new Material().setKd(0.1)
                                 .setKs(0.9).setShininess(300).setKt(0.8).setKr(0.4)),
-                new Sphere(new Point(-68,-20,0),2d)
+                // another inside
+                new Sphere(new Point(-63,-26,0),2d)
                         .setEmission(new Color(255,255,255).scale(0.05))
                         .setMaterial(new Material().setKd(0.1)
-                                .setKs(0.9).setShininess(300).setKt(0.8).setKr(0.4)),
-                new Sphere(new Point(-68,15,0),4d)
-                        .setEmission(new Color(0,255,255))
-                        .setMaterial(new Material().setKd(0.1)
-                                .setKs(0.9).setShininess(300).setKr(0.2)),
-                new Sphere(new Point(-44,8,155),1.5d)
+                                .setKs(0.9).setShininess(100).setKt(0.8).setKr(0.4).setKt(0.9)),
+                //
+                new Sphere(new Point(-44,-30,155),1d)
                         .setEmission(new Color(255,255,255).scale(0.05))
                         .setMaterial(new Material().setKd(0.1)
-                                .setKs(0.9).setShininess(300).setKt(0.9)),
+                                .setKs(0.9).setShininess(300).setKt(0.8).setKr(0.4).setKt(0.9)),
+                // left down side
+                new Sphere(new Point(-55,-13,210),1d)
+                        .setEmission(new Color(255,255,255).scale(0.05))
+                        .setMaterial(new Material().setKd(0.1)
+                                .setKs(0.9).setShininess(300).setKt(0.8).setKr(0.4).setKt(0.9)),
 
-                new Sphere(new Point(-48,-15,210),1.7d)
+                new Sphere(new Point(-15,-37,220),2d)
                         .setEmission(new Color(255,255,255).scale(0.05))
                         .setMaterial(new Material().setKd(0.1)
-                                .setKs(0.9).setShininess(300).setKt(0.8)),
+                                .setKs(0.9).setShininess(300).setKt(0.6).setKr(0.4).setKt(0.9)),
 
-                new Sphere(new Point(-15,-10,220),2d)
+                new Sphere(new Point(-50,-14,-18),1.5d)
                         .setEmission(new Color(255,255,255).scale(0.05))
                         .setMaterial(new Material().setKd(0.1)
-                                .setKs(0.9).setShininess(300).setKt(0.6)),
-
-                new Sphere(new Point(-30,-8,221),1.5d)
-                        .setEmission(new Color(255,255,255).scale(0.05))
-                        .setMaterial(new Material().setKd(0.1)
-                                .setKs(0.9).setShininess(300).setKt(0.8)),
-                new Sphere(new Point(-51,-5,221),2.3d)
-                        .setEmission(new Color(255,255,255).scale(0.05))
-                        .setMaterial(new Material().setKd(0.1)
-                                .setKs(0.9).setShininess(300).setKt(0.8)),
-
-                new Sphere(new Point(-28,22,223),1.5d)
-                        .setEmission(new Color(255,255,0).scale(0.05))
-                        .setMaterial(new Material().setKd(0.1)
-                                .setKs(0.9).setShininess(300).setKt(0.8)));
+                                .setKs(0.9).setShininess(300).setKt(0.8).setKr(0.6)),
 
 
 
+                // next to left mount
+                new Sphere(new Point(-30,-8,221),1d)
+                        .setEmission(new Color(255,255,255).scale(0.05))
+                        .setMaterial(new Material().setKd(0.1)
+                                .setKs(0.9).setShininess(300).setKt(0.8).setKr(0.4).setKt(0.9)),
+                // under the sun
+                new Sphere(new Point(-54,-5,221),1.7d)
+                        .setEmission(new Color(255,255,255).scale(0.05))
+                        .setMaterial(new Material().setKd(0.1)
+                                .setKs(0.9).setShininess(300).setKt(0.8).setKr(0.4).setKt(0.9))
+                // next to sun right
+               );
 
-        /*scene.getGeometries().add(
-                //1
-                new Sphere(new Point(-48,11,0),2d)
-                        .setEmission(new Color(255,255,255).scale(0.05))
-                        .setMaterial(new Material().setKd(0.1)
-                                .setKs(0.9).setShininess(300).setKt(0.8).setKr(0.4)),
-                new Sphere(new Point(-68,-20,0),2d)
-                        .setEmission(new Color(255,255,255).scale(0.05))
-                        .setMaterial(new Material().setKd(0.1)
-                                .setKs(0.9).setShininess(300).setKt(0.8).setKr(0.4)),
-                new Sphere(new Point(-68,15,0),2d)
-                        .setEmission(new Color(255,255,255).scale(0.05))
-                        .setMaterial(new Material().setKd(0.1)
-                                .setKs(0.9).setShininess(300).setKt(0.8).setKr(0.2)),
-                new Sphere(new Point(-44,8,155),1.5d)
-                        .setEmission(new Color(255,255,255).scale(0.05))
-                        .setMaterial(new Material().setKd(0.1)
-                                .setKs(0.9).setShininess(300).setKt(0.9)),
 
-                new Sphere(new Point(-48,-15,210),1.7d)
-                        .setEmission(new Color(255,255,255).scale(0.05))
-                        .setMaterial(new Material().setKd(0.1)
-                                .setKs(0.9).setShininess(300).setKt(0.8)),
-
-                new Sphere(new Point(-15,-10,220),2d)
-                        .setEmission(new Color(255,255,255).scale(0.05))
-                        .setMaterial(new Material().setKd(0.1)
-                                .setKs(0.9).setShininess(300).setKt(0.6)),
-
-                new Sphere(new Point(-30,-8,221),1.5d)
-                        .setEmission(new Color(255,255,255).scale(0.05))
-                        .setMaterial(new Material().setKd(0.1)
-                                .setKs(0.9).setShininess(300).setKt(0.8)),
-                new Sphere(new Point(-51,-5,221),2.3d)
-                        .setEmission(new Color(255,255,255).scale(0.05))
-                        .setMaterial(new Material().setKd(0.1)
-                                .setKs(0.9).setShininess(300).setKt(0.8)),
-
-                new Sphere(new Point(-28,22,223),1.5d)
-                        .setEmission(new Color(255,255,0).scale(0.05))
-                        .setMaterial(new Material().setKd(0.1)
-                                .setKs(0.9).setShininess(300).setKt(0.8))
-
-        );
-*/
         //cloud
         scene.getGeometries().add(
                 //4
@@ -301,7 +263,7 @@ public class minip1Test {
 
                 );
 
-                camera.setImageWriter(new ImageWriter("offA", 600, 600)) //
+                camera.setImageWriter(new ImageWriter("YaYs", 600, 600)) //
                  .setRayTracer(new RayTracerBasic(scene)) //
                 .renderImage(); //
                 camera.writeToImage();
