@@ -145,9 +145,9 @@ public class minip1Test {
                         .setMaterial(new Material().setKd(0.1)
                                 .setKs(0.9).setShininess(300).setKt(0.8).setKr(0.4)),
                 new Sphere(new Point(-68,15,0),4d)
-                        .setEmission(new Color(255,255,255).scale(0.05))
+                        .setEmission(new Color(0,255,255))
                         .setMaterial(new Material().setKd(0.1)
-                                .setKs(0.9).setShininess(300).setKt(0.8)),
+                                .setKs(0.9).setShininess(300).setKr(0.2)),
                 new Sphere(new Point(-44,8,155),1.5d)
                         .setEmission(new Color(255,255,255).scale(0.05))
                         .setMaterial(new Material().setKd(0.1)
