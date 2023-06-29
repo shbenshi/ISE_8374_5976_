@@ -95,6 +95,4 @@ public class myFirstPictureTest {
                 .renderImage(); //
                 camera.writeToImage();
     }
-
-
 }
